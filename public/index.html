@@ -197,8 +197,8 @@
     display: block;
     margin-top: 10px;
     font-size: 12px;
-    font-weight: 700;
-    color: var(--sky-blue);
+    font-weight: 500;
+    color: var(--light-grey);
     text-decoration: none;
     cursor: default;
   }
@@ -447,6 +447,7 @@
       <div class="card" data-a="red"><div class="card-emoji">👤</div><div class="card-name">Personen-Research</div><div class="card-sub">Meeting-Vorbereitung · Team-Zugriff</div><div class="card-desc">Person eingeben → LinkedIn, Unternehmen, digitaler Kontext werden automatisch recherchiert und aufbereitet. Für das gesamte Team nutzbar.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag red">LinkedIn</span><span class="tag red">n8n</span><span class="tag red">Teams Bot</span></div></div>
       <div class="card" data-a="sky"><div class="card-emoji">📱</div><div class="card-name">Apple Automatisierungen</div><div class="card-sub">Prozessautomatisierung</div><div class="card-desc">Apple Shortcuts als leichtgewichtige Automatisierung – Aktionen verketten, Siri-Trigger, Hintergrund-Prozesse auf allen Apple-Geräten. API-Anbindung an OpenAI für individuelle Prompts.</div><div class="card-tags"><span class="tag sky">Shortcuts</span><span class="tag sky">Siri</span><span class="tag sky">OpenAI Whisper</span><span class="tag sky">API</span><span class="tag red">n8n</span></div></div>
       <div class="card" data-a="grad"><div class="card-emoji">🔗</div><div class="card-name">n8n × KI × Apple</div><div class="card-sub">Plattformübergreifende Verbindung</div><div class="card-desc">n8n als Brücke zwischen KI-APIs und Apple Shortcuts. Z. B. Voice-to-Kalender: Spracheingabe → Whisper → n8n → Outlook-Termin.</div><div class="card-tags"><span class="tag red">n8n</span><span class="tag sky">Whisper</span><span class="tag marine">Outlook</span></div></div>
+      <div class="card" data-a="marine"><div class="card-emoji">🔄</div><div class="card-name">Teams-Webhook Refresh</div><div class="card-sub">n8n → Teams API · Alle 12h</div><div class="card-desc">Automatischer Restart der n8n-zu-Teams-Verbindung alle 12 Stunden. Workflows deaktivieren, 5 Sek. warten, reaktivieren – mit Erfolgs-/Fehlerprüfung.</div><div class="card-tags"><span class="tag red">n8n</span><span class="tag marine">Teams</span><span class="tag marine">Webhook</span></div></div>
     </div>
   </div>
 
@@ -556,6 +557,7 @@ const translations = {
       personen: ['Personen-Research','Meeting-Vorbereitung · Team-Zugriff','Person eingeben → LinkedIn, Unternehmen, digitaler Kontext werden automatisch recherchiert und aufbereitet. Für das gesamte Team nutzbar.'],
       appleauto: ['Apple Automatisierungen','Prozessautomatisierung','Apple Shortcuts als leichtgewichtige Automatisierung – Aktionen verketten, Siri-Trigger, Hintergrund-Prozesse auf allen Apple-Geräten. API-Anbindung an OpenAI für individuelle Prompts.'],
       n8nki: ['n8n × KI × Apple','Plattformübergreifende Verbindung','n8n als Brücke zwischen KI-APIs und Apple Shortcuts. Z. B. Voice-to-Kalender: Spracheingabe → Whisper → n8n → Outlook-Termin.'],
+      teamswebhook: ['Teams-Webhook Refresh','n8n → Teams API · Alle 12h','Automatischer Restart der n8n-zu-Teams-Verbindung alle 12 Stunden. Workflows deaktivieren, 5 Sek. warten, reaktivieren – mit Erfolgs-/Fehlerprüfung.'],
       claudecode: ['Claude Code (Terminal)','KI-gestütztes Programmieren','Der „Alles-Könner". Apps, Skripte, Automationen bauen – ohne Coding-Erfahrung. Iterativ: Ziel beschreiben → Code entsteht.'],
       cowork: ['Claude Cowork','Desktop-Automatisierung','Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.'],
       github: ['GitHub + Railway','Code · Hosting · Datenbank','GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.'],
@@ -621,6 +623,7 @@ const translations = {
       personen: ['People Research','Meeting Preparation · Team Access','Enter a person → LinkedIn, company, digital context are automatically researched and prepared. Available for the entire team.'],
       appleauto: ['Apple Automations','Process Automation','Apple Shortcuts as lightweight automation – chain actions, Siri triggers, background processes on all Apple devices. API connection to OpenAI for custom prompts.'],
       n8nki: ['n8n × AI × Apple','Cross-platform Connection','n8n as a bridge between AI APIs and Apple Shortcuts. E.g. Voice-to-Calendar: speech → Whisper → n8n → Outlook event.'],
+      teamswebhook: ['Teams-Webhook Refresh','n8n → Teams API · Every 12h','Automatic restart of the n8n-to-Teams connection every 12 hours. Deactivate workflows, wait 5 sec, reactivate – with success/error checking.'],
       claudecode: ['Claude Code (Terminal)','AI-powered Programming','The "all-rounder". Build apps, scripts, automations – without coding experience. Iterative: describe goal → code emerges.'],
       cowork: ['Claude Cowork','Desktop Automation','Desktop tool for non-developers. Automates file and task management beyond the browser.'],
       github: ['GitHub + Railway','Code · Hosting · Database','GitHub for version control. Railway deploys, hosts and provides Postgres databases.'],
@@ -639,7 +642,7 @@ const translations = {
   }
 };
 
-const cardKeys = ['schreibtische','apple','browser','webcam','hardware','webapp','zeroinbox','vorlagen','kalender','mailindi','tasks','claude','openai','gemini','perplexity','copilot','notebook','lokal','nachricht','tiptalk','fastnote','speechkal','textersetz','sprachnach','gptadv','n8n','research','personen','appleauto','n8nki','claudecode','cowork','github','vscode'];
+const cardKeys = ['schreibtische','apple','browser','webcam','hardware','webapp','zeroinbox','vorlagen','kalender','mailindi','tasks','claude','openai','gemini','perplexity','copilot','notebook','lokal','nachricht','tiptalk','fastnote','speechkal','textersetz','sprachnach','gptadv','n8n','research','personen','appleauto','n8nki','teamswebhook','claudecode','cowork','github','vscode'];
 
 function setLang(lang) {
   const t = translations[lang];
