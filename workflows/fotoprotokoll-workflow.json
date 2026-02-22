@@ -1,0 +1,333 @@
+{
+  "name": "Fotoprotokoll – Apple Shortcut → Claude Vision → PPTX",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Fotoprotokoll Setup-Anleitung\n\n### Voraussetzungen\n1. **Anthropic API Key** als Umgebungsvariable `ANTHROPIC_API_KEY` in n8n setzen\n2. **pptxgenjs** installieren: `npm install pptxgenjs` im n8n-Verzeichnis\n3. **n8n Umgebungsvariable**: `NODE_FUNCTION_ALLOW_EXTERNAL=pptxgenjs`\n4. **Microsoft OneDrive** Credentials in n8n konfigurieren\n\n### Workflow-Ablauf\n- **action=add**: Foto(s) zur Session hinzufügen → Claude analysiert → speichert\n- **action=generate**: Alle Fotos der Session → PPTX erstellen → OneDrive hochladen\n\n### Apple Shortcut\nPOST an: `<n8n-url>/webhook/fotoprotokoll`\n- Body: `action`, `session_id`, `project_name`, `folder_path`\n- Fotos als Binary-Anhang",
+        "height": 380,
+        "width": 420,
+        "color": 4
+      },
+      "id": "a0000000-0000-0000-0000-000000000001",
+      "name": "Setup-Anleitung",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [40, -100]
+    },
+    {
+      "parameters": {
+        "content": "## ADD-Pfad\nFotos werden mit Claude Vision analysiert\nund in der Workflow-Session gespeichert.\nAntwort: Bestätigung + Session-Info",
+        "height": 120,
+        "width": 300,
+        "color": 6
+      },
+      "id": "a0000000-0000-0000-0000-000000000002",
+      "name": "Info: Add-Pfad",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [880, -30]
+    },
+    {
+      "parameters": {
+        "content": "## GENERATE-Pfad\nSession-Daten laden → PPTX im Possehl-Design\ngenerieren → OneDrive hochladen → Link zurückgeben",
+        "height": 120,
+        "width": 560,
+        "color": 7
+      },
+      "id": "a0000000-0000-0000-0000-000000000003",
+      "name": "Info: Generate-Pfad",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [880, 350]
+    },
+    {
+      "parameters": {
+        "path": "fotoprotokoll",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {
+          "binaryData": true,
+          "rawBody": true
+        }
+      },
+      "id": "b0000000-0000-0000-0000-000000000001",
+      "name": "Webhook: Fotoprotokoll",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "webhookId": "fotoprotokoll-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Daten aus dem Webhook extrahieren und Fotos vorbereiten\nconst items = $input.all();\nconst results = [];\n\nfor (let idx = 0; idx < items.length; idx++) {\n  const item = items[idx];\n  const body = item.json.body || item.json;\n  const binary = item.binary || {};\n\n  // Parameter extrahieren\n  const action = (body.action || 'generate').toLowerCase().trim();\n  const sessionId = body.session_id || 'session_' + Date.now();\n  const projectName = body.project_name || 'Fotoprotokoll';\n  const folderPath = body.folder_path || '/Fotoprotokoll';\n\n  // Binary-Fotos zu Base64 konvertieren\n  const photos = [];\n  for (const key of Object.keys(binary)) {\n    const bin = binary[key];\n    if (bin.mimeType && bin.mimeType.startsWith('image/')) {\n      const buffer = await this.helpers.getBinaryDataBuffer(idx, key);\n      photos.push({\n        base64: buffer.toString('base64'),\n        mimeType: bin.mimeType,\n        fileName: bin.fileName || 'photo_' + key + '.jpg'\n      });\n    }\n  }\n\n  results.push({\n    json: {\n      action,\n      session_id: sessionId,\n      project_name: projectName,\n      folder_path: folderPath,\n      photos,\n      photo_count: photos.length\n    }\n  });\n}\n\nreturn results;"
+      },
+      "id": "b0000000-0000-0000-0000-000000000002",
+      "name": "Daten vorbereiten",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "add",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "add"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.action }}",
+                    "rightValue": "generate",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "generate"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b0000000-0000-0000-0000-000000000003",
+      "name": "Aktion wählen",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [700, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Claude Vision: Fotos analysieren und in Session speichern\nconst item = $input.first();\nconst { photos, session_id, project_name } = item.json;\nconst apiKey = process.env.ANTHROPIC_API_KEY;\n\nif (!apiKey) {\n  throw new Error('ANTHROPIC_API_KEY Umgebungsvariable ist nicht gesetzt! Bitte in den n8n-Einstellungen konfigurieren.');\n}\n\nif (!photos || photos.length === 0) {\n  throw new Error('Keine Fotos empfangen. Bitte mindestens ein Foto mitsenden.');\n}\n\n// Session-Speicher initialisieren\nconst staticData = $getWorkflowStaticData('global');\nif (!staticData.sessions) staticData.sessions = {};\nif (!staticData.sessions[session_id]) {\n  staticData.sessions[session_id] = {\n    project_name,\n    created_at: new Date().toISOString(),\n    analyses: []\n  };\n}\n\nconst prompt = 'Analysiere dieses Foto von einem Whiteboard, Flipchart oder einer Wand mit Post-its/Notizen.\\n\\nExtrahiere den Inhalt strukturiert als JSON:\\n{\\n  \"type\": \"whiteboard\" | \"flipchart\" | \"sticky_notes\" | \"presentation\" | \"diagram\" | \"other\",\\n  \"title\": \"Erkannter Titel (falls vorhanden)\",\\n  \"content_blocks\": [\\n    {\\n      \"type\": \"heading\" | \"bullet_list\" | \"numbered_list\" | \"text\" | \"diagram_description\" | \"table\",\\n      \"content\": \"Der extrahierte Text oder die Beschreibung\",\\n      \"items\": [\"Punkt 1\", \"Punkt 2\"]\\n    }\\n  ],\\n  \"layout_suggestion\": \"single_slide\" | \"multi_slide\",\\n  \"summary\": \"Kurze Zusammenfassung (1-2 Saetze)\"\\n}\\n\\nWichtig:\\n- Extrahiere ALLEN sichtbaren Text\\n- Erkenne Strukturen (Listen, Ueberschriften, Diagramme)\\n- Bei Zeichnungen/Diagrammen: Beschreibe sie textlich\\n- Gib NUR das JSON zurueck, keine andere Erklaerung';\n\nconst analysisResults = [];\n\nfor (const photo of photos) {\n  try {\n    const response = await this.helpers.httpRequest({\n      method: 'POST',\n      url: 'https://api.anthropic.com/v1/messages',\n      headers: {\n        'x-api-key': apiKey,\n        'anthropic-version': '2023-06-01',\n        'Content-Type': 'application/json'\n      },\n      body: {\n        model: 'claude-sonnet-4-20250514',\n        max_tokens: 4096,\n        messages: [{\n          role: 'user',\n          content: [\n            {\n              type: 'image',\n              source: { type: 'base64', media_type: photo.mimeType, data: photo.base64 }\n            },\n            { type: 'text', text: prompt }\n          ]\n        }]\n      },\n      json: true\n    });\n\n    let analysis;\n    const text = response.content[0].text;\n    const jsonMatch = text.match(/\\{[\\s\\S]*\\}/);\n    if (jsonMatch) {\n      try {\n        analysis = JSON.parse(jsonMatch[0]);\n      } catch (e) {\n        analysis = {\n          type: 'other',\n          title: '',\n          content_blocks: [{ type: 'text', content: text }],\n          layout_suggestion: 'single_slide',\n          summary: text.substring(0, 200)\n        };\n      }\n    } else {\n      analysis = {\n        type: 'other',\n        title: '',\n        content_blocks: [{ type: 'text', content: text }],\n        layout_suggestion: 'single_slide',\n        summary: text.substring(0, 200)\n      };\n    }\n\n    const entry = {\n      analysis,\n      photo_base64: photo.base64,\n      photo_mime: photo.mimeType,\n      fileName: photo.fileName,\n      timestamp: new Date().toISOString()\n    };\n\n    staticData.sessions[session_id].analyses.push(entry);\n    analysisResults.push({\n      fileName: photo.fileName,\n      summary: analysis.summary,\n      type: analysis.type\n    });\n  } catch (error) {\n    analysisResults.push({\n      fileName: photo.fileName,\n      error: error.message\n    });\n  }\n}\n\nreturn [{\n  json: {\n    success: true,\n    session_id,\n    project_name,\n    photos_added: analysisResults.length,\n    total_in_session: staticData.sessions[session_id].analyses.length,\n    message: analysisResults.length + ' Foto(s) analysiert und zur Session hinzugefuegt.',\n    details: analysisResults\n  }\n}];"
+      },
+      "id": "b0000000-0000-0000-0000-000000000004",
+      "name": "Claude Analyse + Speichern",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 100]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "b0000000-0000-0000-0000-000000000005",
+      "name": "Antwort: Foto hinzugefügt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1180, 100]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Session-Daten laden und ggf. neue Fotos mit Claude analysieren\nconst item = $input.first();\nconst { photos, session_id, project_name, folder_path } = item.json;\nconst apiKey = process.env.ANTHROPIC_API_KEY;\nconst staticData = $getWorkflowStaticData('global');\n\nlet allAnalyses = [];\n\n// Gespeicherte Session-Daten laden\nif (staticData.sessions && staticData.sessions[session_id]) {\n  allAnalyses = [...staticData.sessions[session_id].analyses];\n}\n\n// Neue Fotos analysieren falls vorhanden\nif (photos && photos.length > 0) {\n  if (!apiKey) {\n    throw new Error('ANTHROPIC_API_KEY Umgebungsvariable ist nicht gesetzt!');\n  }\n\n  const prompt = 'Analysiere dieses Foto von einem Whiteboard, Flipchart oder einer Wand mit Post-its/Notizen.\\n\\nExtrahiere den Inhalt strukturiert als JSON:\\n{\\n  \"type\": \"whiteboard\" | \"flipchart\" | \"sticky_notes\" | \"presentation\" | \"diagram\" | \"other\",\\n  \"title\": \"Erkannter Titel (falls vorhanden)\",\\n  \"content_blocks\": [\\n    {\\n      \"type\": \"heading\" | \"bullet_list\" | \"numbered_list\" | \"text\" | \"diagram_description\" | \"table\",\\n      \"content\": \"Der extrahierte Text oder die Beschreibung\",\\n      \"items\": [\"Punkt 1\", \"Punkt 2\"]\\n    }\\n  ],\\n  \"layout_suggestion\": \"single_slide\" | \"multi_slide\",\\n  \"summary\": \"Kurze Zusammenfassung (1-2 Saetze)\"\\n}\\n\\nWichtig:\\n- Extrahiere ALLEN sichtbaren Text\\n- Erkenne Strukturen (Listen, Ueberschriften, Diagramme)\\n- Bei Zeichnungen/Diagrammen: Beschreibe sie textlich\\n- Gib NUR das JSON zurueck';\n\n  for (const photo of photos) {\n    try {\n      const response = await this.helpers.httpRequest({\n        method: 'POST',\n        url: 'https://api.anthropic.com/v1/messages',\n        headers: {\n          'x-api-key': apiKey,\n          'anthropic-version': '2023-06-01',\n          'Content-Type': 'application/json'\n        },\n        body: {\n          model: 'claude-sonnet-4-20250514',\n          max_tokens: 4096,\n          messages: [{\n            role: 'user',\n            content: [\n              {\n                type: 'image',\n                source: { type: 'base64', media_type: photo.mimeType, data: photo.base64 }\n              },\n              { type: 'text', text: prompt }\n            ]\n          }]\n        },\n        json: true\n      });\n\n      let analysis;\n      const text = response.content[0].text;\n      const jsonMatch = text.match(/\\{[\\s\\S]*\\}/);\n      if (jsonMatch) {\n        try {\n          analysis = JSON.parse(jsonMatch[0]);\n        } catch (e) {\n          analysis = {\n            type: 'other',\n            title: '',\n            content_blocks: [{ type: 'text', content: text }],\n            layout_suggestion: 'single_slide',\n            summary: text.substring(0, 200)\n          };\n        }\n      } else {\n        analysis = {\n          type: 'other',\n          title: '',\n          content_blocks: [{ type: 'text', content: text }],\n          layout_suggestion: 'single_slide',\n          summary: text.substring(0, 200)\n        };\n      }\n\n      allAnalyses.push({\n        analysis,\n        photo_base64: photo.base64,\n        photo_mime: photo.mimeType,\n        fileName: photo.fileName,\n        timestamp: new Date().toISOString()\n      });\n    } catch (error) {\n      // Fehlerhafte Fotos ueberspringen\n    }\n  }\n}\n\nif (allAnalyses.length === 0) {\n  throw new Error('Keine Fotos gefunden! Bitte zuerst Fotos mit action=add hinzufuegen oder Fotos direkt mitsenden.');\n}\n\nreturn [{\n  json: {\n    session_id,\n    project_name,\n    folder_path,\n    total_photos: allAnalyses.length,\n    analyses: allAnalyses\n  }\n}];"
+      },
+      "id": "b0000000-0000-0000-0000-000000000006",
+      "name": "Session + neue Fotos laden",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [940, 500]
+    },
+    {
+      "parameters": {
+        "jsCode": "// PPTX im Possehl-Digital-Design erstellen\nconst PptxGenJS = require('pptxgenjs');\nconst item = $input.first();\nconst { project_name, analyses, session_id } = item.json;\n\nconst pptx = new PptxGenJS();\npptx.layout = 'LAYOUT_16x9';\npptx.author = 'Possehl Digital';\npptx.subject = project_name;\npptx.title = project_name + ' - Fotoprotokoll';\n\n// Possehl Digital Farben\nconst C = {\n  deepSea: '102B4E',\n  marine: '104588',\n  sky: '35AAFF',\n  red: 'C00850',\n  silver: 'EDF1F6',\n  white: 'FFFFFF',\n  grey: '737373',\n  lightGrey: 'A6A6A6'\n};\n\nconst dateStr = new Date().toLocaleDateString('de-DE', {\n  year: 'numeric', month: 'long', day: 'numeric'\n});\n\n// ========== TITEL-SLIDE ==========\nconst titleSlide = pptx.addSlide();\ntitleSlide.background = { color: C.deepSea };\n\n// Gradient-Akzent oben\ntitleSlide.addShape(pptx.ShapeType.rect, {\n  x: 0, y: 0, w: '100%', h: 0.06,\n  fill: { type: 'solid', color: C.red }\n});\n\n// Projekt-Titel\ntitleSlide.addText(project_name, {\n  x: 1, y: 1.5, w: 8, h: 1.2,\n  fontSize: 36,\n  fontFace: 'Arial',\n  color: C.white,\n  align: 'center',\n  bold: true\n});\n\n// Untertitel\ntitleSlide.addText('Fotoprotokoll', {\n  x: 1, y: 2.8, w: 8, h: 0.6,\n  fontSize: 20,\n  fontFace: 'Arial',\n  color: C.sky,\n  align: 'center'\n});\n\n// Datum\ntitleSlide.addText(dateStr, {\n  x: 1, y: 3.6, w: 8, h: 0.5,\n  fontSize: 14,\n  fontFace: 'Arial',\n  color: C.lightGrey,\n  align: 'center'\n});\n\n// Foto-Anzahl\ntitleSlide.addText(analyses.length + ' Seite' + (analyses.length !== 1 ? 'n' : ''), {\n  x: 1, y: 4.2, w: 8, h: 0.4,\n  fontSize: 12,\n  fontFace: 'Arial',\n  color: C.grey,\n  align: 'center'\n});\n\n// Footer\ntitleSlide.addText('Possehl Digital', {\n  x: 0.5, y: 5.0, w: 9, h: 0.3,\n  fontSize: 10,\n  fontFace: 'Arial',\n  color: C.grey,\n  align: 'center'\n});\n\n// ========== INHALTS-SLIDES ==========\nfor (let i = 0; i < analyses.length; i++) {\n  const entry = analyses[i];\n  const analysis = entry.analysis;\n  const slide = pptx.addSlide();\n  slide.background = { color: C.white };\n\n  // Akzent-Linie oben\n  slide.addShape(pptx.ShapeType.rect, {\n    x: 0, y: 0, w: '100%', h: 0.05,\n    fill: { type: 'solid', color: C.marine }\n  });\n\n  // Seitenzahl\n  slide.addText((i + 1) + ' / ' + analyses.length, {\n    x: 8.8, y: 0.15, w: 1, h: 0.25,\n    fontSize: 8,\n    fontFace: 'Arial',\n    color: C.grey,\n    align: 'right'\n  });\n\n  // Slide-Titel\n  const slideTitle = analysis.title || 'Foto ' + (i + 1);\n  slide.addText(slideTitle, {\n    x: 0.5, y: 0.25, w: 8, h: 0.55,\n    fontSize: 22,\n    fontFace: 'Arial',\n    color: C.deepSea,\n    bold: true\n  });\n\n  // Layout entscheiden: Foto links + Text rechts\n  let yPos = 0.9;\n  const hasPhoto = entry.photo_base64 && entry.photo_base64.length > 0;\n\n  // Foto einfuegen\n  if (hasPhoto) {\n    try {\n      const mimeShort = (entry.photo_mime || 'image/jpeg').split('/')[1] || 'jpeg';\n      slide.addImage({\n        data: 'image/' + mimeShort + ';base64,' + entry.photo_base64,\n        x: 0.4, y: yPos, w: 3.6, h: 2.7,\n        sizing: { type: 'contain', w: 3.6, h: 2.7 }\n      });\n    } catch (e) {\n      // Foto konnte nicht eingefuegt werden\n    }\n  }\n\n  // Content-Bereich\n  const contentX = hasPhoto ? 4.3 : 0.5;\n  const contentW = hasPhoto ? 5.4 : 9.2;\n  let cY = yPos;\n\n  if (analysis.content_blocks && analysis.content_blocks.length > 0) {\n    for (const block of analysis.content_blocks) {\n      if (cY > 4.6) break;\n\n      if (block.type === 'heading') {\n        slide.addText(block.content || '', {\n          x: contentX, y: cY, w: contentW, h: 0.4,\n          fontSize: 15,\n          fontFace: 'Arial',\n          color: C.marine,\n          bold: true\n        });\n        cY += 0.45;\n\n      } else if (block.type === 'bullet_list' || block.type === 'numbered_list') {\n        const listItems = block.items || (block.content ? [block.content] : []);\n        if (listItems.length > 0) {\n          const rows = listItems.map(function(li, idx) {\n            return {\n              text: li,\n              options: {\n                fontSize: 11,\n                fontFace: 'Arial',\n                color: C.deepSea,\n                bullet: block.type === 'bullet_list'\n                  ? { type: 'bullet', char: '\\u2022' }\n                  : { type: 'number' },\n                paraSpaceAfter: 4\n              }\n            };\n          });\n          const blockH = Math.min(listItems.length * 0.28 + 0.1, 2.4);\n          slide.addText(rows, {\n            x: contentX, y: cY, w: contentW, h: blockH,\n            valign: 'top'\n          });\n          cY += blockH + 0.08;\n        }\n\n      } else {\n        // text, diagram_description, table, etc.\n        slide.addText(block.content || '', {\n          x: contentX, y: cY, w: contentW, h: 0.7,\n          fontSize: 11,\n          fontFace: 'Arial',\n          color: C.deepSea,\n          valign: 'top',\n          wrap: true\n        });\n        cY += 0.75;\n      }\n    }\n  }\n\n  // Typ-Badge\n  const typeLabels = {\n    whiteboard: 'Whiteboard',\n    flipchart: 'Flipchart',\n    sticky_notes: 'Post-its',\n    presentation: 'Praesentation',\n    diagram: 'Diagramm',\n    other: 'Sonstiges'\n  };\n  slide.addText(typeLabels[analysis.type] || analysis.type || 'Foto', {\n    x: 0.4, y: 4.85, w: 1.4, h: 0.28,\n    fontSize: 8,\n    fontFace: 'Arial',\n    color: C.white,\n    fill: { color: C.sky },\n    align: 'center',\n    rectRadius: 0.05\n  });\n\n  // Zusammenfassung\n  if (analysis.summary) {\n    slide.addText(analysis.summary, {\n      x: 2.0, y: 4.85, w: 5.5, h: 0.28,\n      fontSize: 8,\n      fontFace: 'Arial',\n      color: C.grey,\n      italic: true\n    });\n  }\n\n  // Footer\n  slide.addText('Possehl Digital  |  ' + dateStr, {\n    x: 5, y: 5.15, w: 4.8, h: 0.2,\n    fontSize: 7,\n    fontFace: 'Arial',\n    color: C.lightGrey,\n    align: 'right'\n  });\n}\n\n// ========== PPTX GENERIEREN ==========\nconst pptxBuffer = await pptx.write({ outputType: 'nodebuffer' });\n\nconst safeName = project_name.replace(/[^a-zA-Z0-9\\u00e4\\u00f6\\u00fc\\u00c4\\u00d6\\u00dc\\u00df\\-_]/g, '_');\nconst fileName = safeName + '_Fotoprotokoll_' + new Date().toISOString().split('T')[0] + '.pptx';\n\nconst binaryData = await this.helpers.prepareBinaryData(\n  pptxBuffer,\n  fileName,\n  'application/vnd.openxmlformats-officedocument.presentationml.presentation'\n);\n\nreturn [{\n  json: {\n    session_id,\n    project_name,\n    fileName,\n    folder_path: item.json.folder_path,\n    slide_count: analyses.length + 1,\n    generated_at: new Date().toISOString()\n  },\n  binary: {\n    data: binaryData\n  }\n}];"
+      },
+      "id": "b0000000-0000-0000-0000-000000000007",
+      "name": "PPTX erstellen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1180, 500]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "upload",
+        "fileName": "={{ $json.fileName }}",
+        "parentFolderId": "={{ $json.folder_path }}",
+        "binaryPropertyName": "data"
+      },
+      "id": "b0000000-0000-0000-0000-000000000008",
+      "name": "OneDrive: Hochladen",
+      "type": "n8n-nodes-base.microsoftOneDrive",
+      "typeVersion": 1,
+      "position": [1420, 500],
+      "credentials": {
+        "microsoftOneDriveOAuth2Api": {
+          "id": "HIER_CREDENTIAL_ID",
+          "name": "Microsoft OneDrive"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Session-Daten bereinigen nach erfolgreicher Generierung\nconst item = $input.first();\nconst sessionId = item.json.session_id;\nconst staticData = $getWorkflowStaticData('global');\n\nif (staticData.sessions && staticData.sessions[sessionId]) {\n  delete staticData.sessions[sessionId];\n}\n\nreturn [{\n  json: {\n    success: true,\n    session_id: sessionId,\n    project_name: item.json.project_name,\n    fileName: item.json.fileName,\n    slide_count: item.json.slide_count,\n    generated_at: item.json.generated_at,\n    onedrive_path: item.json.folder_path + '/' + item.json.fileName,\n    message: 'Fotoprotokoll erfolgreich erstellt und auf OneDrive hochgeladen.'\n  }\n}];"
+      },
+      "id": "b0000000-0000-0000-0000-000000000009",
+      "name": "Session bereinigen",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1660, 500]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "b0000000-0000-0000-0000-000000000010",
+      "name": "Antwort: Protokoll erstellt",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1900, 500]
+    }
+  ],
+  "connections": {
+    "Webhook: Fotoprotokoll": {
+      "main": [
+        [
+          {
+            "node": "Daten vorbereiten",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Daten vorbereiten": {
+      "main": [
+        [
+          {
+            "node": "Aktion wählen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aktion wählen": {
+      "main": [
+        [
+          {
+            "node": "Claude Analyse + Speichern",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Session + neue Fotos laden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude Analyse + Speichern": {
+      "main": [
+        [
+          {
+            "node": "Antwort: Foto hinzugefügt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Session + neue Fotos laden": {
+      "main": [
+        [
+          {
+            "node": "PPTX erstellen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PPTX erstellen": {
+      "main": [
+        [
+          {
+            "node": "OneDrive: Hochladen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OneDrive: Hochladen": {
+      "main": [
+        [
+          {
+            "node": "Session bereinigen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Session bereinigen": {
+      "main": [
+        [
+          {
+            "node": "Antwort: Protokoll erstellt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "tags": [
+    {
+      "name": "Fotoprotokoll"
+    },
+    {
+      "name": "Apple Shortcuts"
+    },
+    {
+      "name": "Claude Vision"
+    }
+  ],
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}
