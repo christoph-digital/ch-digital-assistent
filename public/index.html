@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CH Digitale Assistenz – Possehl Digital</title>
+<title>Mina – CH Digitale Assistenz – Possehl Digital</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -53,17 +53,20 @@
   }
   .hero-logo svg { flex-shrink: 0; }
   .hero-logo span {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 700;
-    font-size: 17px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 56px);
     color: #fff;
+  }
+  .hero-logo {
+    margin-bottom: -8px;
   }
   .hero h1 {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 500;
-    font-size: clamp(32px, 5vw, 48px);
-    line-height: 125%;
-    color: #fff;
+    font-weight: 400;
+    font-size: clamp(18px, 2.5vw, 22px);
+    line-height: 150%;
+    color: var(--silver-dark);
     margin-bottom: 12px;
   }
   .hero p {
@@ -368,7 +371,7 @@
     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
   </div>
   <div class="hero-logo">
-    <span>Possehl Digital</span>
+    <span>Mina</span>
   </div>
   <h1>CH Digitale Assistenz</h1>
   <p>Meine digitale Assistenz – alle Tools, Shortcuts, KI-Modelle, Workflows und Automationen auf einen Blick.</p>

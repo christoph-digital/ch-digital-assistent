@@ -1,7 +1,7 @@
 {
   "name": "ch-digital-assistent",
   "version": "1.0.0",
-  "description": "CH Digitale Assistenz - Personal AI Workplace Overview",
+  "description": "Mina - CH Digitale Assistenz - Personal AI Workplace Overview",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
