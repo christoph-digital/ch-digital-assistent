@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mina-server",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 3000,
+      "cwd": "/Users/christophhass/Library/CloudStorage/GoogleDrive-christoph@c-hass.com/Meine Ablage/AI Notes & Ideen CH/Coding Projekte/ch-digital-assistent"
+    }
+  ]
+}
