@@ -319,6 +319,7 @@
     .hero {
       background: #0A1628;
     }
+    .hero h1 { color: #B0C4DE; }
     .hero p { color: #A0B8D4; }
     .hero-logo span { color: #fff; }
     .legend-item { color: #B0C4DE; opacity: 1; }
@@ -352,6 +353,9 @@
     .legend-item { color: #C0D0E0; }
     .disclaimer { background: #1A2742 !important; color: #B0C4DE !important; }
     .disclaimer-title { color: #F0F4F8 !important; }
+    /* Why section in dark mode */
+    [data-i18n="whyTitle"] { color: #F0F4F8 !important; }
+    [data-i18n="whyGoalLabel"], [data-i18n="whyForLabel"], [data-i18n="whyApproachLabel"], [data-i18n="whyStartLabel"] { color: #F0F4F8 !important; }
     .download-box [data-i18n="downloadTitle"] { color: #F0F4F8 !important; }
     .lang-btn { color: #B0C4DE; }
     .lang-btn:hover:not(.active) { background: rgba(53,170,255,0.2); }
@@ -373,9 +377,9 @@
   <div class="hero-logo">
     <span>Mina</span>
   </div>
-  <h1>CH Digitale Assistenz</h1>
-  <p style="max-width: 900px; margin: 0 auto 12px;">Meine digitale Assistenz – alle Tools, Shortcuts, KI-Modelle, Workflows und Automationen auf einen Blick.</p>
-  <p style="font-size: 14px; color: var(--light-grey); max-width: 900px; margin: 0 auto 20px;">Hier findest du alle Bausteine meiner digitalen Assistenz Mina – von Tools über Shortcuts bis zu Automationen. Viele Workflows und Entwicklungen kannst du direkt herunterladen.</p>
+  <h1 data-i18n="heroTitle">CH Digitale Assistenz</h1>
+  <p data-i18n="heroDesc" style="max-width: 900px; margin: 0 auto 12px;">Meine digitale Assistenz – alle Tools, Shortcuts, KI-Modelle, Workflows und Automationen auf einen Blick.</p>
+  <p data-i18n="heroDesc2" style="font-size: 14px; color: var(--light-grey); max-width: 900px; margin: 0 auto 20px;">Hier findest du alle Bausteine meiner digitalen Assistenz Mina – von Tools über Shortcuts bis zu Automationen. Viele Workflows und Entwicklungen kannst du direkt herunterladen.</p>
   <div class="legend">
     <span class="legend-item"><span class="legend-dot" style="background:var(--marine-blue)"></span> Workplace</span>
     <span class="legend-item"><span class="legend-dot" style="background:var(--marine-blue)"></span> MS 365</span>
@@ -408,33 +412,33 @@
   <div class="row-section">
     <div class="row-header">
       <div class="row-icon marine">🖥️</div>
-      <span class="row-title">Workplace Design</span>
-      <span class="row-subtitle">Apple-Ökosystem · Browser-First · Arbeitsumgebung</span>
+      <span class="row-title" data-i18n="workplace">Workplace Design</span>
+      <span class="row-subtitle" data-i18n="workplaceSub">Apple-Ökosystem · Browser-First · Arbeitsumgebung</span>
     </div>
     <div class="row-scroll">
-      <div class="card" data-a="marine"><div class="card-emoji">💻</div><div class="card-name">Mehrere Schreibtische</div><div class="card-sub">macOS Spaces</div><div class="card-desc">Virtuelle Desktops für Kommunikation, Fokus, Recherche, Meetings. Schnelles Wechseln ohne Fenstersuche.</div><div class="card-tags"><span class="tag marine">Split-Screen</span><span class="tag marine">Mission Control</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="marine"><div class="card-emoji">📱</div><div class="card-name">Apple Ökosystem</div><div class="card-sub">MacBook · iPhone · iPad · Watch</div><div class="card-desc">Handoff, geteilte Zwischenablage, geräteübergreifendes Diktieren. Nahtlos zwischen allen Geräten.</div><div class="card-tags"><span class="tag marine">Handoff</span><span class="tag marine">Clipboard</span><span class="tag marine">Siri</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="sky"><div class="card-emoji">🌐</div><div class="card-name">Browser-First</div><div class="card-sub">MS 365 · ChatGPT · Claude</div><div class="card-desc">Outlook, Teams, ChatGPT im Browser – stabiler, mehr Features, ideal für Split-Screen mit KI.</div><div class="card-tags"><span class="tag sky">Outlook Web</span><span class="tag sky">Split-Screen</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="marine"><div class="card-emoji">📷</div><div class="card-name">Webcam & Hintergrund</div><div class="card-sub">Professionelles Video-Setup</div><div class="card-desc">Externe Webcam für bessere Bildqualität. Sauberer, aufgeräumter realer Hintergrund – kein virtuelles Bild, sondern bewusste Bürogestaltung.</div><div class="card-tags"><span class="tag marine">Webcam</span><span class="tag marine">Licht</span><span class="tag marine">Büro-Setup</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="marine"><div class="card-emoji">💻</div><div class="card-name">Hardware-Setup</div><div class="card-sub">MacBook · iPad · Apple Watch</div><div class="card-desc">MacBook als Zentrale, iPad für Notizen & Präsentationen, Apple Watch für Schnellzugriffe, Kurzbefehle und Benachrichtigungen.</div><div class="card-tags"><span class="tag marine">iPad</span><span class="tag marine">Watch</span><span class="tag marine">MacBook</span></div><span class="card-more">Weitere …</span></div>
+      <div class="card" data-a="marine" data-card="schreibtische"><div class="card-emoji">💻</div><div class="card-name">Mehrere Schreibtische</div><div class="card-sub">macOS Spaces</div><div class="card-desc">Virtuelle Desktops für Kommunikation, Fokus, Recherche, Meetings. Schnelles Wechseln ohne Fenstersuche.</div><div class="card-tags"><span class="tag marine">Split-Screen</span><span class="tag marine">Mission Control</span></div><span class="card-more">Weitere …</span></div>
+      <div class="card" data-a="marine" data-card="apple"><div class="card-emoji">📱</div><div class="card-name">Apple Ökosystem</div><div class="card-sub">MacBook · iPhone · iPad · Watch</div><div class="card-desc">Handoff, geteilte Zwischenablage, geräteübergreifendes Diktieren. Nahtlos zwischen allen Geräten.</div><div class="card-tags"><span class="tag marine">Handoff</span><span class="tag marine">Clipboard</span><span class="tag marine">Siri</span></div><span class="card-more">Weitere …</span></div>
+      <div class="card" data-a="sky" data-card="browser"><div class="card-emoji">🌐</div><div class="card-name">Browser-First</div><div class="card-sub">MS 365 · ChatGPT · Claude</div><div class="card-desc">Outlook, Teams, ChatGPT im Browser – stabiler, mehr Features, ideal für Split-Screen mit KI.</div><div class="card-tags"><span class="tag sky">Outlook Web</span><span class="tag sky">Split-Screen</span></div><span class="card-more">Weitere …</span></div>
+      <div class="card" data-a="marine" data-card="webcam"><div class="card-emoji">📷</div><div class="card-name">Webcam & Hintergrund</div><div class="card-sub">Professionelles Video-Setup</div><div class="card-desc">Externe Webcam für bessere Bildqualität. Sauberer, aufgeräumter realer Hintergrund – kein virtuelles Bild, sondern bewusste Bürogestaltung.</div><div class="card-tags"><span class="tag marine">Webcam</span><span class="tag marine">Licht</span><span class="tag marine">Büro-Setup</span></div><span class="card-more">Weitere …</span></div>
+      <div class="card" data-a="marine" data-card="hardware"><div class="card-emoji">💻</div><div class="card-name">Hardware-Setup</div><div class="card-sub">MacBook · iPad · Apple Watch</div><div class="card-desc">MacBook als Zentrale, iPad für Notizen & Präsentationen, Apple Watch für Schnellzugriffe, Kurzbefehle und Benachrichtigungen.</div><div class="card-tags"><span class="tag marine">iPad</span><span class="tag marine">Watch</span><span class="tag marine">MacBook</span></div><span class="card-more">Weitere …</span></div>
     </div>
 
     <!-- MS 365 als Unter-Ebene von Workplace Design -->
     <div style="margin-top: 20px;">
       <div class="row-header" style="margin-bottom: 12px;">
         <div class="row-icon marine" style="width: 32px; height: 32px; font-size: 16px;">📧</div>
-        <span class="row-title" style="font-size: 20px; white-space: nowrap;">MS 365</span>
-        <span class="row-subtitle">Outlook · Teams · Claude Add-in · Apple Tasks</span>
+        <span class="row-title" style="font-size: 20px; white-space: nowrap;" data-i18n="ms365">MS 365</span>
+        <span class="row-subtitle" data-i18n="ms365Sub">Outlook · Teams · Claude Add-in · Apple Tasks</span>
       </div>
       <div class="row-scroll">
-        <div class="card" data-a="sky"><div class="card-emoji">🌐</div><div class="card-name">Web Apps statt Desktop</div><div class="card-sub">Outlook · Teams · OneDrive im Browser</div><div class="card-desc">Möglichst alle MS 365 Tools als Web-App nutzen – stabiler, schneller aktualisiert. Ausnahme: PowerPoint und Excel weiterhin als Desktop-App.</div><div class="card-tags"><span class="tag sky">Browser-First</span><span class="tag sky">Split-Screen</span></div></div>
-        <div class="card" data-a="marine"><div class="card-emoji">📥</div><div class="card-name">Outlook Zero-Inbox</div><div class="card-sub">3-Label-System + Boomerang</div><div class="card-desc">Heute/kurzfristig, Offen/länger, Depriorisiert. Konsequentes Labeln, Boomerang für zeitversetztes Senden.</div><div class="card-tags"><span class="tag marine">Labels</span><span class="tag marine">Boomerang</span><span class="tag marine">Zero-Inbox</span></div></div>
-        <div class="card" data-a="marine"><div class="card-emoji">📋</div><div class="card-name">Mail-Vorlagen</div><div class="card-sub">Standardantworten & Textbausteine</div><div class="card-desc">Wiederkehrende Mails als Vorlagen hinterlegen – schnellere Antworten, konsistente Kommunikation.</div><div class="card-tags"><span class="tag marine">Templates</span><span class="tag marine">Outlook</span></div></div>
-        <div class="card" data-a="marine"><div class="card-emoji">📅</div><div class="card-name">Kalender & Bookings</div><div class="card-sub">Zeitblöcke · Terminlinks</div><div class="card-desc">Fokus- und Meeting-Blöcke. Microsoft Bookings mit Possehl-Domain. Automatische Labelzuweisung.</div><div class="card-tags"><span class="tag marine">Bookings</span><span class="tag marine">Fokuszeiten</span></div></div>
-        <div class="card" data-a="grad"><div class="card-emoji">✍️</div><div class="card-name">Mail-Individualisierung</div><div class="card-sub">Claude im Split-Screen</div><div class="card-desc">Mails im Split-Screen mit Claude individualisieren – Tonalität, Struktur und Inhalt in Echtzeit optimieren lassen.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag sky">Split-Screen</span><span class="tag marine">Outlook</span></div></div>
-        <div class="card" data-a="grad"><div class="card-emoji">📊</div><div class="card-name">Claude in PowerPoint</div><div class="card-sub">Präsentationen mit KI erstellen</div><div class="card-desc">Folienentwürfe, Gliederungen und Textvorschläge mit Claude generieren. Screenshot der Folie an Claude senden → Verbesserungsvorschläge erhalten. Ideal für Storyline und Struktur.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">PowerPoint</span><span class="tag sky">Split-Screen</span></div><a class="card-link" href="https://support.claude.com/en/articles/13521390-use-claude-for-powerpoint" target="_blank">Claude PowerPoint Add-In ↗</a></div>
-        <div class="card" data-a="grad"><div class="card-emoji">📈</div><div class="card-name">Claude in Excel</div><div class="card-sub">Formeln & Analysen mit KI</div><div class="card-desc">Komplexe Excel-Formeln von Claude schreiben lassen. Daten analysieren, Pivot-Logik erklären, VBA-Makros generieren. Screenshot der Tabelle → passende Formel zurück.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">Excel</span><span class="tag marine">Formeln</span></div><a class="card-link" href="https://support.claude.com/en/articles/12650343-use-claude-for-excel" target="_blank">Claude Excel Add-In ↗</a></div>
-        <div class="card" data-a="sky"><div class="card-emoji">✅</div><div class="card-name">Tasks via Apple</div><div class="card-sub">Erinnerungen statt MS To Do</div><div class="card-desc">Bewusst Apple-Erinnerungen statt Microsoft To Do. Schneller, besser integriert mit Kurzbefehlen.</div><div class="card-tags"><span class="tag sky">Apple</span><span class="tag sky">Kurzbefehle</span></div></div>
+        <div class="card" data-a="sky" data-card="webapp"><div class="card-emoji">🌐</div><div class="card-name">Web Apps statt Desktop</div><div class="card-sub">Outlook · Teams · OneDrive im Browser</div><div class="card-desc">Möglichst alle MS 365 Tools als Web-App nutzen – stabiler, schneller aktualisiert. Ausnahme: PowerPoint und Excel weiterhin als Desktop-App.</div><div class="card-tags"><span class="tag sky">Browser-First</span><span class="tag sky">Split-Screen</span></div></div>
+        <div class="card" data-a="marine" data-card="zeroinbox"><div class="card-emoji">📥</div><div class="card-name">Outlook Zero-Inbox</div><div class="card-sub">3-Label-System + Boomerang</div><div class="card-desc">Heute/kurzfristig, Offen/länger, Depriorisiert. Konsequentes Labeln, Boomerang für zeitversetztes Senden.</div><div class="card-tags"><span class="tag marine">Labels</span><span class="tag marine">Boomerang</span><span class="tag marine">Zero-Inbox</span></div></div>
+        <div class="card" data-a="marine" data-card="vorlagen"><div class="card-emoji">📋</div><div class="card-name">Mail-Vorlagen</div><div class="card-sub">Standardantworten & Textbausteine</div><div class="card-desc">Wiederkehrende Mails als Vorlagen hinterlegen – schnellere Antworten, konsistente Kommunikation.</div><div class="card-tags"><span class="tag marine">Templates</span><span class="tag marine">Outlook</span></div></div>
+        <div class="card" data-a="marine" data-card="kalender"><div class="card-emoji">📅</div><div class="card-name">Kalender & Bookings</div><div class="card-sub">Zeitblöcke · Terminlinks</div><div class="card-desc">Fokus- und Meeting-Blöcke. Microsoft Bookings mit Possehl-Domain. Automatische Labelzuweisung.</div><div class="card-tags"><span class="tag marine">Bookings</span><span class="tag marine">Fokuszeiten</span></div></div>
+        <div class="card" data-a="grad" data-card="mailindi"><div class="card-emoji">✍️</div><div class="card-name">Mail-Individualisierung</div><div class="card-sub">Claude im Split-Screen</div><div class="card-desc">Mails im Split-Screen mit Claude individualisieren – Tonalität, Struktur und Inhalt in Echtzeit optimieren lassen.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag sky">Split-Screen</span><span class="tag marine">Outlook</span></div></div>
+        <div class="card" data-a="grad" data-card="claudeppt"><div class="card-emoji">📊</div><div class="card-name">Claude in PowerPoint</div><div class="card-sub">Präsentationen mit KI erstellen</div><div class="card-desc">Folienentwürfe, Gliederungen und Textvorschläge mit Claude generieren. Screenshot der Folie an Claude senden → Verbesserungsvorschläge erhalten. Ideal für Storyline und Struktur.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">PowerPoint</span><span class="tag sky">Split-Screen</span></div><a class="card-link" href="https://support.claude.com/en/articles/13521390-use-claude-for-powerpoint" target="_blank">Claude PowerPoint Add-In ↗</a></div>
+        <div class="card" data-a="grad" data-card="claudeexcel"><div class="card-emoji">📈</div><div class="card-name">Claude in Excel</div><div class="card-sub">Formeln & Analysen mit KI</div><div class="card-desc">Komplexe Excel-Formeln von Claude schreiben lassen. Daten analysieren, Pivot-Logik erklären, VBA-Makros generieren. Screenshot der Tabelle → passende Formel zurück.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">Excel</span><span class="tag marine">Formeln</span></div><a class="card-link" href="https://support.claude.com/en/articles/12650343-use-claude-for-excel" target="_blank">Claude Excel Add-In ↗</a></div>
+        <div class="card" data-a="sky" data-card="tasks"><div class="card-emoji">✅</div><div class="card-name">Tasks via Apple</div><div class="card-sub">Erinnerungen statt MS To Do</div><div class="card-desc">Bewusst Apple-Erinnerungen statt Microsoft To Do. Schneller, besser integriert mit Kurzbefehlen.</div><div class="card-tags"><span class="tag sky">Apple</span><span class="tag sky">Kurzbefehle</span></div></div>
       </div>
     </div>
   </div>
@@ -443,17 +447,17 @@
   <div class="row-section">
     <div class="row-header">
       <div class="row-icon sky">🧠</div>
-      <span class="row-title">KI Tools</span>
-      <span class="row-subtitle">Individualisiert & spezialisiert · Modell × Aufgabe × Kontext</span>
+      <span class="row-title" data-i18n="ki">KI Tools</span>
+      <span class="row-subtitle" data-i18n="kiSub">Individualisiert & spezialisiert · Modell × Aufgabe × Kontext</span>
     </div>
     <div class="row-scroll">
-      <div class="card" data-a="grad"><div class="card-emoji">🟠</div><div class="card-name">Claude (Anthropic)</div><div class="card-sub">Opus 4.6 · Projekte · Artefakte</div><div class="card-desc">Mein Haupttool für die tägliche Arbeit. Reasoning, lange Kontexte, natürliche Sprache. Fokus auf Enterprise-Anwendungen, Social Media, Doku, Sparring.</div><div class="card-tags"><span class="tag red">Projekte</span><span class="tag red">Memory</span><span class="tag red">Enterprise</span><span class="tag red">Design Mockups</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="claude">Get Claude ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">💬</div><div class="card-name">OpenAI / ChatGPT</div><div class="card-sub">Allrounder · GPT-5 · Whisper · Advanced Mode</div><div class="card-desc">Aktuell besonders stark als Allrounder und für Whisper (Speech-to-Text). 3 eigene GPTs: Mail-Agent, CH Sparring, PD Sparring. Advanced Mode fürs Auto.</div><div class="card-tags"><span class="tag marine">Whisper</span><span class="tag marine">Allrounder</span><span class="tag marine">Custom GPTs</span></div><a class="card-link" href="https://chat.openai.com" target="_blank" data-link="openai">Get ChatGPT ↗</a></div>
-      <div class="card" data-a="sky"><div class="card-emoji">🔷</div><div class="card-name">Gemini (Google)</div><div class="card-sub">Visuell · Coding · Gems</div><div class="card-desc">Große Vorteile bei Fotos, Infografiken und visuellen Inhalten. Auch stark für Code & Automation.</div><div class="card-tags"><span class="tag sky">Fotos</span><span class="tag sky">Infografiken</span><span class="tag sky">Coding</span></div><a class="card-link" href="https://gemini.google.com" target="_blank" data-link="gemini">Get Gemini ↗</a></div>
-      <div class="card" data-a="red"><div class="card-emoji">🔍</div><div class="card-name">Perplexity</div><div class="card-sub">Recherche · Quellen · Live-Meldungen</div><div class="card-desc">Für Research schlägt nichts Perplexity. Extrem schnell mit Quellen. Deep Search für Analysen. API-Anbindung in n8n.</div><div class="card-tags"><span class="tag red">Research</span><span class="tag red">Live-Web</span><span class="tag red">Deep Search</span></div><a class="card-link" href="https://perplexity.ai" target="_blank" data-link="perplexity">Get Perplexity ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">🤖</div><div class="card-name">Microsoft Copilot</div><div class="card-sub">MS 365 Integration</div><div class="card-desc">Selektiv: E-Mail-Optimierung, individualisierte Prompts, Notizbücher. Ergänzung, kein Kern-Tool.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag marine">Notizbücher</span></div><a class="card-link" href="https://copilot.microsoft.com" target="_blank" data-link="copilot">Get Copilot ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">📓</div><div class="card-name">NotebookLM</div><div class="card-sub">Dokumentenbasierte KI</div><div class="card-desc">Eigene Wissensbasis. PDFs, Präsentationen hochladen. Podcasts & YouTube auswerten. Wenig Halluzination.</div><div class="card-tags"><span class="tag marine">Dokumente</span><span class="tag marine">Podcast</span></div><a class="card-link" href="https://notebooklm.google.com" target="_blank" data-link="notebook">Get NotebookLM ↗</a></div>
-      <div class="card" data-a="sky"><div class="card-emoji">🔒</div><div class="card-name">Lokale LLMs</div><div class="card-sub">LM Studio · PocketPal</div><div class="card-desc">Offline, datensouverän. LM Studio auf Mac, PocketPal auf iPhone. Für sensible Inhalte & Experimente.</div><div class="card-tags"><span class="tag sky">Offline</span><span class="tag sky">Datenschutz</span></div><a class="card-link" href="https://lmstudio.ai" target="_blank" data-link="lokal">Get LM Studio ↗</a></div>
+      <div class="card" data-a="grad" data-card="claude"><div class="card-emoji">🟠</div><div class="card-name">Claude (Anthropic)</div><div class="card-sub">Opus 4.6 · Projekte · Artefakte</div><div class="card-desc">Mein Haupttool für die tägliche Arbeit. Reasoning, lange Kontexte, natürliche Sprache. Fokus auf Enterprise-Anwendungen, Social Media, Doku, Sparring.</div><div class="card-tags"><span class="tag red">Projekte</span><span class="tag red">Memory</span><span class="tag red">Enterprise</span><span class="tag red">Design Mockups</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="claude">Get Claude ↗</a></div>
+      <div class="card" data-a="marine" data-card="openai"><div class="card-emoji">💬</div><div class="card-name">OpenAI / ChatGPT</div><div class="card-sub">Allrounder · GPT-5 · Whisper · Advanced Mode</div><div class="card-desc">Aktuell besonders stark als Allrounder und für Whisper (Speech-to-Text). 3 eigene GPTs: Mail-Agent, CH Sparring, PD Sparring. Advanced Mode fürs Auto.</div><div class="card-tags"><span class="tag marine">Whisper</span><span class="tag marine">Allrounder</span><span class="tag marine">Custom GPTs</span></div><a class="card-link" href="https://chat.openai.com" target="_blank" data-link="openai">Get ChatGPT ↗</a></div>
+      <div class="card" data-a="sky" data-card="gemini"><div class="card-emoji">🔷</div><div class="card-name">Gemini (Google)</div><div class="card-sub">Visuell · Coding · Gems</div><div class="card-desc">Große Vorteile bei Fotos, Infografiken und visuellen Inhalten. Auch stark für Code & Automation.</div><div class="card-tags"><span class="tag sky">Fotos</span><span class="tag sky">Infografiken</span><span class="tag sky">Coding</span></div><a class="card-link" href="https://gemini.google.com" target="_blank" data-link="gemini">Get Gemini ↗</a></div>
+      <div class="card" data-a="red" data-card="perplexity"><div class="card-emoji">🔍</div><div class="card-name">Perplexity</div><div class="card-sub">Recherche · Quellen · Live-Meldungen</div><div class="card-desc">Für Research schlägt nichts Perplexity. Extrem schnell mit Quellen. Deep Search für Analysen. API-Anbindung in n8n.</div><div class="card-tags"><span class="tag red">Research</span><span class="tag red">Live-Web</span><span class="tag red">Deep Search</span></div><a class="card-link" href="https://perplexity.ai" target="_blank" data-link="perplexity">Get Perplexity ↗</a></div>
+      <div class="card" data-a="marine" data-card="copilot"><div class="card-emoji">🤖</div><div class="card-name">Microsoft Copilot</div><div class="card-sub">MS 365 Integration</div><div class="card-desc">Selektiv: E-Mail-Optimierung, individualisierte Prompts, Notizbücher. Ergänzung, kein Kern-Tool.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag marine">Notizbücher</span></div><a class="card-link" href="https://copilot.microsoft.com" target="_blank" data-link="copilot">Get Copilot ↗</a></div>
+      <div class="card" data-a="marine" data-card="notebook"><div class="card-emoji">📓</div><div class="card-name">NotebookLM</div><div class="card-sub">Dokumentenbasierte KI</div><div class="card-desc">Eigene Wissensbasis. PDFs, Präsentationen hochladen. Podcasts & YouTube auswerten. Wenig Halluzination.</div><div class="card-tags"><span class="tag marine">Dokumente</span><span class="tag marine">Podcast</span></div><a class="card-link" href="https://notebooklm.google.com" target="_blank" data-link="notebook">Get NotebookLM ↗</a></div>
+      <div class="card" data-a="sky" data-card="lokal"><div class="card-emoji">🔒</div><div class="card-name">Lokale LLMs</div><div class="card-sub">LM Studio · PocketPal</div><div class="card-desc">Offline, datensouverän. LM Studio auf Mac, PocketPal auf iPhone. Für sensible Inhalte & Experimente.</div><div class="card-tags"><span class="tag sky">Offline</span><span class="tag sky">Datenschutz</span></div><a class="card-link" href="https://lmstudio.ai" target="_blank" data-link="lokal">Get LM Studio ↗</a></div>
     </div>
   </div>
 
@@ -461,15 +465,15 @@
   <div class="row-section">
     <div class="row-header">
       <div class="row-icon red">🚀</div>
-      <span class="row-title">Coding & Apps</span>
-      <span class="row-subtitle">Claude Code · MCP · Terminal · GitHub · Railway</span>
+      <span class="row-title" data-i18n="coding">Coding & Apps</span>
+      <span class="row-subtitle" data-i18n="codingSub">Claude Code · MCP · Terminal · GitHub · Railway</span>
     </div>
     <div class="row-scroll">
-      <div class="card" data-a="grad"><div class="card-emoji">🖥️</div><div class="card-name">Claude Code (Terminal)</div><div class="card-sub">KI-gestütztes Programmieren</div><div class="card-desc">Der „Alles-Könner". Apps, Skripte, Automationen bauen – ohne Coding-Erfahrung. Iterativ: Ziel beschreiben → Code entsteht.</div><div class="card-tags"><span class="tag red">Terminal</span><span class="tag red">Deploy</span><span class="tag red">Debug</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" data-link="claudecode">Get Claude Code ↗</a></div>
-      <div class="card" data-a="grad"><div class="card-emoji">🔌</div><div class="card-name">Claude MCP</div><div class="card-sub">Model Context Protocol</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n und mehr. Wie ein USB-C-Anschluss für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Open Source</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/mcp" target="_blank" data-link="mcp">MCP Docs ↗</a></div>
-      <div class="card" data-a="red"><div class="card-emoji">🔧</div><div class="card-name">Claude Cowork</div><div class="card-sub">Desktop-Automatisierung</div><div class="card-desc">Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.</div><div class="card-tags"><span class="tag red">Desktop</span><span class="tag red">No-Code</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="cowork">Get Cowork ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">🏗️</div><div class="card-name">GitHub + Railway</div><div class="card-sub">Code · Hosting · Datenbank</div><div class="card-desc">GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.</div><div class="card-tags"><span class="tag marine">GitHub</span><span class="tag marine">Railway</span><span class="tag marine">Postgres</span></div><a class="card-link" href="https://github.com" target="_blank" data-link="github">Get GitHub ↗</a><a class="card-link" href="https://railway.com/" target="_blank" style="margin-left: 12px;">Get Railway ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">💎</div><div class="card-name">Visual Studio Code</div><div class="card-sub">Code-Editor · Extensions · Git</div><div class="card-desc">Zentraler Code-Editor mit Git-Integration, Terminal und Extensions. Basis für Claude Code und lokale Entwicklung.</div><div class="card-tags"><span class="tag marine">VS Code</span><span class="tag marine">Extensions</span><span class="tag marine">Git</span></div><a class="card-link" href="https://code.visualstudio.com" target="_blank" data-link="vscode">Get VS Code ↗</a></div>
+      <div class="card" data-a="grad" data-card="claudecode"><div class="card-emoji">🖥️</div><div class="card-name">Claude Code (Terminal)</div><div class="card-sub">KI-gestütztes Programmieren</div><div class="card-desc">Der „Alles-Könner". Apps, Skripte, Automationen bauen – ohne Coding-Erfahrung. Iterativ: Ziel beschreiben → Code entsteht.</div><div class="card-tags"><span class="tag red">Terminal</span><span class="tag red">Deploy</span><span class="tag red">Debug</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" data-link="claudecode">Get Claude Code ↗</a></div>
+      <div class="card" data-a="grad" data-card="mcpauto"><div class="card-emoji">🔌</div><div class="card-name">Claude MCP</div><div class="card-sub">Model Context Protocol</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n und mehr. Wie ein USB-C-Anschluss für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Open Source</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/mcp" target="_blank" data-link="mcp">MCP Docs ↗</a></div>
+      <div class="card" data-a="red" data-card="cowork"><div class="card-emoji">🔧</div><div class="card-name">Claude Cowork</div><div class="card-sub">Desktop-Automatisierung</div><div class="card-desc">Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.</div><div class="card-tags"><span class="tag red">Desktop</span><span class="tag red">No-Code</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="cowork">Get Cowork ↗</a></div>
+      <div class="card" data-a="marine" data-card="github"><div class="card-emoji">🏗️</div><div class="card-name">GitHub + Railway</div><div class="card-sub">Code · Hosting · Datenbank</div><div class="card-desc">GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.</div><div class="card-tags"><span class="tag marine">GitHub</span><span class="tag marine">Railway</span><span class="tag marine">Postgres</span></div><a class="card-link" href="https://github.com" target="_blank" data-link="github">Get GitHub ↗</a><a class="card-link" href="https://railway.com/" target="_blank" style="margin-left: 12px;">Get Railway ↗</a></div>
+      <div class="card" data-a="marine" data-card="vscode"><div class="card-emoji">💎</div><div class="card-name">Visual Studio Code</div><div class="card-sub">Code-Editor · Extensions · Git</div><div class="card-desc">Zentraler Code-Editor mit Git-Integration, Terminal und Extensions. Basis für Claude Code und lokale Entwicklung.</div><div class="card-tags"><span class="tag marine">VS Code</span><span class="tag marine">Extensions</span><span class="tag marine">Git</span></div><a class="card-link" href="https://code.visualstudio.com" target="_blank" data-link="vscode">Get VS Code ↗</a></div>
     </div>
   </div>
 
@@ -477,19 +481,19 @@
   <div class="row-section">
     <div class="row-header" style="flex-wrap: wrap;">
       <div class="row-icon sky">⚡</div>
-      <span class="row-title">Shortcuts – Smart Automation</span>
-      <span class="row-subtitle">MacBook · iPhone · iPad · Apple Watch</span>
-      <div style="width: 100%; margin-left: 52px; margin-top: 4px; font-size: 13px; color: var(--grey); line-height: 150%;">Läuft geräteübergreifend auf allen Apple-Geräten. Einmal einrichten, überall nutzen – richtig gut zum produktiven Arbeiten.</div>
+      <span class="row-title" data-i18n="shortcuts">Shortcuts – Smart Automation</span>
+      <span class="row-subtitle" data-i18n="shortcutsSub">MacBook · iPhone · iPad · Apple Watch</span>
+      <div data-i18n="shortcutsDesc" style="width: 100%; margin-left: 52px; margin-top: 4px; font-size: 13px; color: var(--grey); line-height: 150%;">Läuft geräteübergreifend auf allen Apple-Geräten. Einmal einrichten, überall nutzen – richtig gut zum produktiven Arbeiten.</div>
     </div>
     <div class="row-scroll">
-      <div class="card" data-a="sky"><div class="card-emoji">✉️</div><div class="card-name">Neue Nachricht / Mail</div><div class="card-sub">Spracheingabe → OpenAI API</div><div class="card-desc">Vorname → kurze Nachricht mit Emojis. Nachname → professionelle Mail. Direkt in Zwischenablage – nach meinen persönlichen Präferenzen (Sprachstil).</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/618e140f761745b999b839dd3d1fef45" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="sky"><div class="card-emoji">✍️</div><div class="card-name">TipTalk & Glatt ziehen</div><div class="card-sub">Speech-to-Text + Optimierung</div><div class="card-desc">Diktieren statt Tippen. „Glatt ziehen" optimiert Grammatik und Struktur automatisch – nach meinen persönlichen Präferenzen (Sprachstil).</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/be7bd67014614e7893e4b09d846d4156" target="_blank">TipTalk ↗</a><a class="card-link" href="https://www.icloud.com/shortcuts/832d67dd71b84bda896cf0eb56c126a5" target="_blank" style="margin-left: 12px;">Glatt ziehen ↗</a></div>
-      <div class="card" data-a="sky"><div class="card-emoji">📝</div><div class="card-name">Fast Note & Ideen Note</div><div class="card-sub">Apple Notizen Schnellerfassung</div><div class="card-desc">Fast Note für To-dos. Ideen Note für kreative Impulse. Öffnet direkt Apple Notes.</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span><span class="tag marine">Apple Notizen</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/8d447b1807fd4ec589b75c9eec03c8dd" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">⌨️</div><div class="card-name">Textersetzungen</div><div class="card-sub">Textbausteine + Back Tap</div><div class="card-desc">kk → Kalenderlink, VV → Vielen Dank. Control Center auf iPhone & Watch. 2x/3x Back Tap.</div><div class="card-tags"><span class="tag marine">Bausteine</span><span class="tag marine">Back Tap</span><span class="tag marine">u.v.m.</span></div></div>
-      <div class="card" data-a="sky"><div class="card-emoji">🎙️</div><div class="card-name">Sprachnachricht to Text</div><div class="card-sub">Audio → Transkription → Text</div><div class="card-desc">Sprachnachrichten automatisch transkribieren und als lesbaren Text aufbereiten – direkt per Kurzbefehl.</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/eaf63bf8d124483a896e1971cca9213a" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="grad"><div class="card-emoji">🚗</div><div class="card-name">GPTs im Advanced Mode</div><div class="card-sub">Auto-Gespräch mit individuellen GPTs</div><div class="card-desc">Eigene GPTs im Advanced Voice Mode nutzen – ideal für Sparring, Brainstorming und Diktat während der Autofahrt.</div><div class="card-tags"><span class="tag sky">Voice</span><span class="tag red">Custom GPTs</span><span class="tag marine">Hands-free</span></div></div>
-      <div class="card" data-a="grad"><div class="card-emoji">📸</div><div class="card-name">Beleg-Scan</div><div class="card-sub">Foto → KI → Ablage</div><div class="card-desc">Quittung oder Rechnung fotografieren → KI extrahiert Datum, Betrag, Händler → automatisch im richtigen Ordner abgelegt.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Shortcut</span><span class="tag sky">Google Drive</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/2aaf11d2dac043b6b68ddd45a5e2f6d8" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="grad"><div class="card-emoji">🗓️</div><div class="card-name">Voice to Kalender</div><div class="card-sub">Einsprechen → Termin</div><div class="card-desc">Termin per Sprache einsprechen → Whisper + GPT erkennen Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird automatisch erstellt.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">n8n</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/5908e7aeedd541f2bf37a117f905110d" target="_blank">Shortcut ↗</a><a class="card-link" href="https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=sharing" target="_blank" style="margin-left: 12px;">n8n Workflow ↗</a></div>
+      <div class="card" data-a="sky" data-card="nachricht"><div class="card-emoji">✉️</div><div class="card-name">Neue Nachricht / Mail</div><div class="card-sub">Spracheingabe → OpenAI API</div><div class="card-desc">Vorname → kurze Nachricht mit Emojis. Nachname → professionelle Mail. Direkt in Zwischenablage – nach meinen persönlichen Präferenzen (Sprachstil).</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/618e140f761745b999b839dd3d1fef45" target="_blank">Shortcut laden ↗</a></div>
+      <div class="card" data-a="sky" data-card="tiptalk"><div class="card-emoji">✍️</div><div class="card-name">TipTalk & Glatt ziehen</div><div class="card-sub">Speech-to-Text + Optimierung</div><div class="card-desc">Diktieren statt Tippen. „Glatt ziehen" optimiert Grammatik und Struktur automatisch – nach meinen persönlichen Präferenzen (Sprachstil).</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/be7bd67014614e7893e4b09d846d4156" target="_blank">TipTalk ↗</a><a class="card-link" href="https://www.icloud.com/shortcuts/832d67dd71b84bda896cf0eb56c126a5" target="_blank" style="margin-left: 12px;">Glatt ziehen ↗</a></div>
+      <div class="card" data-a="sky" data-card="fastnote"><div class="card-emoji">📝</div><div class="card-name">Fast Note & Ideen Note</div><div class="card-sub">Apple Notizen Schnellerfassung</div><div class="card-desc">Fast Note für To-dos. Ideen Note für kreative Impulse. Öffnet direkt Apple Notes.</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span><span class="tag marine">Apple Notizen</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/8d447b1807fd4ec589b75c9eec03c8dd" target="_blank">Shortcut laden ↗</a></div>
+      <div class="card" data-a="marine" data-card="textersetz"><div class="card-emoji">⌨️</div><div class="card-name">Textersetzungen</div><div class="card-sub">Textbausteine + Back Tap</div><div class="card-desc">kk → Kalenderlink, VV → Vielen Dank. Control Center auf iPhone & Watch. 2x/3x Back Tap.</div><div class="card-tags"><span class="tag marine">Bausteine</span><span class="tag marine">Back Tap</span><span class="tag marine">u.v.m.</span></div></div>
+      <div class="card" data-a="sky" data-card="sprachnach"><div class="card-emoji">🎙️</div><div class="card-name">Sprachnachricht to Text</div><div class="card-sub">Audio → Transkription → Text</div><div class="card-desc">Sprachnachrichten automatisch transkribieren und als lesbaren Text aufbereiten – direkt per Kurzbefehl.</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/eaf63bf8d124483a896e1971cca9213a" target="_blank">Shortcut laden ↗</a></div>
+      <div class="card" data-a="grad" data-card="gptadv"><div class="card-emoji">🚗</div><div class="card-name">GPTs im Advanced Mode</div><div class="card-sub">Auto-Gespräch mit individuellen GPTs</div><div class="card-desc">Eigene GPTs im Advanced Voice Mode nutzen – ideal für Sparring, Brainstorming und Diktat während der Autofahrt.</div><div class="card-tags"><span class="tag sky">Voice</span><span class="tag red">Custom GPTs</span><span class="tag marine">Hands-free</span></div></div>
+      <div class="card" data-a="grad" data-card="belegscan"><div class="card-emoji">📸</div><div class="card-name">Beleg-Scan</div><div class="card-sub">Foto → KI → Ablage</div><div class="card-desc">Quittung oder Rechnung fotografieren → KI extrahiert Datum, Betrag, Händler → automatisch im richtigen Ordner abgelegt.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Shortcut</span><span class="tag sky">Google Drive</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/2aaf11d2dac043b6b68ddd45a5e2f6d8" target="_blank">Shortcut laden ↗</a></div>
+      <div class="card" data-a="grad" data-card="voicekal"><div class="card-emoji">🗓️</div><div class="card-name">Voice to Kalender</div><div class="card-sub">Einsprechen → Termin</div><div class="card-desc">Termin per Sprache einsprechen → Whisper + GPT erkennen Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird automatisch erstellt.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">n8n</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/5908e7aeedd541f2bf37a117f905110d" target="_blank">Shortcut ↗</a><a class="card-link" href="https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=sharing" target="_blank" style="margin-left: 12px;">n8n Workflow ↗</a></div>
     </div>
   </div>
 
@@ -497,31 +501,31 @@
   <div class="row-section">
     <div class="row-header" style="flex-wrap: wrap;">
       <div class="row-icon red">🔄</div>
-      <span class="row-title">Automation Plattform</span>
-      <span class="row-subtitle">n8n · Agents · API-Integrationen</span>
+      <span class="row-title" data-i18n="automation">Automation Plattform</span>
+      <span class="row-subtitle" data-i18n="automationSub">n8n · Agents · API-Integrationen</span>
       <a href="https://drive.google.com/drive/folders/1gV4re651ucp2zq9UPuv40GYRCG6ywpIn?usp=sharing" target="_blank" class="row-download-link" style="display: inline-flex; align-items: center; gap: 6px; width: 100%; margin-left: 52px; margin-top: -4px; font-size: 13px; font-weight: 700; color: var(--digital-red); text-decoration: none; transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">📥 <span data-i18n="automationDownload">Alle n8n Workflows herunterladen ↗</span></a>
     </div>
     <div class="row-scroll">
-      <div class="card" data-a="red"><div class="card-emoji">⚡</div><div class="card-name">n8n Workflow-Engine</div><div class="card-sub">Automatisierungsplattform</div><div class="card-desc">Zentrales Automatisierungstool. Visuell, flexibel, API-stark. Klassische Workflows und Agent-Logiken.</div><div class="card-tags"><span class="tag red">Webhooks</span><span class="tag red">API</span><span class="tag red">Agents</span></div></div>
-      <div class="card" data-a="grad"><div class="card-emoji">🎙️</div><div class="card-name">OpenAI Whisper</div><div class="card-sub">Speech-to-Text API</div><div class="card-desc">Die Basis für richtig gute Voice-Interaktion. Whisper ermöglicht präzise Spracherkennung in vielen Workflows – von Shortcuts bis n8n. Super wichtig für alles mit Spracheingabe.</div><div class="card-tags"><span class="tag red">Voice</span><span class="tag red">API</span><span class="tag sky">Shortcuts</span></div></div>
-      <div class="card" data-a="sky"><div class="card-emoji">📱</div><div class="card-name">Apple Shortcuts</div><div class="card-sub">Leichtgewichtige Automatisierung</div><div class="card-desc">Apple Shortcuts als schnelle Automatisierung – Aktionen verketten, Siri-Trigger, Hintergrund-Prozesse. API-Anbindung an OpenAI.</div><div class="card-tags"><span class="tag sky">Shortcuts</span><span class="tag sky">Siri</span><span class="tag sky">OpenAI</span></div></div>
-      <div class="card" data-a="grad"><div class="card-emoji">🔗</div><div class="card-name">n8n × KI × Apple</div><div class="card-sub">Plattformübergreifend</div><div class="card-desc">n8n als Brücke zwischen KI-APIs und Apple Shortcuts. Voice-to-Kalender, Beleg-Scanner, Meeting-Protokolle – alles verbunden.</div><div class="card-tags"><span class="tag red">n8n</span><span class="tag sky">Shortcuts</span><span class="tag marine">MS 365</span></div></div>
-      <div class="card" data-a="grad"><div class="card-emoji">🔌</div><div class="card-name">MCP (Model Context Protocol)</div><div class="card-sub">Claude mit Tools verbinden</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n. Wie ein USB-C für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Claude</span></div><a class="card-link" href="https://www.reddit.com/r/n8n/comments/1niug8o/using_claude_code_the_n8nmcp_server_to_prompt/?tl=de" target="_blank">n8n MCP Server ↗</a></div>
+      <div class="card" data-a="red" data-card="n8n"><div class="card-emoji">⚡</div><div class="card-name">n8n Workflow-Engine</div><div class="card-sub">Automatisierungsplattform</div><div class="card-desc">Zentrales Automatisierungstool. Visuell, flexibel, API-stark. Klassische Workflows und Agent-Logiken.</div><div class="card-tags"><span class="tag red">Webhooks</span><span class="tag red">API</span><span class="tag red">Agents</span></div></div>
+      <div class="card" data-a="grad" data-card="whisper"><div class="card-emoji">🎙️</div><div class="card-name">OpenAI Whisper</div><div class="card-sub">Speech-to-Text API</div><div class="card-desc">Die Basis für richtig gute Voice-Interaktion. Whisper ermöglicht präzise Spracherkennung in vielen Workflows – von Shortcuts bis n8n. Super wichtig für alles mit Spracheingabe.</div><div class="card-tags"><span class="tag red">Voice</span><span class="tag red">API</span><span class="tag sky">Shortcuts</span></div></div>
+      <div class="card" data-a="sky" data-card="appleauto"><div class="card-emoji">📱</div><div class="card-name">Apple Shortcuts</div><div class="card-sub">Leichtgewichtige Automatisierung</div><div class="card-desc">Apple Shortcuts als schnelle Automatisierung – Aktionen verketten, Siri-Trigger, Hintergrund-Prozesse. API-Anbindung an OpenAI.</div><div class="card-tags"><span class="tag sky">Shortcuts</span><span class="tag sky">Siri</span><span class="tag sky">OpenAI</span></div></div>
+      <div class="card" data-a="grad" data-card="n8nki"><div class="card-emoji">🔗</div><div class="card-name">n8n × KI × Apple</div><div class="card-sub">Plattformübergreifend</div><div class="card-desc">n8n als Brücke zwischen KI-APIs und Apple Shortcuts. Voice-to-Kalender, Beleg-Scanner, Meeting-Protokolle – alles verbunden.</div><div class="card-tags"><span class="tag red">n8n</span><span class="tag sky">Shortcuts</span><span class="tag marine">MS 365</span></div></div>
+      <div class="card" data-a="grad" data-card="mcpauto"><div class="card-emoji">🔌</div><div class="card-name">MCP (Model Context Protocol)</div><div class="card-sub">Claude mit Tools verbinden</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n. Wie ein USB-C für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Claude</span></div><a class="card-link" href="https://www.reddit.com/r/n8n/comments/1niug8o/using_claude_code_the_n8nmcp_server_to_prompt/?tl=de" target="_blank">n8n MCP Server ↗</a></div>
     </div>
 
     <!-- E-Mail & Kalender -->
     <div style="margin-top: 24px;">
       <div class="row-header" style="margin-bottom: 12px;">
         <div class="row-icon red" style="width: 32px; height: 32px; font-size: 16px;">📧</div>
-        <span class="row-title" style="font-size: 20px;">E-Mail, Kalender & Meetings</span>
-        <span class="row-subtitle">Task Tracking · Meeting Protokolle · Mail-Management mit KI</span>
+        <span class="row-title" style="font-size: 20px;" data-i18n="email">E-Mail, Kalender & Meetings</span>
+        <span class="row-subtitle" data-i18n="emailSub">Task Tracking · Meeting Protokolle · Mail-Management mit KI</span>
       </div>
       <div class="row-scroll">
-        <div class="card" data-a="grad"><div class="card-emoji">🧹</div><div class="card-name">Intelligenter Mail-Filter</div><div class="card-sub">KI sortiert automatisch aus</div><div class="card-desc">KI analysiert jede eingehende Mail und verschiebt unwichtige automatisch in einen De-Prio-Ordner. Lernt aus deinen Korrekturen und wird immer besser.</div><div class="card-tags"><span class="tag red">Claude AI</span><span class="tag marine">Outlook</span><span class="tag red">Lernfähig</span></div><a class="card-link" href="https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=sharing" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine"><div class="card-emoji">⏰</div><div class="card-name">Follow-Up Tracker</div><div class="card-sub">Keine Antwort vergessen</div><div class="card-desc">Trackt alle gesendeten Mails automatisch. Bei fehlender Antwort nach X Tagen erscheint die Mail in der täglichen Follow-Up-Liste.</div><div class="card-tags"><span class="tag red">Claude AI</span><span class="tag marine">Excel</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/19XXUIRENuIT3t_nlwnaf_Pk6qq-4RSqx/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine"><div class="card-emoji">📋</div><div class="card-name">Tägliche Follow-Up Übersicht</div><div class="card-sub">Jeden Morgen um 6:30</div><div class="card-desc">Erhalte jeden Morgen eine kompakte Liste aller Mails, auf die du noch eine Antwort erwartest. Direkt als E-Mail in deiner Inbox.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag marine">Scheduled</span></div><a class="card-link" href="https://drive.google.com/file/d/1fchZumON9jjJJGTbCrYHYmmKBpum-l8C/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="grad"><div class="card-emoji">📅</div><div class="card-name">Sprachtermin-Assistent</div><div class="card-sub">Einsprechen → Kalendereintrag</div><div class="card-desc">Termin per Sprache einsprechen → KI erkennt Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird erstellt und Einladungen verschickt. Per Shortcut oder Webhook.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">GPT</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="red"><div class="card-emoji">📝</div><div class="card-name">Meeting-Protokoll Generator</div><div class="card-sub">Audio → Zusammenfassung</div><div class="card-desc">Meeting-Aufnahme hochladen → Whisper transkribiert → GPT erstellt strukturiertes Protokoll mit Zusammenfassung, Entscheidungen und To-dos.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">GPT</span><span class="tag red">Webhook</span></div></div>
+        <div class="card" data-a="grad" data-card="mailfilter"><div class="card-emoji">🧹</div><div class="card-name">Intelligenter Mail-Filter</div><div class="card-sub">KI sortiert automatisch aus</div><div class="card-desc">KI analysiert jede eingehende Mail und verschiebt unwichtige automatisch in einen De-Prio-Ordner. Lernt aus deinen Korrekturen und wird immer besser.</div><div class="card-tags"><span class="tag red">Claude AI</span><span class="tag marine">Outlook</span><span class="tag red">Lernfähig</span></div><a class="card-link" href="https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=sharing" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="marine" data-card="followup"><div class="card-emoji">⏰</div><div class="card-name">Follow-Up Tracker</div><div class="card-sub">Keine Antwort vergessen</div><div class="card-desc">Trackt alle gesendeten Mails automatisch. Bei fehlender Antwort nach X Tagen erscheint die Mail in der täglichen Follow-Up-Liste.</div><div class="card-tags"><span class="tag red">Claude AI</span><span class="tag marine">Excel</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/19XXUIRENuIT3t_nlwnaf_Pk6qq-4RSqx/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="marine" data-card="dailyfollowup"><div class="card-emoji">📋</div><div class="card-name">Tägliche Follow-Up Übersicht</div><div class="card-sub">Jeden Morgen um 6:30</div><div class="card-desc">Erhalte jeden Morgen eine kompakte Liste aller Mails, auf die du noch eine Antwort erwartest. Direkt als E-Mail in deiner Inbox.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag marine">Scheduled</span></div><a class="card-link" href="https://drive.google.com/file/d/1fchZumON9jjJJGTbCrYHYmmKBpum-l8C/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="grad" data-card="sprachtermin"><div class="card-emoji">📅</div><div class="card-name">Sprachtermin-Assistent</div><div class="card-sub">Einsprechen → Kalendereintrag</div><div class="card-desc">Termin per Sprache einsprechen → KI erkennt Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird erstellt und Einladungen verschickt. Per Shortcut oder Webhook.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">GPT</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="red" data-card="meetingprotokoll"><div class="card-emoji">📝</div><div class="card-name">Meeting-Protokoll Generator</div><div class="card-sub">Audio → Zusammenfassung</div><div class="card-desc">Meeting-Aufnahme hochladen → Whisper transkribiert → GPT erstellt strukturiertes Protokoll mit Zusammenfassung, Entscheidungen und To-dos.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">GPT</span><span class="tag red">Webhook</span></div></div>
       </div>
     </div>
 
@@ -529,14 +533,14 @@
     <div style="margin-top: 24px;">
       <div class="row-header" style="margin-bottom: 12px;">
         <div class="row-icon red" style="width: 32px; height: 32px; font-size: 16px;">🔬</div>
-        <span class="row-title" style="font-size: 20px;">Research & Meeting-Vorbereitung</span>
-        <span class="row-subtitle">Automatische Recherche für das ganze Team</span>
+        <span class="row-title" style="font-size: 20px;" data-i18n="research">Research & Meeting-Vorbereitung</span>
+        <span class="row-subtitle" data-i18n="researchSub">Automatische Recherche für das ganze Team</span>
       </div>
       <div class="row-scroll">
-        <div class="card" data-a="grad"><div class="card-emoji">🔍</div><div class="card-name">KI-Recherche in Teams</div><div class="card-sub">Frage stellen → Antwort mit Quellen</div><div class="card-desc">Schreibe eine Frage in den Teams-Kanal → Perplexity recherchiert im Web → strukturierte Antwort mit Quellen erscheint automatisch. Für das ganze Team nutzbar.</div><div class="card-tags"><span class="tag red">Teams Bot</span><span class="tag sky">Perplexity</span><span class="tag red">n8n</span></div><a class="card-link" href="https://drive.google.com/file/d/1pMovwu7AIqK-yDzvhhwDk_fV1Yuc5aLR/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="red"><div class="card-emoji">👤</div><div class="card-name">Personen-Recherche</div><div class="card-sub">Vor dem Meeting vorbereitet sein</div><div class="card-desc">Namen in Teams eingeben → LinkedIn-Profil, Firma, aktuelle Posts und Northdata-Infos werden automatisch recherchiert. Perfekt vor wichtigen Meetings.</div><div class="card-tags"><span class="tag red">LinkedIn</span><span class="tag sky">Perplexity</span><span class="tag red">Northdata</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="red"><div class="card-emoji">🏢</div><div class="card-name">Firmen-Recherche</div><div class="card-sub">Unternehmen schnell verstehen</div><div class="card-desc">Firmenname eingeben → Geschäftsmodell, Digitalisierungsgrad, Ansprechpartner und LinkedIn-Aktivitäten werden automatisch zusammengestellt.</div><div class="card-tags"><span class="tag red">LinkedIn</span><span class="tag sky">Perplexity</span><span class="tag red">Northdata</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine"><div class="card-emoji">✉️</div><div class="card-name">Kontakt-Mail als Entwurf</div><div class="card-sub">Direkt anschreiben</div><div class="card-desc">Nach der Recherche wird automatisch ein E-Mail-Entwurf mit personalisiertem Anschreiben erstellt – basierend auf den recherchierten Infos.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag red">GPT</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="grad" data-card="kiresearch"><div class="card-emoji">🔍</div><div class="card-name">KI-Recherche in Teams</div><div class="card-sub">Frage stellen → Antwort mit Quellen</div><div class="card-desc">Schreibe eine Frage in den Teams-Kanal → Perplexity recherchiert im Web → strukturierte Antwort mit Quellen erscheint automatisch. Für das ganze Team nutzbar.</div><div class="card-tags"><span class="tag red">Teams Bot</span><span class="tag sky">Perplexity</span><span class="tag red">n8n</span></div><a class="card-link" href="https://drive.google.com/file/d/1pMovwu7AIqK-yDzvhhwDk_fV1Yuc5aLR/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="red" data-card="personen"><div class="card-emoji">👤</div><div class="card-name">Personen-Recherche</div><div class="card-sub">Vor dem Meeting vorbereitet sein</div><div class="card-desc">Namen in Teams eingeben → LinkedIn-Profil, Firma, aktuelle Posts und Northdata-Infos werden automatisch recherchiert. Perfekt vor wichtigen Meetings.</div><div class="card-tags"><span class="tag red">LinkedIn</span><span class="tag sky">Perplexity</span><span class="tag red">Northdata</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="red" data-card="firmen"><div class="card-emoji">🏢</div><div class="card-name">Firmen-Recherche</div><div class="card-sub">Unternehmen schnell verstehen</div><div class="card-desc">Firmenname eingeben → Geschäftsmodell, Digitalisierungsgrad, Ansprechpartner und LinkedIn-Aktivitäten werden automatisch zusammengestellt.</div><div class="card-tags"><span class="tag red">LinkedIn</span><span class="tag sky">Perplexity</span><span class="tag red">Northdata</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="marine" data-card="kontaktmail"><div class="card-emoji">✉️</div><div class="card-name">Kontakt-Mail als Entwurf</div><div class="card-sub">Direkt anschreiben</div><div class="card-desc">Nach der Recherche wird automatisch ein E-Mail-Entwurf mit personalisiertem Anschreiben erstellt – basierend auf den recherchierten Infos.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag red">GPT</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
       </div>
     </div>
 
@@ -544,14 +548,14 @@
     <div style="margin-top: 24px;">
       <div class="row-header" style="margin-bottom: 12px;">
         <div class="row-icon marine" style="width: 32px; height: 32px; font-size: 16px;">📦</div>
-        <span class="row-title" style="font-size: 20px;">Weiteres</span>
-        <span class="row-subtitle">Rechnungs-Scanner · Kontakte-Sync · Buchhaltung · Wartung</span>
+        <span class="row-title" style="font-size: 20px;" data-i18n="weiteres">Weiteres</span>
+        <span class="row-subtitle" data-i18n="weiteresSub">Rechnungs-Scanner · Kontakte-Sync · Buchhaltung · Wartung</span>
       </div>
       <div class="row-scroll">
-        <div class="card" data-a="grad"><div class="card-emoji">📸</div><div class="card-name">Beleg-Scanner</div><div class="card-sub">Foto → KI → Google Drive</div><div class="card-desc">Foto von Quittung oder Rechnung machen → KI extrahiert Datum, Betrag, Händler → Beleg wird automatisch im richtigen Monatsordner abgelegt.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Google Drive</span><span class="tag sky">Shortcut</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/b898bc910a6b41a1af511e9c98fadc29" target="_blank">Shortcut ↗</a><a class="card-link" href="https://drive.google.com/file/d/1bIiwah4_eJT74HzUMbA5h5PmxYLXGdLo/view?usp=drive_link" target="_blank" style="margin-left: 12px;">n8n Workflow ↗</a></div>
-        <div class="card" data-a="red"><div class="card-emoji">🧾</div><div class="card-name">Rechnungs-Scanner</div><div class="card-sub">Mail → Erkennung → Ablage</div><div class="card-desc">Erkennt Rechnungen in E-Mails automatisch, extrahiert Datum und Betrag per KI und sortiert sie direkt in den richtigen Buchhaltungsordner.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Google Drive</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine"><div class="card-emoji">🔄</div><div class="card-name">Teams-Webhook Refresh</div><div class="card-sub">Alle 12 Stunden automatisch</div><div class="card-desc">Microsoft Teams Webhooks laufen nach einiger Zeit ab. Dieser Workflow erneuert die Verbindung automatisch alle 12 Stunden – ohne manuelles Eingreifen.</div><div class="card-tags"><span class="tag marine">Teams</span><span class="tag red">n8n</span><span class="tag marine">Scheduled</span></div><a class="card-link" href="https://drive.google.com/file/d/13zI8NAdOo_fPWw9MVWyMsEUABC16unJa/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="grad"><div class="card-emoji">👥</div><div class="card-name">Kontakte-Sync</div><div class="card-sub">LinkedIn → Kontakte säubern</div><div class="card-desc">Kontakte automatisch mit LinkedIn abgleichen. Scrapt Profilbilder, aktuelle Titel und Unternehmen und aktualisiert die Kontaktdaten.</div><div class="card-tags"><span class="tag sky">LinkedIn</span><span class="tag red">Scraping</span><span class="tag marine">Kontakte</span></div></div>
+        <div class="card" data-a="grad" data-card="belegscanner"><div class="card-emoji">📸</div><div class="card-name">Beleg-Scanner</div><div class="card-sub">Foto → KI → Google Drive</div><div class="card-desc">Foto von Quittung oder Rechnung machen → KI extrahiert Datum, Betrag, Händler → Beleg wird automatisch im richtigen Monatsordner abgelegt.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Google Drive</span><span class="tag sky">Shortcut</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/b898bc910a6b41a1af511e9c98fadc29" target="_blank">Shortcut ↗</a><a class="card-link" href="https://drive.google.com/file/d/1bIiwah4_eJT74HzUMbA5h5PmxYLXGdLo/view?usp=drive_link" target="_blank" style="margin-left: 12px;">n8n Workflow ↗</a></div>
+        <div class="card" data-a="red" data-card="rechnungsscanner"><div class="card-emoji">🧾</div><div class="card-name">Rechnungs-Scanner</div><div class="card-sub">Mail → Erkennung → Ablage</div><div class="card-desc">Erkennt Rechnungen in E-Mails automatisch, extrahiert Datum und Betrag per KI und sortiert sie direkt in den richtigen Buchhaltungsordner.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Google Drive</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="marine" data-card="teamswebhook"><div class="card-emoji">🔄</div><div class="card-name">Teams-Webhook Refresh</div><div class="card-sub">Alle 12 Stunden automatisch</div><div class="card-desc">Microsoft Teams Webhooks laufen nach einiger Zeit ab. Dieser Workflow erneuert die Verbindung automatisch alle 12 Stunden – ohne manuelles Eingreifen.</div><div class="card-tags"><span class="tag marine">Teams</span><span class="tag red">n8n</span><span class="tag marine">Scheduled</span></div><a class="card-link" href="https://drive.google.com/file/d/13zI8NAdOo_fPWw9MVWyMsEUABC16unJa/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="grad" data-card="kontaktesync"><div class="card-emoji">👥</div><div class="card-name">Kontakte-Sync</div><div class="card-sub">LinkedIn → Kontakte säubern</div><div class="card-desc">Kontakte automatisch mit LinkedIn abgleichen. Scrapt Profilbilder, aktuelle Titel und Unternehmen und aktualisiert die Kontaktdaten.</div><div class="card-tags"><span class="tag sky">LinkedIn</span><span class="tag red">Scraping</span><span class="tag marine">Kontakte</span></div></div>
       </div>
     </div>
   </div>
@@ -562,10 +566,10 @@
       <div style="background: var(--deep-sea); border-radius: var(--radius-md); padding: 24px 32px; display: flex; align-items: center; gap: 16px; border: 1px solid rgba(53,170,255,0.15); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
         <div style="font-size: 32px;">🎬</div>
         <div>
-          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 18px; color: #fff; margin-bottom: 4px;">Video-Walkthrough</div>
-          <div style="font-size: 14px; color: #A0B8D4;">Stand Januar 2026 – nicht alles enthalten</div>
+          <div data-i18n="videoTitle" style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 18px; color: #fff; margin-bottom: 4px;">Video-Walkthrough</div>
+          <div data-i18n="videoDesc" style="font-size: 14px; color: #A0B8D4;">Stand Januar 2026 – nicht alles enthalten</div>
         </div>
-        <div style="margin-left: auto; font-size: 14px; font-weight: 700; color: var(--sky-blue);">Ansehen →</div>
+        <div data-i18n="videoLink" style="margin-left: auto; font-size: 14px; font-weight: 700; color: var(--sky-blue);">Ansehen →</div>
       </div>
     </a>
   </div>
@@ -660,6 +664,23 @@ const translations = {
       cowork: ['Claude Cowork','Desktop-Automatisierung','Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.'],
       github: ['GitHub + Railway','Code · Hosting · Datenbank','GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.'],
       vscode: ['Visual Studio Code','Code-Editor · Extensions · Git','Zentraler Code-Editor mit Git-Integration, Terminal und Extensions. Basis für Claude Code und lokale Entwicklung.'],
+      claudeppt: ['Claude in PowerPoint','Präsentationen mit KI erstellen','Folienentwürfe, Gliederungen und Textvorschläge mit Claude generieren. Screenshot der Folie an Claude senden → Verbesserungsvorschläge erhalten.'],
+      claudeexcel: ['Claude in Excel','Formeln & Analysen mit KI','Komplexe Excel-Formeln von Claude schreiben lassen. Daten analysieren, Pivot-Logik erklären, VBA-Makros generieren.'],
+      belegscan: ['Beleg-Scan','Foto → KI → Ablage','Quittung oder Rechnung fotografieren → KI extrahiert Datum, Betrag, Händler → automatisch im richtigen Ordner abgelegt.'],
+      voicekal: ['Voice to Kalender','Einsprechen → Termin','Termin per Sprache einsprechen → Whisper + GPT erkennen Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird automatisch erstellt.'],
+      whisper: ['OpenAI Whisper','Speech-to-Text API','Die Basis für richtig gute Voice-Interaktion. Whisper ermöglicht präzise Spracherkennung in vielen Workflows.'],
+      mcpauto: ['MCP (Model Context Protocol)','Claude mit Tools verbinden','Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n.'],
+      mailfilter: ['Intelligenter Mail-Filter','KI sortiert automatisch aus','KI analysiert jede eingehende Mail und verschiebt unwichtige automatisch in einen De-Prio-Ordner. Lernt aus deinen Korrekturen.'],
+      followup: ['Follow-Up Tracker','Keine Antwort vergessen','Trackt alle gesendeten Mails automatisch. Bei fehlender Antwort nach X Tagen erscheint die Mail in der täglichen Follow-Up-Liste.'],
+      dailyfollowup: ['Tägliche Follow-Up Übersicht','Jeden Morgen um 6:30','Erhalte jeden Morgen eine kompakte Liste aller Mails, auf die du noch eine Antwort erwartest.'],
+      sprachtermin: ['Sprachtermin-Assistent','Einsprechen → Kalendereintrag','Termin per Sprache einsprechen → KI erkennt Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird erstellt und Einladungen verschickt.'],
+      meetingprotokoll: ['Meeting-Protokoll Generator','Audio → Zusammenfassung','Meeting-Aufnahme hochladen → Whisper transkribiert → GPT erstellt strukturiertes Protokoll mit Zusammenfassung und To-dos.'],
+      kiresearch: ['KI-Recherche in Teams','Frage stellen → Antwort mit Quellen','Schreibe eine Frage in den Teams-Kanal → Perplexity recherchiert im Web → strukturierte Antwort mit Quellen erscheint automatisch.'],
+      firmen: ['Firmen-Recherche','Unternehmen schnell verstehen','Firmenname eingeben → Geschäftsmodell, Digitalisierungsgrad, Ansprechpartner und LinkedIn-Aktivitäten werden automatisch zusammengestellt.'],
+      kontaktmail: ['Kontakt-Mail als Entwurf','Direkt anschreiben','Nach der Recherche wird automatisch ein E-Mail-Entwurf mit personalisiertem Anschreiben erstellt.'],
+      belegscanner: ['Beleg-Scanner','Foto → KI → Google Drive','Foto von Quittung oder Rechnung machen → KI extrahiert Datum, Betrag, Händler → Beleg wird automatisch im richtigen Monatsordner abgelegt.'],
+      rechnungsscanner: ['Rechnungs-Scanner','Mail → Erkennung → Ablage','Erkennt Rechnungen in E-Mails automatisch, extrahiert Datum und Betrag per KI und sortiert sie direkt in den richtigen Buchhaltungsordner.'],
+      kontaktesync: ['Kontakte-Sync','LinkedIn → Kontakte säubern','Kontakte automatisch mit LinkedIn abgleichen. Scrapt Profilbilder, aktuelle Titel und Unternehmen.'],
     },
     resources: '📖 Mehr erfahren',
     links: {
@@ -681,9 +702,9 @@ const translations = {
     handbuchTitle: 'Handbuch: Workplace Productivity mit AI',
     handbuchDesc: 'Ausführliche Dokumentation aller Tools, Workflows, Prompts und Best Practices. Wird laufend aktualisiert – inkl. Download-Links zu allen verwendeten Tools.',
     handbuchLink: 'Handbuch öffnen →',
-    videoTitle: 'Video: So sieht mein Setup konkret aus',
-    videoDesc: '30-Minuten Loom-Video mit Live-Demo aller Tools, Shortcuts und Workflows im täglichen Einsatz.',
-    videoLink: 'Video ansehen →',
+    videoTitle: 'Video-Walkthrough',
+    videoDesc: 'Stand Januar 2026 – nicht alles enthalten',
+    videoLink: 'Ansehen →',
     disclaimerTitle: 'DISCLAIMER – Persönliche Arbeitsumgebung',
     disclaimerText: 'Dies ist mein persönliches digitales Arbeitssetup. Die Entwicklung im Bereich Künstliche Intelligenz ist sehr dynamisch – Tools, Funktionen und Best Practices können sich jederzeit ändern. Teile dieser Übersicht wurden mit Unterstützung von KI erstellt. Sie spiegelt meine individuellen Erfahrungen und Präferenzen wider und erhebt keinen Anspruch auf Allgemeingültigkeit.',
     footer: 'Christoph Haß · Possehl Digital · Stand: März 2026',
@@ -762,6 +783,23 @@ const translations = {
       cowork: ['Claude Cowork','Desktop Automation','Desktop tool for non-developers. Automates file and task management beyond the browser.'],
       github: ['GitHub + Railway','Code · Hosting · Database','GitHub for version control. Railway deploys, hosts and provides Postgres databases.'],
       vscode: ['Visual Studio Code','Code Editor · Extensions · Git','Central code editor with Git integration, terminal and extensions. Foundation for Claude Code and local development.'],
+      claudeppt: ['Claude in PowerPoint','Create Presentations with AI','Generate slide drafts, outlines and text suggestions with Claude. Send screenshot of slide to Claude → get improvement suggestions.'],
+      claudeexcel: ['Claude in Excel','Formulas & Analysis with AI','Have Claude write complex Excel formulas. Analyze data, explain pivot logic, generate VBA macros.'],
+      belegscan: ['Receipt Scan','Photo → AI → Storage','Take a photo of receipt or invoice → AI extracts date, amount, vendor → automatically stored in the correct folder.'],
+      voicekal: ['Voice to Calendar','Speak → Appointment','Speak an appointment → Whisper + GPT recognize date, time, participants → Outlook appointment is automatically created.'],
+      whisper: ['OpenAI Whisper','Speech-to-Text API','The foundation for great voice interaction. Whisper enables precise speech recognition in many workflows.'],
+      mcpauto: ['MCP (Model Context Protocol)','Connect Claude with Tools','Game-changer: Connect Claude directly with your tools – Google Drive, Slack, GitHub, databases, n8n.'],
+      mailfilter: ['Smart Mail Filter','AI Auto-Sorts','AI analyzes every incoming email and automatically moves unimportant ones to a de-prio folder. Learns from your corrections.'],
+      followup: ['Follow-Up Tracker','Never Miss a Reply','Automatically tracks all sent emails. If no reply after X days, the email appears in the daily follow-up list.'],
+      dailyfollowup: ['Daily Follow-Up Overview','Every Morning at 6:30','Receive a compact list every morning of all emails you\'re still waiting for a reply on.'],
+      sprachtermin: ['Voice Appointment Assistant','Speak → Calendar Entry','Speak an appointment → AI recognizes date, time, participants → Outlook appointment is created and invitations sent.'],
+      meetingprotokoll: ['Meeting Minutes Generator','Audio → Summary','Upload meeting recording → Whisper transcribes → GPT creates structured minutes with summary and to-dos.'],
+      kiresearch: ['AI Research in Teams','Ask → Answer with Sources','Post a question in the Teams channel → Perplexity searches the web → structured answer with sources appears automatically.'],
+      firmen: ['Company Research','Quickly Understand Companies','Enter company name → Business model, digitalization level, contacts and LinkedIn activities are automatically compiled.'],
+      kontaktmail: ['Contact Email as Draft','Direct Outreach','After research, an email draft with personalized message is automatically created.'],
+      belegscanner: ['Receipt Scanner','Photo → AI → Google Drive','Take a photo of receipt or invoice → AI extracts date, amount, vendor → Receipt is automatically stored in the correct monthly folder.'],
+      rechnungsscanner: ['Invoice Scanner','Email → Recognition → Storage','Automatically recognizes invoices in emails, extracts date and amount via AI and sorts them directly into the correct accounting folder.'],
+      kontaktesync: ['Contacts Sync','LinkedIn → Clean Contacts','Automatically sync contacts with LinkedIn. Scrapes profile pictures, current titles and companies.'],
     },
     resources: '📖 Learn More',
     links: {
@@ -783,86 +821,38 @@ const translations = {
     handbuchTitle: 'Handbook: Workplace Productivity with AI',
     handbuchDesc: 'Comprehensive documentation of all tools, workflows, prompts and best practices. Continuously updated – incl. download links for all tools used.',
     handbuchLink: 'Open Handbook →',
-    videoTitle: 'Video: This is What My Setup Looks Like',
-    videoDesc: '30-minute Loom video with a live demo of all tools, shortcuts and workflows in daily use.',
-    videoLink: 'Watch Video →',
+    videoTitle: 'Video Walkthrough',
+    videoDesc: 'As of January 2026 – not everything included',
+    videoLink: 'Watch →',
     disclaimerTitle: 'DISCLAIMER – Personal Work Environment',
     disclaimerText: 'This is my personal digital work setup. The field of artificial intelligence is evolving rapidly – tools, features and best practices can change at any time. Parts of this overview were created with AI support. It reflects my individual experiences and preferences and does not claim universal validity.',
     footer: 'Christoph Haß · Possehl Digital · As of March 2026',
   }
 };
 
-const cardKeys = ['schreibtische','apple','browser','webcam','hardware','webapp','zeroinbox','vorlagen','kalender','mailindi','tasks','claude','openai','gemini','perplexity','copilot','notebook','lokal','nachricht','tiptalk','fastnote','speechkal','textersetz','sprachnach','gptadv','n8n','research','personen','appleauto','n8nki','teamswebhook','claudecode','cowork','github','vscode'];
-
 function setLang(lang) {
   const t = translations[lang];
   document.getElementById('btn-de').classList.toggle('active', lang === 'de');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 
-  // Hero
-  document.querySelector('.hero h1').textContent = t.heroTitle;
-  const heroPs = document.querySelectorAll('.hero p');
-  if (heroPs[0]) heroPs[0].textContent = t.heroDesc;
-  if (heroPs[1] && t.heroDesc2) heroPs[1].textContent = t.heroDesc2;
+  // All elements with data-i18n attribute
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    // Check in main translations
+    if (t[key]) {
+      el.textContent = t[key];
+      return;
+    }
+    // Check in sec (sections)
+    if (t.sec && t.sec[key]) {
+      el.textContent = t.sec[key];
+      return;
+    }
+  });
 
-  // Why section
-  const whyEl = (key) => document.querySelector('[data-i18n="' + key + '"]');
-  if (whyEl('whyTitle')) whyEl('whyTitle').textContent = t.whyTitle;
-  if (whyEl('whyGoalLabel')) whyEl('whyGoalLabel').textContent = t.whyGoalLabel;
-  if (whyEl('whyGoal')) whyEl('whyGoal').textContent = t.whyGoal;
-  if (whyEl('whyForLabel')) whyEl('whyForLabel').textContent = t.whyForLabel;
-  if (whyEl('whyFor')) whyEl('whyFor').textContent = t.whyFor;
-  if (whyEl('whyApproachLabel')) whyEl('whyApproachLabel').textContent = t.whyApproachLabel;
-  if (whyEl('whyApproach')) whyEl('whyApproach').textContent = t.whyApproach;
-  if (whyEl('whyStartLabel')) whyEl('whyStartLabel').textContent = t.whyStartLabel;
-  if (whyEl('whyStart')) whyEl('whyStart').textContent = t.whyStart;
-
-  // Legend
+  // Legend items (special handling due to nested structure)
   const legItems = document.querySelectorAll('.legend-item');
-  legItems.forEach((el, i) => { if (t.leg[i]) el.lastChild.textContent = ' ' + t.leg[i]; });
-
-  // Section titles
-  const titles = document.querySelectorAll('.row-title');
-  const subs = document.querySelectorAll('.row-subtitle');
-  titles.forEach((el) => {
-    const text = el.textContent.trim();
-    if (text.includes('MS 365')) { el.textContent = t.sec.ms365; return; }
-    if (text.includes('Workplace')) { el.textContent = t.sec.workplace; return; }
-    if (text.includes('KI') || text.includes('AI')) { el.textContent = t.sec.ki; return; }
-    if (text.includes('Shortcuts') || text.includes('Smart')) { el.textContent = t.sec.shortcuts; return; }
-    if (text.includes('Automation') || text.includes('Plattform') || text.includes('Platform')) { el.textContent = t.sec.automation; return; }
-    if (text.includes('Coding')) { el.textContent = t.sec.coding; return; }
-    if (text.includes('E-Mail') || text.includes('Email') || text.includes('Kalender') || text.includes('Calendar')) { el.textContent = t.sec.email; return; }
-    if (text.includes('Research') || text.includes('Meeting-Vorbereitung') || text.includes('Meeting Prep')) { el.textContent = t.sec.research; return; }
-    if (text.includes('Weiteres') || text.includes('Miscellaneous')) { el.textContent = t.sec.weiteres; return; }
-  });
-  subs.forEach((el) => {
-    const text = el.textContent.trim();
-    if (text.includes('Claude Add-in') || text.includes('Apple Tasks')) { el.textContent = t.sec.ms365Sub; return; }
-    if (text.includes('Apple') && text.includes('Browser')) { el.textContent = t.sec.workplaceSub; return; }
-    if (text.includes('Apple') && text.includes('Ecosystem')) { el.textContent = t.sec.workplaceSub; return; }
-    if (text.includes('Individualisiert') || text.includes('Personalized')) { el.textContent = t.sec.kiSub; return; }
-    if (text.includes('MacBook') && text.includes('iPhone')) { el.textContent = t.sec.shortcutsSub; return; }
-    if (text.includes('n8n') && text.includes('Agents')) { el.textContent = t.sec.automationSub; return; }
-    if (text.includes('Claude Code') || text.includes('MCP')) { el.textContent = t.sec.codingSub; return; }
-    if (text.includes('Task Tracking') || text.includes('Meeting Protokolle') || text.includes('Meeting Minutes')) { el.textContent = t.sec.emailSub; return; }
-    if (text.includes('Automatische Recherche') || text.includes('Automatic research')) { el.textContent = t.sec.researchSub; return; }
-    if (text.includes('Rechnungs-Scanner') || text.includes('Invoice Scanner') || text.includes('Kontakte-Sync')) { el.textContent = t.sec.weiteresSub; return; }
-  });
-
-  // Video
-  const videoTitle = document.querySelector('[data-i18n="videoTitle"]');
-  const videoDesc = document.querySelector('[data-i18n="videoDesc"]');
-  if (videoTitle && t.videoTitle) videoTitle.textContent = t.videoTitle;
-  if (videoDesc && t.videoDesc) videoDesc.textContent = t.videoDesc;
-
-  // Automation download link
-  const autoDl = document.querySelector('[data-i18n="automationDownload"]');
-  if (autoDl && t.sec.automationDownload) autoDl.textContent = t.sec.automationDownload;
-
-  // Footer
-  const footer = document.querySelector('[data-i18n="footer"]');
-  if (footer) footer.textContent = t.footer;
+  legItems.forEach((el, i) => { if (t.leg && t.leg[i]) el.lastChild.textContent = ' ' + t.leg[i]; });
 
   // Card links
   if (t.links) {
@@ -871,7 +861,28 @@ function setLang(lang) {
       if (t.links[key]) el.textContent = t.links[key];
     });
   }
+
+  // Card translations
+  if (t.cards) {
+    document.querySelectorAll('.card[data-card]').forEach(card => {
+      const key = card.getAttribute('data-card');
+      if (t.cards[key]) {
+        const [name, sub, desc] = t.cards[key];
+        const nameEl = card.querySelector('.card-name');
+        const subEl = card.querySelector('.card-sub');
+        const descEl = card.querySelector('.card-desc');
+        if (nameEl && name) nameEl.textContent = name;
+        if (subEl && sub) subEl.textContent = sub;
+        if (descEl && desc) descEl.textContent = desc;
+      }
+    });
+  }
 }
+
+// Initialize with German on page load
+document.addEventListener('DOMContentLoaded', function() {
+  setLang('de');
+});
 </script>
 </body>
 </html>
