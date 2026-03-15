@@ -390,9 +390,9 @@
 
   <!-- 00 WARUM DIESES DASHBOARD -->
   <div class="row-section">
-    <div style="background: var(--deep-sea); border-radius: var(--radius-lg); padding: 32px;">
+    <div style="background: var(--deep-sea); border-radius: var(--radius-lg); padding: 32px; text-align: center;">
       <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 22px; color: #fff; margin-bottom: 16px;">🎯 Warum dieses Dashboard?</div>
-      <div style="font-size: 15px; color: #C8D8E8; line-height: 170%; margin-bottom: 24px;">
+      <div style="font-size: 15px; color: #C8D8E8; line-height: 170%; margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto;">
         <p style="margin-bottom: 12px;"><strong style="color: #fff;">Das Ziel:</strong> Wissen so aufbereiten, dass du es schnell übernehmen, anwenden und für dich weiterdenken kannst. Keine Theorie – sondern echte Workflows, Prompts und Automationen aus dem täglichen Einsatz.</p>
         <p style="margin-bottom: 12px;"><strong style="color: #fff;">Für wen:</strong> Für alle, die Lust haben. Kein technisches Vorwissen nötig. Wer das Dashboard durchschaut, soll verstehen: Was ist möglich? Wie geht es? Und wie kann ich selbst davon profitieren?</p>
         <p style="margin-bottom: 12px;"><strong style="color: #fff;">Der Ansatz:</strong> Tools clever kombinieren statt einzeln nutzen. Nicht die Anzahl der Tools entscheidet, sondern die Tiefe der Nutzung. Apple Shortcuts + n8n + Claude + MS 365 = ein System, das Arbeit abnimmt.</p>
@@ -454,7 +454,23 @@
     </div>
   </div>
 
-  <!-- 03 SHORTCUTS -->
+  <!-- 03 CODING & APPS -->
+  <div class="row-section">
+    <div class="row-header">
+      <div class="row-icon red">🚀</div>
+      <span class="row-title">Coding & Apps</span>
+      <span class="row-subtitle">Claude Code · Terminal · GitHub · Railway</span>
+    </div>
+    <div class="row-scroll">
+      <div class="card" data-a="grad"><div class="card-emoji">🖥️</div><div class="card-name">Claude Code (Terminal)</div><div class="card-sub">KI-gestütztes Programmieren</div><div class="card-desc">Der „Alles-Könner". Apps, Skripte, Automationen bauen – ohne Coding-Erfahrung. Iterativ: Ziel beschreiben → Code entsteht.</div><div class="card-tags"><span class="tag red">Terminal</span><span class="tag red">Deploy</span><span class="tag red">Debug</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" data-link="claudecode">Get Claude Code ↗</a></div>
+      <div class="card" data-a="grad"><div class="card-emoji">🔌</div><div class="card-name">Claude MCP</div><div class="card-sub">Model Context Protocol</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n und mehr. Wie ein USB-C-Anschluss für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Open Source</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/mcp" target="_blank" data-link="mcp">MCP Docs ↗</a></div>
+      <div class="card" data-a="red"><div class="card-emoji">🔧</div><div class="card-name">Claude Cowork</div><div class="card-sub">Desktop-Automatisierung</div><div class="card-desc">Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.</div><div class="card-tags"><span class="tag red">Desktop</span><span class="tag red">No-Code</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="cowork">Get Cowork ↗</a></div>
+      <div class="card" data-a="marine"><div class="card-emoji">🏗️</div><div class="card-name">GitHub + Railway</div><div class="card-sub">Code · Hosting · Datenbank</div><div class="card-desc">GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.</div><div class="card-tags"><span class="tag marine">GitHub</span><span class="tag marine">Railway</span><span class="tag marine">Postgres</span></div><a class="card-link" href="https://github.com" target="_blank" data-link="github">Get GitHub ↗</a></div>
+      <div class="card" data-a="marine"><div class="card-emoji">💎</div><div class="card-name">Visual Studio Code</div><div class="card-sub">Code-Editor · Extensions · Git</div><div class="card-desc">Zentraler Code-Editor mit Git-Integration, Terminal und Extensions. Basis für Claude Code und lokale Entwicklung.</div><div class="card-tags"><span class="tag marine">VS Code</span><span class="tag marine">Extensions</span><span class="tag marine">Git</span></div><a class="card-link" href="https://code.visualstudio.com" target="_blank" data-link="vscode">Get VS Code ↗</a></div>
+    </div>
+  </div>
+
+  <!-- 04 SHORTCUTS -->
   <div class="row-section">
     <div class="row-header" style="flex-wrap: wrap;">
       <div class="row-icon sky">⚡</div>
@@ -553,22 +569,6 @@
       <div class="row-scroll">
         <div class="card" data-a="marine"><div class="card-emoji">🔄</div><div class="card-name">Teams-Webhook Refresh</div><div class="card-sub">Alle 12 Stunden automatisch</div><div class="card-desc">Microsoft Teams Webhooks laufen nach einiger Zeit ab. Dieser Workflow erneuert die Verbindung automatisch alle 12 Stunden – ohne manuelles Eingreifen.</div><div class="card-tags"><span class="tag marine">Teams</span><span class="tag red">n8n</span><span class="tag marine">Scheduled</span></div></div>
       </div>
-    </div>
-  </div>
-
-  <!-- 06 CODING & APPS -->
-  <div class="row-section">
-    <div class="row-header">
-      <div class="row-icon red">🚀</div>
-      <span class="row-title">Coding & Apps</span>
-      <span class="row-subtitle">Claude Code · Terminal · GitHub · Railway</span>
-    </div>
-    <div class="row-scroll">
-      <div class="card" data-a="grad"><div class="card-emoji">🖥️</div><div class="card-name">Claude Code (Terminal)</div><div class="card-sub">KI-gestütztes Programmieren</div><div class="card-desc">Der „Alles-Könner". Apps, Skripte, Automationen bauen – ohne Coding-Erfahrung. Iterativ: Ziel beschreiben → Code entsteht.</div><div class="card-tags"><span class="tag red">Terminal</span><span class="tag red">Deploy</span><span class="tag red">Debug</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" data-link="claudecode">Get Claude Code ↗</a></div>
-      <div class="card" data-a="grad"><div class="card-emoji">🔌</div><div class="card-name">Claude MCP</div><div class="card-sub">Model Context Protocol</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n und mehr. Wie ein USB-C-Anschluss für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Open Source</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/mcp" target="_blank" data-link="mcp">MCP Docs ↗</a></div>
-      <div class="card" data-a="red"><div class="card-emoji">🔧</div><div class="card-name">Claude Cowork</div><div class="card-sub">Desktop-Automatisierung</div><div class="card-desc">Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.</div><div class="card-tags"><span class="tag red">Desktop</span><span class="tag red">No-Code</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="cowork">Get Cowork ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">🏗️</div><div class="card-name">GitHub + Railway</div><div class="card-sub">Code · Hosting · Datenbank</div><div class="card-desc">GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.</div><div class="card-tags"><span class="tag marine">GitHub</span><span class="tag marine">Railway</span><span class="tag marine">Postgres</span></div><a class="card-link" href="https://github.com" target="_blank" data-link="github">Get GitHub ↗</a></div>
-      <div class="card" data-a="marine"><div class="card-emoji">💎</div><div class="card-name">Visual Studio Code</div><div class="card-sub">Code-Editor · Extensions · Git</div><div class="card-desc">Zentraler Code-Editor mit Git-Integration, Terminal und Extensions. Basis für Claude Code und lokale Entwicklung.</div><div class="card-tags"><span class="tag marine">VS Code</span><span class="tag marine">Extensions</span><span class="tag marine">Git</span></div><a class="card-link" href="https://code.visualstudio.com" target="_blank" data-link="vscode">Get VS Code ↗</a></div>
     </div>
   </div>
 
