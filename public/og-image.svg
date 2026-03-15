@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#102B4E"/>
+  <circle cx="200" cy="315" r="80" fill="#104588"/>
+  <circle cx="170" cy="295" r="15" fill="white"/>
+  <circle cx="230" cy="295" r="15" fill="white"/>
+  <path d="M150 340 Q200 390 250 340" stroke="white" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <text x="320" y="290" font-family="system-ui, -apple-system, sans-serif" font-size="90" font-weight="bold" fill="white">Mina</text>
+  <text x="320" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#B0C4DE">CH Digitale Assistenz</text>
+  <text x="320" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#6B8CAE">Personal AI Workplace Overview</text>
+</svg>
