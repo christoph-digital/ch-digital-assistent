@@ -394,12 +394,12 @@
   <!-- 00 WARUM DIESES DASHBOARD -->
   <div class="row-section">
     <div style="background: var(--silver-dark); border-radius: var(--radius-lg); padding: 32px; text-align: center; border: 1px solid rgba(16,69,136,0.1);">
-      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 22px; color: var(--deep-sea); margin-bottom: 16px;">🎯 Warum dieses Dashboard?</div>
+      <div data-i18n="whyTitle" style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 22px; color: var(--deep-sea); margin-bottom: 16px;">🎯 Warum dieses Dashboard?</div>
       <div style="font-size: 15px; color: var(--grey); line-height: 170%; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
-        <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);">Das Ziel:</strong> Ich bin überzeugt, dass eine Assistenz heute mit digitalen Tools abbildbar ist. Dieses Dashboard bereitet meine Learnings so auf, dass jeder sie schnell übernehmen, anwenden und für sich weiterdenken kann.</p>
-        <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);">Für wen:</strong> Für alle, die Lust auf smarteres Arbeiten haben. Kein technisches Vorwissen nötig. Bei Rückfragen gerne jederzeit bei mir melden.</p>
-        <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);">Der Ansatz:</strong> Im Mittelpunkt steht das Verständnis für einen modernen Workplace – Arbeitsweise, Tools und möglichst viel Automatisierung. KI und Tools clever kombinieren statt einzeln nutzen.</p>
-        <p><strong style="color: var(--deep-sea);">Auf geht's:</strong> Einfach anfangen, experimentieren, iterieren. KI kann so viel, ist aber kein Ersatz fürs Denken, sondern hier u.a. eine Erweiterung der eigenen Produktivität.</p>
+        <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);" data-i18n="whyGoalLabel">Das Ziel:</strong> <span data-i18n="whyGoal">Ich bin überzeugt, dass eine Assistenz heute mit digitalen Tools abbildbar ist. Dieses Dashboard bereitet meine Learnings so auf, dass jeder sie schnell übernehmen, anwenden und für sich weiterdenken kann.</span></p>
+        <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);" data-i18n="whyForLabel">Für wen:</strong> <span data-i18n="whyFor">Für alle, die Lust auf smarteres Arbeiten haben. Kein technisches Vorwissen nötig. Bei Rückfragen gerne jederzeit bei mir melden.</span></p>
+        <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);" data-i18n="whyApproachLabel">Der Ansatz:</strong> <span data-i18n="whyApproach">Im Mittelpunkt steht das Verständnis für einen modernen Workplace – Arbeitsweise, Tools und möglichst viel Automatisierung. KI und Tools clever kombinieren statt einzeln nutzen.</span></p>
+        <p><strong style="color: var(--deep-sea);" data-i18n="whyStartLabel">Auf geht's:</strong> <span data-i18n="whyStart">Einfach anfangen, experimentieren, iterieren. KI kann so viel, ist aber kein Ersatz fürs Denken, sondern hier u.a. eine Erweiterung der eigenen Produktivität.</span></p>
       </div>
     </div>
   </div>
@@ -587,24 +587,41 @@ const translations = {
   de: {
     heroTitle: 'CH Digitale Assistenz',
     heroDesc: 'Meine digitale Assistenz – alle Tools, Shortcuts, KI-Modelle, Workflows und Automationen auf einen Blick.',
+    heroDesc2: 'Hier findest du alle Bausteine meiner digitalen Assistenz Mina – von Tools über Shortcuts bis zu Automationen. Viele Workflows und Entwicklungen kannst du direkt herunterladen.',
+    // Why section
+    whyTitle: '🎯 Warum dieses Dashboard?',
+    whyGoalLabel: 'Das Ziel:',
+    whyGoal: 'Ich bin überzeugt, dass eine Assistenz heute mit digitalen Tools abbildbar ist. Dieses Dashboard bereitet meine Learnings so auf, dass jeder sie schnell übernehmen, anwenden und für sich weiterdenken kann.',
+    whyForLabel: 'Für wen:',
+    whyFor: 'Für alle, die Lust auf smarteres Arbeiten haben. Kein technisches Vorwissen nötig. Bei Rückfragen gerne jederzeit bei mir melden.',
+    whyApproachLabel: 'Der Ansatz:',
+    whyApproach: 'Im Mittelpunkt steht das Verständnis für einen modernen Workplace – Arbeitsweise, Tools und möglichst viel Automatisierung. KI und Tools clever kombinieren statt einzeln nutzen.',
+    whyStartLabel: 'Auf geht\'s:',
+    whyStart: 'Einfach anfangen, experimentieren, iterieren. KI kann so viel, ist aber kein Ersatz fürs Denken, sondern hier u.a. eine Erweiterung der eigenen Produktivität.',
     // Legend
-    leg: ['Workplace Design','Shortcuts','KI Tools','MS 365','Automation Tools','Coding & Apps'],
+    leg: ['Workplace','MS 365','KI Tools','Coding','Shortcuts','Automation','E-Mail & Kalender','Research','Weiteres'],
     // Section titles
     sec: {
       workplace: 'Workplace Design',
       workplaceSub: 'Apple-Ökosystem · Browser-First · Arbeitsumgebung',
       ms365: 'MS 365',
-      ms365Sub: 'Outlook · Teams · Bookings · Boomerang',
+      ms365Sub: 'Outlook · Teams · Claude Add-in · Apple Tasks',
       ki: 'KI Tools',
       kiSub: 'Individualisiert & spezialisiert · Modell × Aufgabe × Kontext',
       shortcuts: 'Shortcuts – Smart Automation',
-      shortcutsSub: 'Apple Kurzbefehle · Siri · Textersetzungen · Kalender-Link',
-      shortcutDownload: 'Alle Shortcuts herunterladen ↗',
+      shortcutsSub: 'MacBook · iPhone · iPad · Apple Watch',
+      shortcutsDesc: 'Läuft geräteübergreifend auf allen Apple-Geräten. Einmal einrichten, überall nutzen – richtig gut zum produktiven Arbeiten.',
       automation: 'Automation Plattform',
       automationSub: 'n8n · Agents · API-Integrationen',
       automationDownload: 'Alle n8n Workflows herunterladen ↗',
       coding: 'Coding & Apps',
-      codingSub: 'Claude Code · Terminal · GitHub · Railway',
+      codingSub: 'Claude Code · MCP · Terminal · GitHub · Railway',
+      email: 'E-Mail, Kalender & Meetings',
+      emailSub: 'Task Tracking · Meeting Protokolle · Mail-Management mit KI',
+      research: 'Research & Meeting-Vorbereitung',
+      researchSub: 'Automatische Recherche für das ganze Team',
+      weiteres: 'Weiteres',
+      weiteresSub: 'Rechnungs-Scanner · Kontakte-Sync · Buchhaltung · Wartung',
     },
     // Cards: [name, sub, desc]
     cards: {
@@ -674,22 +691,40 @@ const translations = {
   en: {
     heroTitle: 'CH Digital Assistant',
     heroDesc: 'My digital assistant setup – all tools, shortcuts, AI models, workflows and automations at a glance.',
-    leg: ['Workplace Design','Shortcuts','AI Tools','MS 365','Automation Tools','Coding & Apps'],
+    heroDesc2: 'Here you\'ll find all the building blocks of my digital assistant Mina – from tools to shortcuts to automations. Many workflows and developments are available for direct download.',
+    // Why section
+    whyTitle: '🎯 Why This Dashboard?',
+    whyGoalLabel: 'The Goal:',
+    whyGoal: 'I\'m convinced that an assistant can be built with digital tools today. This dashboard presents my learnings in a way that anyone can quickly adopt, apply, and build upon.',
+    whyForLabel: 'For Whom:',
+    whyFor: 'For anyone who wants to work smarter. No technical knowledge required. Feel free to reach out with any questions.',
+    whyApproachLabel: 'The Approach:',
+    whyApproach: 'The focus is on understanding a modern workplace – work methods, tools, and as much automation as possible. Combining AI and tools cleverly instead of using them separately.',
+    whyStartLabel: 'Let\'s Go:',
+    whyStart: 'Just start, experiment, iterate. AI can do so much, but it\'s not a replacement for thinking – it\'s an extension of your own productivity.',
+    // Legend
+    leg: ['Workplace','MS 365','AI Tools','Coding','Shortcuts','Automation','Email & Calendar','Research','Misc'],
     sec: {
       workplace: 'Workplace Design',
       workplaceSub: 'Apple Ecosystem · Browser-First · Work Environment',
       ms365: 'MS 365',
-      ms365Sub: 'Outlook · Teams · Bookings · Boomerang',
+      ms365Sub: 'Outlook · Teams · Claude Add-in · Apple Tasks',
       ki: 'AI Tools',
       kiSub: 'Personalized & specialized · Model × Task × Context',
       shortcuts: 'Shortcuts – Smart Automation',
-      shortcutsSub: 'Apple Shortcuts · Siri · Text Replacements · Calendar Link',
-      shortcutDownload: 'Download all Shortcuts ↗',
+      shortcutsSub: 'MacBook · iPhone · iPad · Apple Watch',
+      shortcutsDesc: 'Works across all Apple devices. Set up once, use everywhere – great for productive work.',
       automation: 'Automation Platform',
       automationSub: 'n8n · Agents · API Integrations',
       automationDownload: 'Download all n8n Workflows ↗',
       coding: 'Coding & Apps',
-      codingSub: 'Claude Code · Terminal · GitHub · Railway',
+      codingSub: 'Claude Code · MCP · Terminal · GitHub · Railway',
+      email: 'Email, Calendar & Meetings',
+      emailSub: 'Task Tracking · Meeting Minutes · AI Mail Management',
+      research: 'Research & Meeting Prep',
+      researchSub: 'Automatic research for the entire team',
+      weiteres: 'Miscellaneous',
+      weiteresSub: 'Invoice Scanner · Contact Sync · Accounting · Maintenance',
     },
     cards: {
       schreibtische: ['Multiple Desktops','macOS Spaces','Virtual desktops for communication, focus, research, meetings. Quick switching without searching for windows.'],
@@ -766,7 +801,21 @@ function setLang(lang) {
 
   // Hero
   document.querySelector('.hero h1').textContent = t.heroTitle;
-  document.querySelector('.hero p').textContent = t.heroDesc;
+  const heroPs = document.querySelectorAll('.hero p');
+  if (heroPs[0]) heroPs[0].textContent = t.heroDesc;
+  if (heroPs[1] && t.heroDesc2) heroPs[1].textContent = t.heroDesc2;
+
+  // Why section
+  const whyEl = (key) => document.querySelector('[data-i18n="' + key + '"]');
+  if (whyEl('whyTitle')) whyEl('whyTitle').textContent = t.whyTitle;
+  if (whyEl('whyGoalLabel')) whyEl('whyGoalLabel').textContent = t.whyGoalLabel;
+  if (whyEl('whyGoal')) whyEl('whyGoal').textContent = t.whyGoal;
+  if (whyEl('whyForLabel')) whyEl('whyForLabel').textContent = t.whyForLabel;
+  if (whyEl('whyFor')) whyEl('whyFor').textContent = t.whyFor;
+  if (whyEl('whyApproachLabel')) whyEl('whyApproachLabel').textContent = t.whyApproachLabel;
+  if (whyEl('whyApproach')) whyEl('whyApproach').textContent = t.whyApproach;
+  if (whyEl('whyStartLabel')) whyEl('whyStartLabel').textContent = t.whyStartLabel;
+  if (whyEl('whyStart')) whyEl('whyStart').textContent = t.whyStart;
 
   // Legend
   const legItems = document.querySelectorAll('.legend-item');
@@ -775,75 +824,51 @@ function setLang(lang) {
   // Section titles
   const titles = document.querySelectorAll('.row-title');
   const subs = document.querySelectorAll('.row-subtitle');
-  const secKeys = ['workplace','ki','shortcuts','automation','coding'];
-  const secSubKeys = ['workplaceSub','kiSub','shortcutsSub','automationSub','codingSub'];
-  let si = 0;
   titles.forEach((el) => {
     const text = el.textContent.trim();
     if (text.includes('MS 365')) { el.textContent = t.sec.ms365; return; }
-    if (text.includes('Workplace') || text.includes('Workplace')) { el.textContent = t.sec.workplace; return; }
+    if (text.includes('Workplace')) { el.textContent = t.sec.workplace; return; }
     if (text.includes('KI') || text.includes('AI')) { el.textContent = t.sec.ki; return; }
     if (text.includes('Shortcuts') || text.includes('Smart')) { el.textContent = t.sec.shortcuts; return; }
     if (text.includes('Automation') || text.includes('Plattform') || text.includes('Platform')) { el.textContent = t.sec.automation; return; }
     if (text.includes('Coding')) { el.textContent = t.sec.coding; return; }
+    if (text.includes('E-Mail') || text.includes('Email') || text.includes('Kalender') || text.includes('Calendar')) { el.textContent = t.sec.email; return; }
+    if (text.includes('Research') || text.includes('Meeting-Vorbereitung') || text.includes('Meeting Prep')) { el.textContent = t.sec.research; return; }
+    if (text.includes('Weiteres') || text.includes('Miscellaneous')) { el.textContent = t.sec.weiteres; return; }
   });
   subs.forEach((el) => {
     const text = el.textContent.trim();
-    if (text.includes('Outlook') && text.includes('Bookings')) { el.textContent = t.sec.ms365Sub; return; }
+    if (text.includes('Claude Add-in') || text.includes('Apple Tasks')) { el.textContent = t.sec.ms365Sub; return; }
     if (text.includes('Apple') && text.includes('Browser')) { el.textContent = t.sec.workplaceSub; return; }
     if (text.includes('Apple') && text.includes('Ecosystem')) { el.textContent = t.sec.workplaceSub; return; }
     if (text.includes('Individualisiert') || text.includes('Personalized')) { el.textContent = t.sec.kiSub; return; }
-    if (text.includes('Kurzbefehle') || text.includes('Shortcuts')) { el.textContent = t.sec.shortcutsSub; return; }
+    if (text.includes('MacBook') && text.includes('iPhone')) { el.textContent = t.sec.shortcutsSub; return; }
     if (text.includes('n8n') && text.includes('Agents')) { el.textContent = t.sec.automationSub; return; }
-    if (text.includes('Claude Code')) { el.textContent = t.sec.codingSub; return; }
+    if (text.includes('Claude Code') || text.includes('MCP')) { el.textContent = t.sec.codingSub; return; }
+    if (text.includes('Task Tracking') || text.includes('Meeting Protokolle') || text.includes('Meeting Minutes')) { el.textContent = t.sec.emailSub; return; }
+    if (text.includes('Automatische Recherche') || text.includes('Automatic research')) { el.textContent = t.sec.researchSub; return; }
+    if (text.includes('Rechnungs-Scanner') || text.includes('Invoice Scanner') || text.includes('Kontakte-Sync')) { el.textContent = t.sec.weiteresSub; return; }
   });
 
-  // Cards
-  const allNames = document.querySelectorAll('.card-name');
-  const allSubs2 = document.querySelectorAll('.card-sub');
-  const allDescs = document.querySelectorAll('.card-desc');
-  allNames.forEach((el, i) => {
-    if (cardKeys[i] && t.cards[cardKeys[i]]) {
-      el.textContent = t.cards[cardKeys[i]][0];
-      allSubs2[i].textContent = t.cards[cardKeys[i]][1];
-      allDescs[i].textContent = t.cards[cardKeys[i]][2];
-    }
-  });
-
-  // Resources
-  document.querySelector('[data-i18n="resources"]').textContent = t.resources;
-  document.querySelector('[data-i18n="handbuchTitle"]').textContent = t.handbuchTitle;
-  document.querySelector('[data-i18n="handbuchDesc"]').textContent = t.handbuchDesc;
-  document.querySelector('[data-i18n="handbuchLink"]').textContent = t.handbuchLink;
-  document.querySelector('[data-i18n="videoTitle"]').textContent = t.videoTitle;
-  document.querySelector('[data-i18n="videoDesc"]').textContent = t.videoDesc;
-  document.querySelector('[data-i18n="videoLink"]').textContent = t.videoLink;
-
-  // Downloads
-  document.querySelector('[data-i18n="downloadTitle"]').textContent = t.downloadTitle;
-  document.querySelector('[data-i18n="downloadDesc"]').textContent = t.downloadDesc;
-  document.querySelector('[data-i18n="downloadLink"]').textContent = t.downloadLink;
-
-  // Disclaimer
-  document.querySelector('.disclaimer-title').textContent = t.disclaimerTitle;
-  document.querySelector('[data-i18n="disclaimerText"]').textContent = t.disclaimerText;
-
-  // Shortcut download link
-  const scDl = document.querySelector('[data-i18n="shortcutDownload"]');
-  if (scDl && t.sec.shortcutDownload) scDl.textContent = t.sec.shortcutDownload;
+  // Video
+  const videoTitle = document.querySelector('[data-i18n="videoTitle"]');
+  const videoDesc = document.querySelector('[data-i18n="videoDesc"]');
+  if (videoTitle && t.videoTitle) videoTitle.textContent = t.videoTitle;
+  if (videoDesc && t.videoDesc) videoDesc.textContent = t.videoDesc;
 
   // Automation download link
   const autoDl = document.querySelector('[data-i18n="automationDownload"]');
   if (autoDl && t.sec.automationDownload) autoDl.textContent = t.sec.automationDownload;
 
   // Footer
-  document.querySelector('[data-i18n="footer"]').textContent = t.footer;
+  const footer = document.querySelector('[data-i18n="footer"]');
+  if (footer) footer.textContent = t.footer;
 
   // Card links
   if (t.links) {
     document.querySelectorAll('.card-link[data-link]').forEach(el => {
       const key = el.getAttribute('data-link');
-      if (t.links[key]) el.textContent = t.links[key] + ' ↗';
+      if (t.links[key]) el.textContent = t.links[key];
     });
   }
 }
