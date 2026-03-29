@@ -409,6 +409,7 @@
     <span class="legend-item"><span class="legend-dot" style="background:var(--digital-red)"></span> Automation</span>
     <span class="legend-item"><span class="legend-dot" style="background:var(--digital-red)"></span> E-Mail & Kalender</span>
     <span class="legend-item"><span class="legend-dot" style="background:var(--digital-red)"></span> Research</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--sky-blue)"></span> News & Briefing</span>
     <span class="legend-item"><span class="legend-dot" style="background:var(--marine-blue)"></span> Weiteres</span>
   </div>
 </div>
@@ -595,6 +596,20 @@
       </div>
     </div>
 
+    <!-- News & Briefing -->
+    <div style="margin-top: 24px;">
+      <div class="row-header" style="margin-bottom: 12px;">
+        <div class="row-icon sky" style="width: 32px; height: 32px; font-size: 16px;">📰</div>
+        <span class="row-title" style="font-size: 20px;" data-i18n="newsBriefing">News & Briefing</span>
+        <span class="row-subtitle" data-i18n="newsBriefingSub">Automatische Digest-Briefings per KI – wöchentlich per Mail</span>
+      </div>
+      <div class="row-scroll">
+        <div class="card" data-a="sky" data-card="techbriefing"><div class="card-emoji">🤖</div><div class="card-name">Tech, Innovation & KI</div><div class="card-sub">Wöchentlich · Mittwochs</div><div class="card-desc">Automatisches KI-Briefing: Deep Dives, Use Cases und News zu KI, Software, Cloud und IT-Sicherheit. Quellen: Perplexity, Newsletter (Heise, KI Weekly, HB), GPT-4.1.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag red">GPT-4.1</span><span class="tag red">n8n</span></div><a class="card-link" href="https://possehl.app.n8n.cloud/workflow/mC2NRfe7kkCyteYY" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="marine" data-card="marktbriefing"><div class="card-emoji">🏢</div><div class="card-name">Wettbewerb & Markt</div><div class="card-sub">Wöchentlich · Dienstags</div><div class="card-desc">Markt-Briefing: Industrieller Mittelstand, Industrial-Tech-Investoren, Portfolio-Beteiligungen und deren Wettbewerber. 3 Perplexity-Recherchen, aufbereitet mit GPT-4.1.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag red">GPT-4.1</span><span class="tag red">n8n</span></div><a class="card-link" href="https://possehl.app.n8n.cloud/workflow/g1r7Rc5ZhNir89kI" target="_blank">n8n Workflow ↗</a></div>
+        <div class="card" data-a="grad" data-card="eventbriefing"><div class="card-emoji">📅</div><div class="card-name">Events & Community</div><div class="card-sub">Wöchentlich · Donnerstags</div><div class="card-desc">Partner-News (Maschinenraum, FoundersFoundation, VDMA u.a.), Event-Updates und neue Event-Empfehlungen. Quellen: Perplexity, Outlook-Mails, GPT-4.1.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag marine">Outlook</span><span class="tag red">GPT-4.1</span></div><a class="card-link" href="https://possehl.app.n8n.cloud/workflow/lOAi5wb09vdms5Xy" target="_blank">n8n Workflow ↗</a></div>
+      </div>
+    </div>
+
     <!-- Weiteres -->
     <div style="margin-top: 24px;">
       <div class="row-header" style="margin-bottom: 12px;">
@@ -654,7 +669,7 @@ const translations = {
     whyStartLabel: 'Auf geht\'s:',
     whyStart: 'Einfach anfangen, experimentieren, iterieren. KI kann so viel, ist aber kein Ersatz fürs Denken, sondern hier u.a. eine Erweiterung der eigenen Produktivität.',
     // Legend
-    leg: ['Workplace','MS 365','KI Tools','Coding','Shortcuts','Automation','E-Mail & Kalender','Research','Weiteres'],
+    leg: ['Workplace','MS 365','KI Tools','Coding','Shortcuts','Automation','E-Mail & Kalender','Research','News & Briefing','Weiteres'],
     // Section titles
     sec: {
       workplace: 'Workplace Design',
@@ -675,6 +690,8 @@ const translations = {
       emailSub: 'Task Tracking · Meeting Protokolle · Mail-Management mit KI',
       research: 'Research & Meeting-Vorbereitung',
       researchSub: 'Automatische Recherche für das ganze Team',
+      newsBriefing: 'News & Briefing',
+      newsBriefingSub: 'Automatische Digest-Briefings per KI – wöchentlich per Mail',
       weiteres: 'Weiteres',
       weiteresSub: 'Rechnungs-Scanner · Kontakte-Sync · Buchhaltung · Wartung',
     },
@@ -731,6 +748,9 @@ const translations = {
       kiresearch: ['KI-Recherche in Teams','Frage stellen → Antwort mit Quellen','Schreibe eine Frage in den Teams-Kanal → Perplexity recherchiert im Web → strukturierte Antwort mit Quellen erscheint automatisch.'],
       firmen: ['Firmen-Recherche','Unternehmen schnell verstehen','Firmenname eingeben → Geschäftsmodell, Digitalisierungsgrad, Ansprechpartner und LinkedIn-Aktivitäten werden automatisch zusammengestellt.'],
       kontaktmail: ['Kontakt-Mail als Entwurf','Direkt anschreiben','Nach der Recherche wird automatisch ein E-Mail-Entwurf mit personalisiertem Anschreiben erstellt.'],
+      techbriefing: ['Tech, Innovation & KI','Wöchentlich · Mittwochs','Automatisches KI-Briefing: Deep Dives, Use Cases und News zu KI, Software, Cloud und IT-Sicherheit. Quellen: Perplexity, Newsletter (Heise, KI Weekly, HB), GPT-4.1.'],
+      marktbriefing: ['Wettbewerb & Markt','Wöchentlich · Dienstags','Markt-Briefing: Industrieller Mittelstand, Industrial-Tech-Investoren, Portfolio-Beteiligungen und deren Wettbewerber. 3 Perplexity-Recherchen, aufbereitet mit GPT-4.1.'],
+      eventbriefing: ['Events & Community','Wöchentlich · Donnerstags','Partner-News (Maschinenraum, FoundersFoundation, VDMA u.a.), Event-Updates und neue Event-Empfehlungen. Quellen: Perplexity, Outlook-Mails, GPT-4.1.'],
       belegscanner: ['Beleg-Scanner','Foto → KI → Google Drive','Foto von Quittung oder Rechnung machen → KI extrahiert Datum, Betrag, Händler → Beleg wird automatisch im richtigen Monatsordner abgelegt.'],
       rechnungsscanner: ['Rechnungs-Scanner','Mail → Erkennung → Ablage','Erkennt Rechnungen in E-Mails automatisch, extrahiert Datum und Betrag per KI und sortiert sie direkt in den richtigen Buchhaltungsordner.'],
       kontaktesync: ['Kontakte-Sync','LinkedIn → Kontakte säubern','Kontakte automatisch mit LinkedIn abgleichen. Scrapt Profilbilder, aktuelle Titel und Unternehmen.'],
@@ -777,7 +797,7 @@ const translations = {
     whyStartLabel: 'Let\'s Go:',
     whyStart: 'Just start, experiment, iterate. AI can do so much, but it\'s not a replacement for thinking – it\'s an extension of your own productivity.',
     // Legend
-    leg: ['Workplace','MS 365','AI Tools','Coding','Shortcuts','Automation','Email & Calendar','Research','Misc'],
+    leg: ['Workplace','MS 365','AI Tools','Coding','Shortcuts','Automation','Email & Calendar','Research','News & Briefing','Misc'],
     sec: {
       workplace: 'Workplace Design',
       workplaceSub: 'Apple Ecosystem · Browser-First · Work Environment',
@@ -797,6 +817,8 @@ const translations = {
       emailSub: 'Task Tracking · Meeting Minutes · AI Mail Management',
       research: 'Research & Meeting Prep',
       researchSub: 'Automatic research for the entire team',
+      newsBriefing: 'News & Briefing',
+      newsBriefingSub: 'Automated AI digest briefings – delivered weekly by email',
       weiteres: 'Miscellaneous',
       weiteresSub: 'Invoice Scanner · Contact Sync · Accounting · Maintenance',
     },
@@ -852,6 +874,9 @@ const translations = {
       kiresearch: ['AI Research in Teams','Ask → Answer with Sources','Post a question in the Teams channel → Perplexity searches the web → structured answer with sources appears automatically.'],
       firmen: ['Company Research','Quickly Understand Companies','Enter company name → Business model, digitalization level, contacts and LinkedIn activities are automatically compiled.'],
       kontaktmail: ['Contact Email as Draft','Direct Outreach','After research, an email draft with personalized message is automatically created.'],
+      techbriefing: ['Tech, Innovation & AI','Weekly · Wednesdays','Automated AI briefing: deep dives, use cases and news on AI, software, cloud and IT security. Sources: Perplexity, newsletters (Heise, KI Weekly, HB), GPT-4.1.'],
+      marktbriefing: ['Competition & Market','Weekly · Tuesdays','Market briefing: industrial mid-market, industrial tech investors, portfolio companies and their competitors. 3 Perplexity research runs, compiled with GPT-4.1.'],
+      eventbriefing: ['Events & Community','Weekly · Thursdays','Partner news (Maschinenraum, FoundersFoundation, VDMA etc.), event updates and new event recommendations. Sources: Perplexity, Outlook emails, GPT-4.1.'],
       belegscanner: ['Receipt Scanner','Photo → AI → Google Drive','Take a photo of receipt or invoice → AI extracts date, amount, vendor → Receipt is automatically stored in the correct monthly folder.'],
       rechnungsscanner: ['Invoice Scanner','Email → Recognition → Storage','Automatically recognizes invoices in emails, extracts date and amount via AI and sorts them directly into the correct accounting folder.'],
       kontaktesync: ['Contacts Sync','LinkedIn → Clean Contacts','Automatically sync contacts with LinkedIn. Scrapes profile pictures, current titles and companies.'],
