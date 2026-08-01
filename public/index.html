@@ -442,6 +442,20 @@
   }
   .no-results { text-align: center; padding: 56px 24px; color: var(--grey); font-size: 15px; }
 
+  /* Tastaturbedienung: sichtbarer Fokus auf allen interaktiven Elementen */
+  .chip:focus-visible,
+  .card-link:focus-visible,
+  .card-copy:focus-visible,
+  .contact-link:focus-visible,
+  .row-download-link:focus-visible,
+  .lang-btn:focus-visible,
+  select.chip:focus-visible {
+    outline: 2px solid var(--sky-blue);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  .card:focus-within { box-shadow: 0 8px 24px rgba(16,43,78,0.12); }
+
   /* Kontakt in der Hinweis-Box */
   .contact-link {
     display: inline-flex; align-items: center; gap: 7px;
@@ -490,8 +504,8 @@
 
   /* ── KARTEN-FUSS (Stand + Copy-Link) ── */
   .card-foot {
-    display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--silver-dark);
+    display: flex; align-items: center; justify-content: flex-end;
+    margin-top: 10px; min-height: 20px;
   }
   .card-updated { font-size: 10px; color: var(--grey); }
   .card-copy {
@@ -636,7 +650,7 @@
 
 <div class="toolbar">
   <div class="toolbar-inner">
-    <input id="search" class="search" type="search" autocomplete="off" list="tag-list">
+    <input id="search" class="search" type="search" autocomplete="off" list="tag-list" aria-label="Suche">
     <datalist id="tag-list"></datalist>
     <button id="filter-toggle" class="chip" aria-expanded="false"></button>
     <div class="filters" id="filters">
@@ -748,6 +762,7 @@ function renderToolbar() {
   var searchEl = document.getElementById('search');
   searchEl.placeholder = ui('searchPlaceholder');
   searchEl.title = ui('searchHint');
+  searchEl.setAttribute('aria-label', ui('searchHint'));
   searchEl.value = filters.q;
 
   // Vorschlagsliste: alle vorhandenen Schlagwoerter der aktuellen Sprache
@@ -864,9 +879,9 @@ function renderCard(c) {
   if (c.timeSaved) meta.appendChild(el('span', null, '💡 ' + ui('metaSaved') + ' ' + t(c.timeSaved)));
   if (meta.childNodes.length) card.appendChild(meta);
 
-  // Fuss: Stand + Copy-Link
+  // Fuss: nur der Copy-Link. Das Datum stand auf allen Karten gleich und
+  // steht ohnehin im Footer – als Datenfeld (c.updated) bleibt es erhalten.
   var foot = el('div', 'card-foot');
-  foot.appendChild(el('span', 'card-updated', c.updated ? ui('updatedPrefix') + ': ' + c.updated : ''));
   var copy = el('button', 'card-copy', '🔗');
   copy.title = ui('copyLink');
   copy.setAttribute('aria-label', ui('copyLink'));
