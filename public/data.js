@@ -13,7 +13,7 @@ const SITE = {
     "de": {
       "heroTitle": "CH Digitale Assistenz",
       "heroDesc": "Meine digitale Assistenz – alle Tools, Shortcuts, KI-Modelle, Workflows und Automationen auf einen Blick.",
-      "heroDesc2": "Hier findest du alle Bausteine meiner digitalen Assistenz Mina – von Tools über Shortcuts bis zu Automationen. Viele Workflows und Entwicklungen kannst du direkt herunterladen.",
+      "heroDesc2": "Hier findest du alle Bausteine meiner digitalen Assistenz Mina – von Tools über Shortcuts bis zu Automationen. Die Workflows, Prompts und Vorlagen dahinter gebe ich auf Anfrage gerne direkt weiter.",
       "whyTitle": "🎯 Warum dieses Dashboard?",
       "whyGoalLabel": "Das Ziel:",
       "whyGoal": "Ich bin überzeugt, dass eine Assistenz heute mit digitalen Tools abbildbar ist. Dieses Dashboard bereitet meine Learnings so auf, dass jeder sie schnell übernehmen, anwenden und für sich weiterdenken kann.",
@@ -70,7 +70,7 @@ const SITE = {
     "en": {
       "heroTitle": "CH Digital Assistant",
       "heroDesc": "My digital assistant setup – all tools, shortcuts, AI models, workflows and automations at a glance.",
-      "heroDesc2": "Here you'll find all the building blocks of my digital assistant Mina – from tools to shortcuts to automations. Many workflows and developments are available for direct download.",
+      "heroDesc2": "Here you will find all the building blocks of my digital assistant Mina – from tools to shortcuts to automations. I am happy to share the workflows, prompts and templates behind them on request.",
       "whyTitle": "🎯 Why This Dashboard?",
       "whyGoalLabel": "The Goal:",
       "whyGoal": "I'm convinced that an assistant can be built with digital tools today. This dashboard presents my learnings in a way that anyone can quickly adopt, apply, and build upon.",
@@ -321,14 +321,6 @@ const SITE = {
         "en": "n8n · Agents · API Integrations"
       },
       "wrap": true,
-      "action": {
-        "icon": "📥",
-        "href": "https://drive.google.com/drive/folders/1gV4re651ucp2zq9UPuv40GYRCG6ywpIn?usp=sharing",
-        "label": {
-          "de": "Alle n8n Workflows herunterladen ↗",
-          "en": "Download all n8n Workflows ↗"
-        }
-      },
       "legend": {
         "de": "Automation",
         "en": "Automation"
@@ -1652,15 +1644,7 @@ const SITE = {
           "label": "Whisper"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/618e140f761745b999b839dd3d1fef45",
-          "label": {
-            "de": "Shortcut laden ↗",
-            "en": "Get Shortcut ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "mittel",
       "difficulty": null,
@@ -1701,22 +1685,7 @@ const SITE = {
           "label": "Whisper"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/be7bd67014614e7893e4b09d846d4156",
-          "label": {
-            "de": "TipTalk ↗",
-            "en": "TipTalk ↗"
-          }
-        },
-        {
-          "href": "https://www.icloud.com/shortcuts/832d67dd71b84bda896cf0eb56c126a5",
-          "label": {
-            "de": "Glatt ziehen ↗",
-            "en": "Polish ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "mittel",
       "difficulty": null,
@@ -1761,15 +1730,7 @@ const SITE = {
           "label": "Apple Notizen"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/8d447b1807fd4ec589b75c9eec03c8dd",
-          "label": {
-            "de": "Shortcut laden ↗",
-            "en": "Get Shortcut ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "mittel",
       "difficulty": null,
@@ -1852,15 +1813,7 @@ const SITE = {
           "label": "Whisper"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/eaf63bf8d124483a896e1971cca9213a",
-          "label": {
-            "de": "Shortcut laden ↗",
-            "en": "Get Shortcut ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "mittel",
       "difficulty": null,
@@ -1948,22 +1901,7 @@ const SITE = {
           "label": "Outlook"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/5908e7aeedd541f2bf37a117f905110d",
-          "label": {
-            "de": "Shortcut ↗",
-            "en": "Shortcut ↗"
-          }
-        },
-        {
-          "href": "https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=sharing",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "mittel",
       "difficulty": null,
@@ -2010,15 +1948,7 @@ const SITE = {
           "label": "Shortcut"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/e1456c64646f4ded8628edb12bab9a6a",
-          "label": {
-            "de": "Shortcut laden ↗",
-            "en": "Get Shortcut ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "mittel",
       "difficulty": null,
@@ -2064,15 +1994,7 @@ const SITE = {
           "label": "API"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/b1853b6435e84ec4b9f6bb41c8882179",
-          "label": {
-            "de": "Shortcut laden ↗",
-            "en": "Get Shortcut ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "mittel",
       "difficulty": null,
@@ -2305,15 +2227,7 @@ const SITE = {
           "label": "Lernfähig"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=sharing",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2355,15 +2269,7 @@ const SITE = {
           "label": "Outlook"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/19XXUIRENuIT3t_nlwnaf_Pk6qq-4RSqx/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2401,15 +2307,7 @@ const SITE = {
           "label": "Scheduled"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1fchZumON9jjJJGTbCrYHYmmKBpum-l8C/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2450,15 +2348,7 @@ const SITE = {
           "label": "Outlook"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2500,15 +2390,7 @@ const SITE = {
           "label": "n8n"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1pMovwu7AIqK-yDzvhhwDk_fV1Yuc5aLR/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2550,15 +2432,7 @@ const SITE = {
           "label": "Northdata"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2599,15 +2473,7 @@ const SITE = {
           "label": "Northdata"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2644,15 +2510,7 @@ const SITE = {
           "label": "GPT"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2694,15 +2552,7 @@ const SITE = {
           "label": "n8n"
         }
       ],
-      "links": [
-        {
-          "href": "https://possehl.app.n8n.cloud/workflow/mC2NRfe7kkCyteYY",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2744,15 +2594,7 @@ const SITE = {
           "label": "n8n"
         }
       ],
-      "links": [
-        {
-          "href": "https://possehl.app.n8n.cloud/workflow/g1r7Rc5ZhNir89kI",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -2794,15 +2636,7 @@ const SITE = {
           "label": "GPT-4.1"
         }
       ],
-      "links": [
-        {
-          "href": "https://possehl.app.n8n.cloud/workflow/lOAi5wb09vdms5Xy",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -3055,22 +2889,7 @@ const SITE = {
           "label": "Shortcut"
         }
       ],
-      "links": [
-        {
-          "href": "https://www.icloud.com/shortcuts/b898bc910a6b41a1af511e9c98fadc29",
-          "label": {
-            "de": "Shortcut ↗",
-            "en": "Shortcut ↗"
-          }
-        },
-        {
-          "href": "https://drive.google.com/file/d/1bIiwah4_eJT74HzUMbA5h5PmxYLXGdLo/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -3112,15 +2931,7 @@ const SITE = {
           "label": "Outlook"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
@@ -3162,15 +2973,7 @@ const SITE = {
           "label": "Scheduled"
         }
       ],
-      "links": [
-        {
-          "href": "https://drive.google.com/file/d/13zI8NAdOo_fPWw9MVWyMsEUABC16unJa/view?usp=drive_link",
-          "label": {
-            "de": "n8n Workflow ↗",
-            "en": "n8n Workflow ↗"
-          }
-        }
-      ],
+      "links": [],
       "status": "live",
       "effort": "gross",
       "difficulty": null,
