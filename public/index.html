@@ -30,7 +30,10 @@
     --silver: #EDF1F6;
     --silver-dark: #CDDAEA;
     --light-grey: #A6A6A6;
-    --grey: #737373;
+    /* abgedunkelt: #737373 erreichte auf hellem Grund nur 4,1–3,3:1 */
+    --grey: #515B66;
+    /* Link-/Akzentblau fuer kleine Schrift: --sky-blue kommt auf Weiss nur auf 2,5:1 */
+    --blue-text: #0A65A8;
     --sky-blue: #35AAFF;
     --marine-blue: #104588;
     --deep-sea: #102B4E;
@@ -222,7 +225,7 @@
     margin-top: 10px;
     font-size: 12px;
     font-weight: 500;
-    color: var(--light-grey);
+    color: var(--grey);
     text-decoration: none;
     cursor: default;
   }
@@ -233,7 +236,7 @@
     margin-top: 12px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--sky-blue);
+    color: var(--blue-text);
     text-decoration: none;
     transition: opacity 0.2s ease;
   }
@@ -244,7 +247,7 @@
     padding: 4px 10px;
     border-radius: var(--radius-sm);
   }
-  .tag.sky { color: var(--sky-blue); background: rgba(53,170,255,0.08); border: 1px solid rgba(53,170,255,0.2); }
+  .tag.sky { color: var(--blue-text); background: rgba(53,170,255,0.08); border: 1px solid rgba(53,170,255,0.2); }
   .tag.marine { color: var(--marine-blue); background: rgba(16,69,136,0.06); border: 1px solid rgba(16,69,136,0.15); }
   .tag.red { color: var(--digital-red); background: rgba(192,8,80,0.06); border: 1px solid rgba(192,8,80,0.15); }
 
@@ -290,7 +293,8 @@
   }
   .lang-btn.active {
     background: var(--sky-blue);
-    color: #fff;
+    /* dunkle Schrift: weiss auf Hellblau erreicht nur 2,5:1 */
+    color: var(--deep-sea);
   }
   .lang-btn:hover:not(.active) {
     background: rgba(53,170,255,0.15);
@@ -331,7 +335,10 @@
       --silver-dark: #1A2742;
       --light-grey: #B0C4DE;
       --grey: #C0D0E0;
+      /* auf dunklem Grund darf das Blau wieder hell sein */
+      --blue-text: #7DD4FF;
     }
+    .why-body { color: #C0D0E0; }
     body {
       background: #0F1A2E;
       color: #E8EDF4;
@@ -375,6 +382,10 @@
     .disclaimer-title { color: #F0F4F8 !important; }
     /* Why section in dark mode */
     [data-i18n="whyTitle"] { color: #F0F4F8 !important; }
+    /* Titel der Hinweis-Boxen: nutzen inline var(--deep-sea), das im Dark Mode nicht umgestellt wird */
+    [data-i18n="governanceTitle"], [data-i18n="paceTitle"] { color: #F0F4F8 !important; }
+    /* Digital-Rot ist auf dunklem Grund zu dunkel – aufgehellte Variante */
+    .row-download-link { color: #F07AA8 !important; }
     [data-i18n="whyGoalLabel"], [data-i18n="whyForLabel"], [data-i18n="whyApproachLabel"], [data-i18n="whyStartLabel"] { color: #F0F4F8 !important; }
     .download-box [data-i18n="downloadTitle"] { color: #F0F4F8 !important; }
     .lang-btn { color: #B0C4DE; }
@@ -384,6 +395,224 @@
     .card[data-a="sky"]::before { opacity: 0.85; }
     .card[data-a="red"]::before { opacity: 0.85; }
     .card[data-a="grad"]::before { opacity: 0.85; }
+  }
+
+  /* ── TOOLBAR (Suche + Filter) ── */
+  .toolbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(237,241,246,0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--silver-dark);
+  }
+  .toolbar-inner {
+    max-width: 1400px; margin: 0 auto;
+    padding: 12px 24px 8px;
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  }
+  .search {
+    flex: 1 1 240px; min-width: 180px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    padding: 10px 14px;
+    border: 1px solid var(--silver-dark); border-radius: var(--radius-md);
+    background: #fff; color: var(--deep-sea);
+  }
+  .search::placeholder { color: var(--grey); }
+  /* Textbloecke auf --silver-dark brauchen dunklere Schrift als var(--grey) */
+  .why-body, .disclaimer { color: #3F4A57; }
+  .search:focus { outline: 2px solid var(--sky-blue); outline-offset: -1px; }
+  .filter-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .filter-label {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--light-grey); margin-right: 2px;
+  }
+  .chip {
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700;
+    padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--silver-dark); background: #fff; color: var(--grey);
+    cursor: pointer; transition: border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .chip:hover { border-color: var(--sky-blue); color: var(--sky-blue); }
+  .chip.active { background: var(--sky-blue); border-color: var(--sky-blue); color: var(--deep-sea); }
+  .chip-reset { border-style: dashed; }
+  .chip-reset[hidden] { display: none; }
+  select.chip { padding: 6px 10px; max-width: 210px; }
+  .result-info {
+    max-width: 1400px; margin: 0 auto; padding: 0 24px 10px;
+    font-size: 12px; color: var(--grey);
+  }
+  .no-results { text-align: center; padding: 56px 24px; color: var(--grey); font-size: 15px; }
+
+  /* Kontakt in der Hinweis-Box */
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 7px;
+    margin-top: 12px;
+    font-size: 14px; font-weight: 700;
+    color: var(--blue-text); text-decoration: none;
+  }
+  .contact-link:hover span { text-decoration: underline; }
+  .filters { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  #filter-toggle { display: none; }
+  @media (max-width: 768px) {
+    /* auf dem Handy nur die Suche sichtbar, Filter hinter einem Button */
+    #filter-toggle { display: inline-block; flex-shrink: 0; }
+    #filter-toggle.active { background: var(--sky-blue); border-color: var(--sky-blue); color: var(--deep-sea); }
+    .filters { display: none; width: 100%; gap: 10px; padding-bottom: 4px; }
+    .filters.open { display: flex; }
+    .search { flex: 1 1 auto; min-width: 0; }
+  }
+
+  /* ── SEKTIONS-LEAD ── */
+  .row-lead {
+    font-size: 14px; color: var(--grey); line-height: 160%;
+    margin: -4px 0 16px; padding: 0 4px; max-width: 920px;
+  }
+
+  /* ── STATUS-BADGE ── */
+  .badge {
+    position: absolute; top: 11px; right: 12px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .badge-live       { color: #0B7A4B;           background: rgba(11,122,75,0.10);  border: 1px solid rgba(11,122,75,0.25); }
+  .badge-beta       { color: #8A6100;           background: rgba(212,150,0,0.12);  border: 1px solid rgba(212,150,0,0.30); }
+  .badge-experiment { color: var(--marine-blue); background: rgba(16,69,136,0.08);  border: 1px solid rgba(16,69,136,0.20); }
+  .badge-retired    { color: var(--grey);        background: rgba(115,115,115,0.08); border: 1px solid rgba(115,115,115,0.22); }
+
+  /* ── META-ZEILE ── */
+  .card-meta {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 12px; font-size: 11px; color: var(--grey);
+  }
+  .card-meta > span { display: inline-flex; align-items: center; gap: 4px; }
+  .dots { display: inline-flex; gap: 3px; }
+  .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--silver-dark); display: block; }
+  .dots i.on { background: var(--sky-blue); }
+
+  /* ── KARTEN-FUSS (Stand + Copy-Link) ── */
+  .card-foot {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--silver-dark);
+  }
+  .card-updated { font-size: 10px; color: var(--grey); }
+  .card-copy {
+    border: none; background: transparent; cursor: pointer;
+    font-size: 12px; color: var(--grey);
+    padding: 3px 6px; border-radius: var(--radius-sm);
+    opacity: 0; transition: opacity .15s ease, color .15s ease, background .15s ease;
+  }
+  .card:hover .card-copy, .card-copy:focus-visible { opacity: 1; }
+  .card-copy:hover { color: var(--sky-blue); background: rgba(53,170,255,0.10); }
+  /* ohne Maus gibt es kein Hover: Button dauerhaft zeigen */
+  @media (hover: none), (max-width: 768px) { .card-copy { opacity: 1; } }
+
+  /* damit die sticky Toolbar beim Springen nichts verdeckt */
+  .card, .row-section, [data-subsection] { scroll-margin-top: 96px; }
+
+  @keyframes cardFlash {
+    0%   { box-shadow: 0 0 0 3px rgba(53,170,255,0.65); }
+    100% { box-shadow: 0 0 0 3px rgba(53,170,255,0); }
+  }
+  .card.flash { animation: cardFlash 1.8s ease-out; }
+
+  /* ── VERWEIS-KARTE (Dedupe) ── */
+  /* Verweis-Karte: gleiche weisse Optik wie die anderen Karten, nur schmaler */
+  .card-ref {
+    min-width: 215px; max-width: 245px;
+    display: flex; flex-direction: column; justify-content: center; gap: 4px;
+  }
+  .card-ref .card-emoji { margin-bottom: 4px; opacity: 0.55; }
+  .card-ref .ref-label {
+    font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--grey);
+  }
+  .card-ref .ref-title {
+    font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 500;
+    color: var(--deep-sea); line-height: 130%;
+  }
+
+  /* ── KOSTEN-TABELLE ── */
+  .cost-wrap {
+    overflow-x: auto; background: #fff;
+    border: 1px solid var(--silver-dark); border-radius: var(--radius-lg);
+  }
+  .cost-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+  .cost-table th {
+    text-align: left; white-space: nowrap;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 13px;
+    color: var(--deep-sea); background: var(--silver-dark); padding: 12px 16px;
+  }
+  .cost-table td { padding: 12px 16px; border-top: 1px solid var(--silver-dark); color: var(--deep-sea); }
+  .cost-table tbody tr:hover { background: rgba(53,170,255,0.04); }
+  .cost-tool { font-weight: 700; }
+  .cost-tbd { font-weight: 700; color: var(--light-grey); }
+  .cost-need { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; }
+  .cost-need.required { color: var(--digital-red); background: rgba(192,8,80,0.07); border: 1px solid rgba(192,8,80,0.20); }
+  .cost-need.optional { color: var(--grey); background: rgba(115,115,115,0.07); border: 1px solid rgba(115,115,115,0.20); }
+  .cost-sums { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+  .cost-sum {
+    flex: 1 1 260px; background: #fff;
+    border: 1px solid var(--silver-dark); border-radius: var(--radius-lg); padding: 16px 20px;
+  }
+  .cost-sum-label { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; color: var(--deep-sea); }
+  .cost-sum-value { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 500; color: var(--digital-red); margin: 2px 0 4px; }
+  .cost-sum-note { font-size: 12px; color: var(--grey); line-height: 150%; }
+
+  /* ── GEDÄMPFTE SEKTION (Learnings) ── */
+  .row-section.muted { opacity: 0.9; }
+  .row-section.muted .row-title { color: var(--grey); }
+  .row-section.muted .card { background: transparent; border-style: dashed; }
+  .row-section.muted .card::before { opacity: 0.25; }
+  .row-section.muted .card-name { text-decoration: line-through; text-decoration-color: var(--light-grey); }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; left: 50%; bottom: 24px; z-index: 100;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--deep-sea); color: #fff;
+    font-size: 13px; font-weight: 700; padding: 10px 18px;
+    border-radius: var(--radius-md);
+    opacity: 0; pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  @media (max-width: 768px) {
+    .toolbar-inner { padding: 10px 16px 6px; gap: 10px; }
+    .result-info { padding: 0 16px 8px; }
+    .filter-label { display: none; }
+    select.chip { max-width: 160px; }
+  }
+
+  /* ── DARK MODE für die neuen Elemente ── */
+  @media (prefers-color-scheme: dark) {
+    .toolbar { background: rgba(15,26,46,0.94); border-bottom-color: #2A3E5C; }
+    .search { background: #1A2742; border-color: #2A3E5C; color: #E8EDF4; }
+    .chip { background: #1A2742; border-color: #2A3E5C; color: #B0C4DE; }
+    .chip.active { background: var(--sky-blue); border-color: var(--sky-blue); color: #08121F; }
+    .row-lead { color: #B0C4DE; }
+    .badge-live       { color: #4FD08C; background: rgba(79,208,140,0.12); border-color: rgba(79,208,140,0.30); }
+    .badge-beta       { color: #F0C14B; background: rgba(240,193,75,0.12);  border-color: rgba(240,193,75,0.30); }
+    .badge-experiment { color: #7BBEF0; background: rgba(53,170,255,0.14);  border-color: rgba(53,170,255,0.30); }
+    .badge-retired    { color: #90A8C4; background: rgba(144,168,196,0.10); border-color: rgba(144,168,196,0.25); }
+    .card-meta { color: #90A8C4; }
+    .dots i { background: #2A3E5C; }
+    .card-foot { border-top-color: #2A3E5C; }
+    .card-updated { color: #7C93AE; }
+    .card-ref .ref-title { color: #F0F4F8; }
+    .cost-wrap { background: #1A2742; border-color: #2A3E5C; }
+    .cost-table th { background: #22314F; color: #F0F4F8; }
+    .cost-table td { border-top-color: #2A3E5C; color: #E8EDF4; }
+    .cost-table tbody tr:hover { background: rgba(53,170,255,0.06); }
+    .cost-sum { background: #1A2742; border-color: #2A3E5C; }
+    .cost-sum-label { color: #F0F4F8; }
+    .cost-sum-value { color: #F07AA8; }
+    .cost-sum-note { color: #B0C4DE; }
+    .cost-need.required { color: #F07AA8; background: rgba(192,8,80,0.16); border-color: rgba(192,8,80,0.32); }
+    .cost-need.optional { color: #B0C4DE; background: rgba(144,168,196,0.10); border-color: rgba(144,168,196,0.25); }
+    .no-results, .result-info { color: #90A8C4; }
+    .toast { background: #22314F; }
+    /* muss hier unten stehen: die Hell-Regel fuer .why-body kommt spaeter im Stylesheet */
+    .why-body { color: #C0D0E0; }
   }
 </style>
 </head>
@@ -400,28 +629,35 @@
   <h1 data-i18n="heroTitle">CH Digitale Assistenz</h1>
   <p data-i18n="heroDesc" style="max-width: 900px; margin: 0 auto 12px;">Meine digitale Assistenz – alle Tools, Shortcuts, KI-Modelle, Workflows und Automationen auf einen Blick.</p>
   <p data-i18n="heroDesc2" style="font-size: 14px; color: var(--light-grey); max-width: 900px; margin: 0 auto 20px;">Hier findest du alle Bausteine meiner digitalen Assistenz Mina – von Tools über Shortcuts bis zu Automationen. Viele Workflows und Entwicklungen kannst du direkt herunterladen.</p>
-  <div class="legend">
-    <span class="legend-item"><span class="legend-dot" style="background:var(--marine-blue)"></span> Workplace</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--marine-blue)"></span> MS 365</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--sky-blue)"></span> KI Tools</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--digital-red)"></span> Coding</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--sky-blue)"></span> Shortcuts</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--digital-red)"></span> Automation</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--digital-red)"></span> E-Mail & Kalender</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--digital-red)"></span> Research</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--sky-blue)"></span> News & Briefing</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--sky-blue)"></span> Privat · Digests</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--marine-blue)"></span> Weiteres</span>
+  <div class="legend" id="legend"></div>
+</div>
+
+
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <input id="search" class="search" type="search" autocomplete="off" list="tag-list">
+    <datalist id="tag-list"></datalist>
+    <button id="filter-toggle" class="chip" aria-expanded="false"></button>
+    <div class="filters" id="filters">
+      <div class="filter-group" id="filter-tool"></div>
+      <div class="filter-group">
+        <span class="filter-label" data-i18n="filterCategory"></span>
+        <select id="filter-category" class="chip"></select>
+      </div>
+      <button id="filter-reset" class="chip chip-reset" hidden></button>
+    </div>
   </div>
+  <div class="result-info" id="result-info"></div>
 </div>
 
 <div class="container">
 
-  <!-- 00 WARUM DIESES DASHBOARD -->
+<!-- 00 WARUM DIESES DASHBOARD -->
   <div class="row-section">
     <div style="background: var(--silver-dark); border-radius: var(--radius-lg); padding: 32px; text-align: center; border: 1px solid rgba(16,69,136,0.1);">
       <div data-i18n="whyTitle" style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 22px; color: var(--deep-sea); margin-bottom: 16px;">🎯 Warum dieses Dashboard?</div>
-      <div style="font-size: 15px; color: var(--grey); line-height: 170%; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+      <div class="why-body" style="font-size: 15px; line-height: 170%; max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
         <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);" data-i18n="whyGoalLabel">Das Ziel:</strong> <span data-i18n="whyGoal">Ich bin überzeugt, dass eine Assistenz heute mit digitalen Tools abbildbar ist. Dieses Dashboard bereitet meine Learnings so auf, dass jeder sie schnell übernehmen, anwenden und für sich weiterdenken kann.</span></p>
         <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);" data-i18n="whyForLabel">Für wen:</strong> <span data-i18n="whyFor">Für alle, die Lust auf smarteres Arbeiten haben. Kein technisches Vorwissen nötig. Bei Rückfragen gerne jederzeit bei mir melden.</span></p>
         <p style="margin-bottom: 16px;"><strong style="color: var(--deep-sea);" data-i18n="whyApproachLabel">Der Ansatz:</strong> <span data-i18n="whyApproach">Im Mittelpunkt steht das Verständnis für einen modernen Workplace – Arbeitsweise, Tools und möglichst viel Automatisierung. KI und Tools clever kombinieren statt einzeln nutzen.</span></p>
@@ -448,195 +684,12 @@
       <div>
         <div data-i18n="paceTitle" style="font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 16px; color: var(--deep-sea); margin-bottom: 4px;">Alles entwickelt sich extrem schnell – sprecht mich direkt an</div>
         <div data-i18n="paceText" style="font-size: 14px; color: var(--grey); line-height: 160%;">Diese Übersicht ist eine Momentaufnahme: Tools, Modelle und Workflows ändern sich hier fast wöchentlich – manches ist schon nach kurzer Zeit überholt oder längst besser gelöst. Deshalb bei Interesse oder Rückfragen am besten direkt bei mir melden. Dann gebe ich den aktuellen Stand, die passenden Workflows, Prompts und Vorlagen direkt raus – schneller und aktueller, als diese Seite es abbilden kann.</div>
+        <a class="contact-link" href="mailto:christoph@c-hass.com">✉️ <span>christoph@c-hass.com&nbsp; |&nbsp; Christoph Haß</span></a>
       </div>
     </div>
   </div>
 
-  <!-- 01 WORKPLACE DESIGN -->
-  <div class="row-section">
-    <div class="row-header">
-      <div class="row-icon marine">🖥️</div>
-      <span class="row-title" data-i18n="workplace">Workplace Design</span>
-      <span class="row-subtitle" data-i18n="workplaceSub">Apple-Ökosystem · Browser-First · Arbeitsumgebung</span>
-    </div>
-    <div class="row-scroll">
-      <div class="card" data-a="marine" data-card="schreibtische"><div class="card-emoji">💻</div><div class="card-name">Mehrere Schreibtische</div><div class="card-sub">macOS Spaces</div><div class="card-desc">Virtuelle Desktops für Kommunikation, Fokus, Recherche, Meetings. Schnelles Wechseln ohne Fenstersuche.</div><div class="card-tags"><span class="tag marine">Split-Screen</span><span class="tag marine">Mission Control</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="marine" data-card="apple"><div class="card-emoji">📱</div><div class="card-name">Apple Ökosystem</div><div class="card-sub">MacBook · iPhone · iPad · Watch</div><div class="card-desc">Handoff, geteilte Zwischenablage, geräteübergreifendes Diktieren. Nahtlos zwischen allen Geräten.</div><div class="card-tags"><span class="tag marine">Handoff</span><span class="tag marine">Clipboard</span><span class="tag marine">Siri</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="sky" data-card="browser"><div class="card-emoji">🌐</div><div class="card-name">Browser-First</div><div class="card-sub">MS 365 · ChatGPT · Claude</div><div class="card-desc">Outlook, Teams, ChatGPT im Browser – stabiler, mehr Features, ideal für Split-Screen mit KI.</div><div class="card-tags"><span class="tag sky">Outlook Web</span><span class="tag sky">Split-Screen</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="marine" data-card="webcam"><div class="card-emoji">📷</div><div class="card-name">Webcam & Hintergrund</div><div class="card-sub">Professionelles Video-Setup</div><div class="card-desc">Externe Webcam für bessere Bildqualität. Sauberer, aufgeräumter realer Hintergrund – kein virtuelles Bild, sondern bewusste Bürogestaltung.</div><div class="card-tags"><span class="tag marine">Webcam</span><span class="tag marine">Licht</span><span class="tag marine">Büro-Setup</span></div><span class="card-more">Weitere …</span></div>
-      <div class="card" data-a="marine" data-card="hardware"><div class="card-emoji">💻</div><div class="card-name">Hardware-Setup</div><div class="card-sub">MacBook · iPad · Apple Watch</div><div class="card-desc">MacBook als Zentrale, iPad für Notizen & Präsentationen, Apple Watch für Schnellzugriffe, Kurzbefehle und Benachrichtigungen.</div><div class="card-tags"><span class="tag marine">iPad</span><span class="tag marine">Watch</span><span class="tag marine">MacBook</span></div><span class="card-more">Weitere …</span></div>
-    </div>
-
-    <!-- MS 365 als Unter-Ebene von Workplace Design -->
-    <div style="margin-top: 20px;">
-      <div class="row-header" style="margin-bottom: 12px;">
-        <div class="row-icon marine" style="width: 32px; height: 32px; font-size: 16px;">📧</div>
-        <span class="row-title" style="font-size: 20px; white-space: nowrap;" data-i18n="ms365">MS 365</span>
-        <span class="row-subtitle" data-i18n="ms365Sub">Outlook · Teams · Claude Add-in · Apple Tasks</span>
-      </div>
-      <div class="row-scroll">
-        <div class="card" data-a="sky" data-card="webapp"><div class="card-emoji">🌐</div><div class="card-name">Web Apps statt Desktop</div><div class="card-sub">Outlook · Teams · OneDrive im Browser</div><div class="card-desc">Möglichst alle MS 365 Tools als Web-App nutzen – stabiler, schneller aktualisiert. Ausnahme: PowerPoint und Excel weiterhin als Desktop-App.</div><div class="card-tags"><span class="tag sky">Browser-First</span><span class="tag sky">Split-Screen</span></div></div>
-        <div class="card" data-a="marine" data-card="zeroinbox"><div class="card-emoji">📥</div><div class="card-name">Outlook Zero-Inbox</div><div class="card-sub">3-Label-System + Boomerang</div><div class="card-desc">Heute/kurzfristig, Offen/länger, Depriorisiert. Konsequentes Labeln, Boomerang für zeitversetztes Senden.</div><div class="card-tags"><span class="tag marine">Labels</span><span class="tag marine">Boomerang</span><span class="tag marine">Zero-Inbox</span></div></div>
-        <div class="card" data-a="marine" data-card="vorlagen"><div class="card-emoji">📋</div><div class="card-name">Mail-Vorlagen</div><div class="card-sub">Standardantworten & Textbausteine</div><div class="card-desc">Wiederkehrende Mails als Vorlagen hinterlegen – schnellere Antworten, konsistente Kommunikation.</div><div class="card-tags"><span class="tag marine">Templates</span><span class="tag marine">Outlook</span></div></div>
-        <div class="card" data-a="marine" data-card="kalender"><div class="card-emoji">📅</div><div class="card-name">Kalender & Bookings</div><div class="card-sub">Zeitblöcke · Terminlinks</div><div class="card-desc">Fokus- und Meeting-Blöcke. Microsoft Bookings mit Possehl-Domain. Automatische Labelzuweisung.</div><div class="card-tags"><span class="tag marine">Bookings</span><span class="tag marine">Fokuszeiten</span></div></div>
-        <div class="card" data-a="grad" data-card="mailindi"><div class="card-emoji">✍️</div><div class="card-name">Mail-Individualisierung</div><div class="card-sub">Claude im Split-Screen</div><div class="card-desc">Mails im Split-Screen mit Claude individualisieren – Tonalität, Struktur und Inhalt in Echtzeit optimieren lassen.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag sky">Split-Screen</span><span class="tag marine">Outlook</span></div></div>
-        <div class="card" data-a="grad" data-card="claudeppt"><div class="card-emoji">📊</div><div class="card-name">Claude in PowerPoint</div><div class="card-sub">Präsentationen mit KI erstellen</div><div class="card-desc">Folienentwürfe, Gliederungen und Textvorschläge mit Claude generieren. Screenshot der Folie an Claude senden → Verbesserungsvorschläge erhalten. Ideal für Storyline und Struktur.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">PowerPoint</span><span class="tag sky">Split-Screen</span></div><a class="card-link" href="https://support.claude.com/en/articles/13521390-use-claude-for-powerpoint" target="_blank">Claude PowerPoint Add-In ↗</a></div>
-        <div class="card" data-a="grad" data-card="claudeexcel"><div class="card-emoji">📈</div><div class="card-name">Claude in Excel</div><div class="card-sub">Formeln & Analysen mit KI</div><div class="card-desc">Komplexe Excel-Formeln von Claude schreiben lassen. Daten analysieren, Pivot-Logik erklären, VBA-Makros generieren. Screenshot der Tabelle → passende Formel zurück.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">Excel</span><span class="tag marine">Formeln</span></div><a class="card-link" href="https://support.claude.com/en/articles/12650343-use-claude-for-excel" target="_blank">Claude Excel Add-In ↗</a></div>
-        <div class="card" data-a="grad" data-card="claudeoutlook"><div class="card-emoji">📧</div><div class="card-name">Claude in Outlook</div><div class="card-sub">Mails mit KI im Add-in</div><div class="card-desc">Claude direkt im Outlook-Add-in: Mail-Threads zusammenfassen, Antwortentwürfe erstellen, Tonalität anpassen – ohne Copy-Paste zwischen den Fenstern.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">Outlook</span><span class="tag marine">Add-in</span></div><a class="card-link" href="https://support.claude.com/en/articles/14855664-use-claude-for-outlook" target="_blank">Claude Outlook Add-In ↗</a></div>
-        <div class="card" data-a="grad" data-card="claudeword"><div class="card-emoji">📝</div><div class="card-name">Claude in Word</div><div class="card-sub">Dokumente mit KI schreiben</div><div class="card-desc">Texte entwerfen, umschreiben, kürzen und strukturieren – Claude direkt im Word-Dokument. Ideal für Konzepte, Vorlagen und lange Dokumente.</div><div class="card-tags"><span class="tag red">Claude</span><span class="tag marine">Word</span><span class="tag marine">Add-in</span></div><a class="card-link" href="https://support.claude.com/en/articles/14465370-use-claude-for-word" target="_blank">Claude Word Add-In ↗</a></div>
-        <div class="card" data-a="sky" data-card="tasks"><div class="card-emoji">✅</div><div class="card-name">Tasks via Apple</div><div class="card-sub">Erinnerungen statt MS To Do</div><div class="card-desc">Bewusst Apple-Erinnerungen statt Microsoft To Do. Schneller, besser integriert mit Kurzbefehlen.</div><div class="card-tags"><span class="tag sky">Apple</span><span class="tag sky">Kurzbefehle</span></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 02 KI TOOLS -->
-  <div class="row-section">
-    <div class="row-header">
-      <div class="row-icon sky">🧠</div>
-      <span class="row-title" data-i18n="ki">KI Tools</span>
-      <span class="row-subtitle" data-i18n="kiSub">Individualisiert & spezialisiert · Modell × Aufgabe × Kontext</span>
-    </div>
-    <div class="row-scroll">
-      <div class="card" data-a="grad" data-card="claude"><div class="card-emoji">🟠</div><div class="card-name">Claude (Anthropic)</div><div class="card-sub">Opus 4.6 · Projekte · Skills</div><div class="card-desc">Mein berufliches Haupttool. Reasoning, lange Kontexte, natürliche Sprache. Viele eigene Skills & Individualisierungen – von Corporate Design bis zu Fachthemen. Fokus: Enterprise, Doku, Sparring.</div><div class="card-tags"><span class="tag red">Skills</span><span class="tag red">Projekte</span><span class="tag red">Memory</span><span class="tag red">Enterprise</span><span class="tag red">Design Mockups</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="claude">Get Claude ↗</a></div>
-      <div class="card" data-a="marine" data-card="openai"><div class="card-emoji">💬</div><div class="card-name">OpenAI / ChatGPT</div><div class="card-sub">Privates Setup · GPT-5 · Whisper</div><div class="card-desc">Nutze ich jetzt vor allem privat für mein persönliches Setup – beruflich ist Claude mein Haupttool. Stark als Allrounder und für Whisper. 3 eigene GPTs (Mail-Agent, CH/PD Sparring) mit individualisierten Instructions.</div><div class="card-tags"><span class="tag marine">Privat</span><span class="tag marine">Whisper</span><span class="tag marine">Custom GPTs</span></div><a class="card-link" href="https://chat.openai.com" target="_blank" data-link="openai">Get ChatGPT ↗</a></div>
-      <div class="card" data-a="sky" data-card="gemini"><div class="card-emoji">🔷</div><div class="card-name">Gemini (Google)</div><div class="card-sub">Visuell · Coding · Gems</div><div class="card-desc">Große Vorteile bei Fotos, Infografiken und visuellen Inhalten. Auch stark für Code & Automation.</div><div class="card-tags"><span class="tag sky">Fotos</span><span class="tag sky">Infografiken</span><span class="tag sky">Coding</span></div><a class="card-link" href="https://gemini.google.com" target="_blank" data-link="gemini">Get Gemini ↗</a></div>
-      <div class="card" data-a="red" data-card="perplexity"><div class="card-emoji">🔍</div><div class="card-name">Perplexity</div><div class="card-sub">Recherche · Quellen · Live-Meldungen</div><div class="card-desc">Für Research schlägt nichts Perplexity. Extrem schnell mit Quellen. Deep Search für Analysen. API-Anbindung in n8n.</div><div class="card-tags"><span class="tag red">Research</span><span class="tag red">Live-Web</span><span class="tag red">Deep Search</span></div><a class="card-link" href="https://perplexity.ai" target="_blank" data-link="perplexity">Get Perplexity ↗</a></div>
-      <div class="card" data-a="marine" data-card="copilot"><div class="card-emoji">🤖</div><div class="card-name">Microsoft Copilot</div><div class="card-sub">MS 365 Integration</div><div class="card-desc">Selektiv: E-Mail-Optimierung, individualisierte Prompts, Notizbücher. Ergänzung, kein Kern-Tool.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag marine">Notizbücher</span></div><a class="card-link" href="https://copilot.microsoft.com" target="_blank" data-link="copilot">Get Copilot ↗</a></div>
-      <div class="card" data-a="grad" data-card="plaudtool"><div class="card-emoji">🎧</div><div class="card-name">Plaud</div><div class="card-sub">KI-Recorder · Protokolle & Notizen</div><div class="card-desc">Mein Tool für Meeting-Protokolle: aufnehmen, automatisch transkribieren, strukturierte Zusammenfassung mit Aufgaben und Entscheidungen. Deutlich schneller als jeder Eigenbau – Details in der Meeting-Sektion.</div><div class="card-tags"><span class="tag red">Protokolle</span><span class="tag sky">Transkription</span><span class="tag marine">Hardware</span></div><a class="card-link" href="https://de.plaud.ai/?variant=47175190872319" target="_blank">Get Plaud ↗</a></div>
-      <div class="card" data-a="sky" data-card="lokal"><div class="card-emoji">🔒</div><div class="card-name">Lokale LLMs</div><div class="card-sub">LM Studio · PocketPal</div><div class="card-desc">Offline, datensouverän. LM Studio auf Mac, PocketPal auf iPhone. Für sensible Inhalte & Experimente.</div><div class="card-tags"><span class="tag sky">Offline</span><span class="tag sky">Datenschutz</span></div><a class="card-link" href="https://lmstudio.ai" target="_blank" data-link="lokal">Get LM Studio ↗</a></div>
-    </div>
-  </div>
-
-  <!-- 03 CODING & APPS -->
-  <div class="row-section">
-    <div class="row-header">
-      <div class="row-icon red">🚀</div>
-      <span class="row-title" data-i18n="coding">Coding & Apps</span>
-      <span class="row-subtitle" data-i18n="codingSub">Claude Code · MCP · Terminal · GitHub · Railway</span>
-    </div>
-    <div class="row-scroll">
-      <div class="card" data-a="grad" data-card="claudecode"><div class="card-emoji">🖥️</div><div class="card-name">Claude Code (Terminal)</div><div class="card-sub">KI-gestütztes Programmieren</div><div class="card-desc">Der „Alles-Könner". Apps, Skripte, Automationen bauen – ohne Coding-Erfahrung. Iterativ: Ziel beschreiben → Code entsteht.</div><div class="card-tags"><span class="tag red">Terminal</span><span class="tag red">Deploy</span><span class="tag red">Debug</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" data-link="claudecode">Get Claude Code ↗</a></div>
-      <div class="card" data-a="grad" data-card="mcpauto"><div class="card-emoji">🔌</div><div class="card-name">Claude MCP</div><div class="card-sub">Model Context Protocol</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n und mehr. Wie ein USB-C-Anschluss für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Open Source</span></div><a class="card-link" href="https://docs.anthropic.com/en/docs/mcp" target="_blank" data-link="mcp">MCP Docs ↗</a></div>
-      <div class="card" data-a="red" data-card="cowork"><div class="card-emoji">🔧</div><div class="card-name">Claude Cowork</div><div class="card-sub">Desktop-Automatisierung</div><div class="card-desc">Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.</div><div class="card-tags"><span class="tag red">Desktop</span><span class="tag red">No-Code</span></div><a class="card-link" href="https://claude.ai" target="_blank" data-link="cowork">Get Cowork ↗</a></div>
-      <div class="card" data-a="marine" data-card="github"><div class="card-emoji">🏗️</div><div class="card-name">GitHub + Railway</div><div class="card-sub">Code · Hosting · Datenbank</div><div class="card-desc">GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.</div><div class="card-tags"><span class="tag marine">GitHub</span><span class="tag marine">Railway</span><span class="tag marine">Postgres</span></div><a class="card-link" href="https://github.com" target="_blank" data-link="github">Get GitHub ↗</a><a class="card-link" href="https://railway.com/" target="_blank" style="margin-left: 12px;">Get Railway ↗</a></div>
-      <div class="card" data-a="marine" data-card="vscode"><div class="card-emoji">💎</div><div class="card-name">Visual Studio Code</div><div class="card-sub">Code-Editor · Extensions · Git</div><div class="card-desc">Zentraler Code-Editor mit Git-Integration, Terminal und Extensions. Basis für Claude Code und lokale Entwicklung.</div><div class="card-tags"><span class="tag marine">VS Code</span><span class="tag marine">Extensions</span><span class="tag marine">Git</span></div><a class="card-link" href="https://code.visualstudio.com" target="_blank" data-link="vscode">Get VS Code ↗</a></div>
-    </div>
-  </div>
-
-  <!-- 04 SHORTCUTS -->
-  <div class="row-section">
-    <div class="row-header" style="flex-wrap: wrap;">
-      <div class="row-icon sky">⚡</div>
-      <span class="row-title" data-i18n="shortcuts">Shortcuts – Smart Automation</span>
-      <span class="row-subtitle" data-i18n="shortcutsSub">MacBook · iPhone · iPad · Apple Watch</span>
-      <div data-i18n="shortcutsDesc" style="width: 100%; margin-left: 52px; margin-top: 4px; font-size: 13px; color: var(--grey); line-height: 150%;">Läuft geräteübergreifend auf allen Apple-Geräten. Einmal einrichten, überall nutzen – richtig gut zum produktiven Arbeiten.</div>
-    </div>
-    <div class="row-scroll">
-      <div class="card" data-a="sky" data-card="nachricht"><div class="card-emoji">✉️</div><div class="card-name">Neue Nachricht / Mail</div><div class="card-sub">Spracheingabe → OpenAI API</div><div class="card-desc">Vorname → kurze Nachricht mit Emojis. Nachname → professionelle Mail. Direkt in Zwischenablage – nach meinen persönlichen Präferenzen (Sprachstil).</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/618e140f761745b999b839dd3d1fef45" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="sky" data-card="tiptalk"><div class="card-emoji">✍️</div><div class="card-name">TipTalk & Glatt ziehen</div><div class="card-sub">Speech-to-Text + Optimierung</div><div class="card-desc">Diktieren statt Tippen. „Glatt ziehen" optimiert Grammatik und Struktur automatisch – nach meinen persönlichen Präferenzen (Sprachstil).</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/be7bd67014614e7893e4b09d846d4156" target="_blank">TipTalk ↗</a><a class="card-link" href="https://www.icloud.com/shortcuts/832d67dd71b84bda896cf0eb56c126a5" target="_blank" style="margin-left: 12px;">Glatt ziehen ↗</a></div>
-      <div class="card" data-a="sky" data-card="fastnote"><div class="card-emoji">📝</div><div class="card-name">Fast Note & Ideen Note</div><div class="card-sub">Apple Notizen Schnellerfassung</div><div class="card-desc">Fast Note für To-dos. Ideen Note für kreative Impulse. Öffnet direkt Apple Notes.</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span><span class="tag marine">Apple Notizen</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/8d447b1807fd4ec589b75c9eec03c8dd" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="marine" data-card="textersetz"><div class="card-emoji">⌨️</div><div class="card-name">Textersetzungen</div><div class="card-sub">Textbausteine + Back Tap</div><div class="card-desc">kk → Kalenderlink, VV → Vielen Dank. Control Center auf iPhone & Watch. 2x/3x Back Tap.</div><div class="card-tags"><span class="tag marine">Bausteine</span><span class="tag marine">Back Tap</span><span class="tag marine">u.v.m.</span></div></div>
-      <div class="card" data-a="sky" data-card="sprachnach"><div class="card-emoji">🎙️</div><div class="card-name">Sprachnachricht to Text</div><div class="card-sub">Audio → Transkription → Text</div><div class="card-desc">Sprachnachrichten automatisch transkribieren und als lesbaren Text aufbereiten – direkt per Kurzbefehl.</div><div class="card-tags"><span class="tag sky">Speech</span><span class="tag sky">OpenAI</span><span class="tag sky">Whisper</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/eaf63bf8d124483a896e1971cca9213a" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="grad" data-card="gptadv"><div class="card-emoji">🚗</div><div class="card-name">GPTs im Advanced Mode</div><div class="card-sub">Auto-Gespräch mit individuellen GPTs</div><div class="card-desc">Eigene GPTs im Advanced Voice Mode nutzen – ideal für Sparring, Brainstorming und Diktat während der Autofahrt.</div><div class="card-tags"><span class="tag sky">Voice</span><span class="tag red">Custom GPTs</span><span class="tag marine">Hands-free</span></div></div>
-      <div class="card" data-a="grad" data-card="belegscan"><div class="card-emoji">📸</div><div class="card-name">Beleg-Scan</div><div class="card-sub">Foto → KI → Ablage</div><div class="card-desc">Quittung oder Rechnung fotografieren → KI extrahiert Datum, Betrag, Händler → automatisch im richtigen Ordner abgelegt.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Shortcut</span><span class="tag sky">Google Drive</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/2aaf11d2dac043b6b68ddd45a5e2f6d8" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="grad" data-card="voicekal"><div class="card-emoji">🗓️</div><div class="card-name">Voice to Kalender</div><div class="card-sub">Einsprechen → Termin</div><div class="card-desc">Termin per Sprache einsprechen → Whisper + GPT erkennen Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird automatisch erstellt.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">n8n</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/5908e7aeedd541f2bf37a117f905110d" target="_blank">Shortcut ↗</a><a class="card-link" href="https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=sharing" target="_blank" style="margin-left: 12px;">n8n Workflow ↗</a></div>
-      <div class="card" data-a="sky" data-card="whisperskill"><div class="card-emoji">🎙️</div><div class="card-name">OpenAI Whisper – Speech to Text</div><div class="card-sub">Sprache → Text → Zwischenablage</div><div class="card-desc">Whisper API direkt per Shortcut nutzen – Sprache aufnehmen, transkribieren lassen und als Text in die Zwischenablage kopieren. Basis für viele weitere Workflows.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">OpenAI</span><span class="tag sky">Speech</span><span class="tag sky">Shortcut</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/e1456c64646f4ded8628edb12bab9a6a" target="_blank">Shortcut laden ↗</a></div>
-      <div class="card" data-a="sky" data-card="perplexityresearch"><div class="card-emoji">🔎</div><div class="card-name">Research per Shortcut</div><div class="card-sub">Frage → Perplexity → Antwort</div><div class="card-desc">Frage per Sprache oder Text eingeben → Perplexity API recherchiert im Web → strukturierte Antwort mit Quellen direkt auf dem iPhone oder Mac. Ideal für schnelle Recherchen unterwegs.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag red">Research</span><span class="tag sky">Shortcut</span><span class="tag red">API</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/b1853b6435e84ec4b9f6bb41c8882179" target="_blank">Shortcut laden ↗</a></div>
-    </div>
-  </div>
-
-  <!-- 05 AUTOMATION TOOLS -->
-  <div class="row-section">
-    <div class="row-header" style="flex-wrap: wrap;">
-      <div class="row-icon red">🔄</div>
-      <span class="row-title" data-i18n="automation">Automation Plattform</span>
-      <span class="row-subtitle" data-i18n="automationSub">n8n · Agents · API-Integrationen</span>
-      <a href="https://drive.google.com/drive/folders/1gV4re651ucp2zq9UPuv40GYRCG6ywpIn?usp=sharing" target="_blank" class="row-download-link" style="display: inline-flex; align-items: center; gap: 6px; width: 100%; margin-left: 52px; margin-top: -4px; font-size: 13px; font-weight: 700; color: var(--digital-red); text-decoration: none; transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">📥 <span data-i18n="automationDownload">Alle n8n Workflows herunterladen ↗</span></a>
-    </div>
-    <div class="row-scroll">
-      <div class="card" data-a="red" data-card="n8n"><div class="card-emoji">⚡</div><div class="card-name">n8n Workflow-Engine</div><div class="card-sub">Automatisierungsplattform</div><div class="card-desc">Zentrales Automatisierungstool. Visuell, flexibel, API-stark. Klassische Workflows und Agent-Logiken.</div><div class="card-tags"><span class="tag red">Webhooks</span><span class="tag red">API</span><span class="tag red">Agents</span></div></div>
-      <div class="card" data-a="grad" data-card="whisper"><div class="card-emoji">🎙️</div><div class="card-name">OpenAI Whisper</div><div class="card-sub">Speech-to-Text API</div><div class="card-desc">Die Basis für richtig gute Voice-Interaktion. Whisper ermöglicht präzise Spracherkennung in vielen Workflows – von Shortcuts bis n8n. Super wichtig für alles mit Spracheingabe.</div><div class="card-tags"><span class="tag red">Voice</span><span class="tag red">API</span><span class="tag sky">Shortcuts</span></div></div>
-      <div class="card" data-a="sky" data-card="appleauto"><div class="card-emoji">📱</div><div class="card-name">Apple Shortcuts</div><div class="card-sub">Leichtgewichtige Automatisierung</div><div class="card-desc">Apple Shortcuts als schnelle Automatisierung – Aktionen verketten, Siri-Trigger, Hintergrund-Prozesse. API-Anbindung an OpenAI.</div><div class="card-tags"><span class="tag sky">Shortcuts</span><span class="tag sky">Siri</span><span class="tag sky">OpenAI</span></div></div>
-      <div class="card" data-a="grad" data-card="n8nki"><div class="card-emoji">🔗</div><div class="card-name">n8n × KI × Apple</div><div class="card-sub">Plattformübergreifend</div><div class="card-desc">n8n als Brücke zwischen KI-APIs und Apple Shortcuts. Voice-to-Kalender, Beleg-Scanner, Meeting-Protokolle – alles verbunden.</div><div class="card-tags"><span class="tag red">n8n</span><span class="tag sky">Shortcuts</span><span class="tag marine">MS 365</span></div></div>
-      <div class="card" data-a="grad" data-card="mcpauto"><div class="card-emoji">🔌</div><div class="card-name">MCP (Model Context Protocol)</div><div class="card-sub">Claude mit Tools verbinden</div><div class="card-desc">Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n. Wie ein USB-C für KI. Einmal einrichten, überall nutzen.</div><div class="card-tags"><span class="tag red">MCP</span><span class="tag red">Integrationen</span><span class="tag red">Claude</span></div><a class="card-link" href="https://www.reddit.com/r/n8n/comments/1niug8o/using_claude_code_the_n8nmcp_server_to_prompt/?tl=de" target="_blank">n8n MCP Server ↗</a></div>
-    </div>
-
-    <!-- E-Mail & Kalender -->
-    <div style="margin-top: 24px;">
-      <div class="row-header" style="margin-bottom: 12px;">
-        <div class="row-icon red" style="width: 32px; height: 32px; font-size: 16px;">📧</div>
-        <span class="row-title" style="font-size: 20px;" data-i18n="email">E-Mail, Kalender & Meetings</span>
-        <span class="row-subtitle" data-i18n="emailSub">Task Tracking · Meeting Protokolle · Mail-Management mit KI</span>
-      </div>
-      <div class="row-scroll">
-        <div class="card" data-a="grad" data-card="plaud"><div class="card-emoji">🎧</div><div class="card-name">Plaud – KI-Recorder</div><div class="card-sub">Aufnehmen → KI-Protokoll · mein Standard</div><div class="card-desc">KI-Notiz-Recorder (Hardware + App): nimmt Meetings, Calls und Gespräche auf, transkribiert automatisch und erstellt strukturierte Protokolle, Zusammenfassungen und Mindmaps – mit eigenen Vorlagen pro Meeting-Typ. Ersetzt bei mir den früheren Eigenbau-Workflow aus Shortcut, Whisper und n8n.</div><div class="card-tags"><span class="tag red">Hardware</span><span class="tag sky">Transkription</span><span class="tag red">KI-Summary</span><span class="tag marine">Templates</span></div><a class="card-link" href="https://de.plaud.ai/?variant=47175190872319" target="_blank">Plaud entdecken ↗</a></div>
-        <div class="card" data-a="grad" data-card="mailfilter"><div class="card-emoji">🧹</div><div class="card-name">Intelligenter Mail-Filter</div><div class="card-sub">KI sortiert automatisch aus</div><div class="card-desc">KI analysiert jede eingehende Mail und verschiebt unwichtige automatisch in einen De-Prio-Ordner. Lernt aus deinen Korrekturen und wird immer besser.</div><div class="card-tags"><span class="tag red">Claude AI</span><span class="tag marine">Outlook</span><span class="tag red">Lernfähig</span></div><a class="card-link" href="https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=sharing" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine" data-card="followup"><div class="card-emoji">⏰</div><div class="card-name">Follow-Up Tracker</div><div class="card-sub">Keine Antwort vergessen</div><div class="card-desc">Trackt alle gesendeten Mails automatisch. Bei fehlender Antwort nach X Tagen erscheint die Mail in der täglichen Follow-Up-Liste.</div><div class="card-tags"><span class="tag red">Claude AI</span><span class="tag marine">Excel</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/19XXUIRENuIT3t_nlwnaf_Pk6qq-4RSqx/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine" data-card="dailyfollowup"><div class="card-emoji">📋</div><div class="card-name">Tägliche Follow-Up Übersicht</div><div class="card-sub">Jeden Morgen um 6:30</div><div class="card-desc">Erhalte jeden Morgen eine kompakte Liste aller Mails, auf die du noch eine Antwort erwartest. Direkt als E-Mail in deiner Inbox.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag marine">Scheduled</span></div><a class="card-link" href="https://drive.google.com/file/d/1fchZumON9jjJJGTbCrYHYmmKBpum-l8C/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="grad" data-card="sprachtermin"><div class="card-emoji">📅</div><div class="card-name">Sprachtermin-Assistent</div><div class="card-sub">Einsprechen → Kalendereintrag</div><div class="card-desc">Termin per Sprache einsprechen → KI erkennt Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird erstellt und Einladungen verschickt. Per Shortcut oder Webhook.</div><div class="card-tags"><span class="tag sky">Whisper</span><span class="tag red">GPT</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/1nbG_HWxxULq7MVJSaUWhrvlPg2GLAKaW/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-      </div>
-    </div>
-
-    <!-- Research & Meeting-Vorbereitung -->
-    <div style="margin-top: 24px;">
-      <div class="row-header" style="margin-bottom: 12px;">
-        <div class="row-icon red" style="width: 32px; height: 32px; font-size: 16px;">🔬</div>
-        <span class="row-title" style="font-size: 20px;" data-i18n="research">Research & Meeting-Vorbereitung</span>
-        <span class="row-subtitle" data-i18n="researchSub">Automatische Recherche für das ganze Team</span>
-      </div>
-      <div class="row-scroll">
-        <div class="card" data-a="grad" data-card="kiresearch"><div class="card-emoji">🔍</div><div class="card-name">KI-Recherche in Teams</div><div class="card-sub">Frage stellen → Antwort mit Quellen</div><div class="card-desc">Schreibe eine Frage in den Teams-Kanal → Perplexity recherchiert im Web → strukturierte Antwort mit Quellen erscheint automatisch. Für das ganze Team nutzbar.</div><div class="card-tags"><span class="tag red">Teams Bot</span><span class="tag sky">Perplexity</span><span class="tag red">n8n</span></div><a class="card-link" href="https://drive.google.com/file/d/1pMovwu7AIqK-yDzvhhwDk_fV1Yuc5aLR/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="red" data-card="personen"><div class="card-emoji">👤</div><div class="card-name">Personen-Recherche</div><div class="card-sub">Vor dem Meeting vorbereitet sein</div><div class="card-desc">Namen in Teams eingeben → LinkedIn-Profil, Firma, aktuelle Posts und Northdata-Infos werden automatisch recherchiert. Perfekt vor wichtigen Meetings.</div><div class="card-tags"><span class="tag red">LinkedIn</span><span class="tag sky">Perplexity</span><span class="tag red">Northdata</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="red" data-card="firmen"><div class="card-emoji">🏢</div><div class="card-name">Firmen-Recherche</div><div class="card-sub">Unternehmen schnell verstehen</div><div class="card-desc">Firmenname eingeben → Geschäftsmodell, Digitalisierungsgrad, Ansprechpartner und LinkedIn-Aktivitäten werden automatisch zusammengestellt.</div><div class="card-tags"><span class="tag red">LinkedIn</span><span class="tag sky">Perplexity</span><span class="tag red">Northdata</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine" data-card="kontaktmail"><div class="card-emoji">✉️</div><div class="card-name">Kontakt-Mail als Entwurf</div><div class="card-sub">Direkt anschreiben</div><div class="card-desc">Nach der Recherche wird automatisch ein E-Mail-Entwurf mit personalisiertem Anschreiben erstellt – basierend auf den recherchierten Infos.</div><div class="card-tags"><span class="tag marine">Outlook</span><span class="tag red">GPT</span></div><a class="card-link" href="https://drive.google.com/file/d/1eLkQS3G2QqPdFlqi-aAcYF-zWSMIo7Rk/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-      </div>
-    </div>
-
-    <!-- News & Briefing -->
-    <div style="margin-top: 24px;">
-      <div class="row-header" style="margin-bottom: 12px;">
-        <div class="row-icon sky" style="width: 32px; height: 32px; font-size: 16px;">📰</div>
-        <span class="row-title" style="font-size: 20px;" data-i18n="newsBriefing">News & Briefing</span>
-        <span class="row-subtitle" data-i18n="newsBriefingSub">Automatische Digest-Briefings per KI – wöchentlich per Mail</span>
-      </div>
-      <div class="row-scroll">
-        <div class="card" data-a="sky" data-card="techbriefing"><div class="card-emoji">🤖</div><div class="card-name">Tech, Innovation & KI</div><div class="card-sub">Wöchentlich · Mittwochs</div><div class="card-desc">Automatisches KI-Briefing: Deep Dives, Use Cases und News zu KI, Software, Cloud und IT-Sicherheit. Quellen: Perplexity, Newsletter (Heise, KI Weekly, HB), GPT-4.1.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag red">GPT-4.1</span><span class="tag red">n8n</span></div><a class="card-link" href="https://possehl.app.n8n.cloud/workflow/mC2NRfe7kkCyteYY" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine" data-card="marktbriefing"><div class="card-emoji">🏢</div><div class="card-name">Wettbewerb & Markt</div><div class="card-sub">Wöchentlich · Dienstags</div><div class="card-desc">Markt-Briefing: Industrieller Mittelstand, Industrial-Tech-Investoren, Portfolio-Beteiligungen und deren Wettbewerber. 3 Perplexity-Recherchen, aufbereitet mit GPT-4.1.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag red">GPT-4.1</span><span class="tag red">n8n</span></div><a class="card-link" href="https://possehl.app.n8n.cloud/workflow/g1r7Rc5ZhNir89kI" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="grad" data-card="eventbriefing"><div class="card-emoji">📅</div><div class="card-name">Events & Community</div><div class="card-sub">Wöchentlich · Donnerstags</div><div class="card-desc">Partner-News (Maschinenraum, FoundersFoundation, VDMA u.a.), Event-Updates und neue Event-Empfehlungen. Quellen: Perplexity, Outlook-Mails, GPT-4.1.</div><div class="card-tags"><span class="tag sky">Perplexity</span><span class="tag marine">Outlook</span><span class="tag red">GPT-4.1</span></div><a class="card-link" href="https://possehl.app.n8n.cloud/workflow/lOAi5wb09vdms5Xy" target="_blank">n8n Workflow ↗</a></div>
-      </div>
-    </div>
-
-    <!-- Privat: Daily Digests -->
-    <div style="margin-top: 24px;">
-      <div class="row-header" style="margin-bottom: 12px;">
-        <div class="row-icon sky" style="width: 32px; height: 32px; font-size: 16px;">📬</div>
-        <span class="row-title" style="font-size: 20px;" data-i18n="privatDigest">Privat – Daily Digests (Gmail)</span>
-        <span class="row-subtitle" data-i18n="privatDigestSub">Gmail → Claude Haiku → ein Digest pro Quelle · täglich 18:30</span>
-      </div>
-      <div class="row-scroll">
-        <div class="card" data-a="grad" data-card="digestprinzip"><div class="card-emoji">🧩</div><div class="card-name">Digest-Prinzip</div><div class="card-sub">Ein Muster, beliebig viele Quellen</div><div class="card-desc">Gmail nach Absender und Label filtern → Mails des Tages bündeln → Claude Haiku fasst nach festen Kategorien zusammen → fertige HTML-Mail ins eigene Postfach. Neue Quelle = nur Absender und Kategorien anpassen. Kommen keine Mails, gibt es trotzdem eine kurze Info.</div><div class="card-tags"><span class="tag sky">Gmail</span><span class="tag red">Claude Haiku</span><span class="tag red">n8n</span><span class="tag marine">Scheduled</span></div></div>
-        <div class="card" data-a="marine" data-card="digestapple"><div class="card-emoji">🍎</div><div class="card-name">Daily Digest – Apple</div><div class="card-sub">Käufe, Abos & Sicherheit</div><div class="card-desc">Alle Apple-Mails des Tages gebündelt: Käufe und Abos mit Beträgen und nächster Abrechnung, Sicherheitsmeldungen deutlich hervorgehoben, iCloud- und Gerätestatus – am Ende die Einschätzung, ob Handlungsbedarf besteht.</div><div class="card-tags"><span class="tag sky">Gmail</span><span class="tag red">Claude Haiku</span><span class="tag marine">Täglich</span></div></div>
-        <div class="card" data-a="marine" data-card="digestpaypal"><div class="card-emoji">💳</div><div class="card-name">Daily Digest – PayPal</div><div class="card-sub">Zahlungen, Abbuchungen & Erstattungen</div><div class="card-desc">Gesendete und erhaltene Zahlungen, Abbuchungen, Erstattungen und Account-Meldungen in einer Übersicht – inklusive Tagessaldo und Hinweis auf auffällige Aktivitäten.</div><div class="card-tags"><span class="tag sky">Gmail</span><span class="tag red">Claude Haiku</span><span class="tag marine">Täglich</span></div></div>
-        <div class="card" data-a="sky" data-card="digestlinkedin"><div class="card-emoji">💼</div><div class="card-name">Daily Digest – LinkedIn</div><div class="card-sub">Nachrichten, Kontakte & Jobs</div><div class="card-desc">Nachrichten, Kontaktanfragen, Profilaufrufe, Job-Hinweise und Reaktionen auf Posts gebündelt – mit klarer Liste, was heute wirklich eine Antwort braucht.</div><div class="card-tags"><span class="tag sky">Gmail</span><span class="tag red">Claude Haiku</span><span class="tag marine">Täglich</span></div></div>
-        <div class="card" data-a="sky" data-card="digestonvista"><div class="card-emoji">📈</div><div class="card-name">Daily Digest – Onvista</div><div class="card-sub">Kursalarme, Orders & Depot</div><div class="card-desc">Kursalarme, Orderbestätigungen, Depot-Performance, Marktberichte und Newsletter in einem Digest – inklusive Einschätzung, ob im Depot etwas zu tun ist.</div><div class="card-tags"><span class="tag sky">Gmail</span><span class="tag red">Claude Haiku</span><span class="tag marine">Täglich</span></div></div>
-      </div>
-    </div>
-
-    <!-- Weiteres -->
-    <div style="margin-top: 24px;">
-      <div class="row-header" style="margin-bottom: 12px;">
-        <div class="row-icon marine" style="width: 32px; height: 32px; font-size: 16px;">📦</div>
-        <span class="row-title" style="font-size: 20px;" data-i18n="weiteres">Weiteres</span>
-        <span class="row-subtitle" data-i18n="weiteresSub">Rechnungs-Scanner · Kontakte-Sync · Buchhaltung · Wartung</span>
-      </div>
-      <div class="row-scroll">
-        <div class="card" data-a="grad" data-card="belegscanner"><div class="card-emoji">📸</div><div class="card-name">Beleg-Scanner</div><div class="card-sub">Foto → KI → Google Drive</div><div class="card-desc">Foto von Quittung oder Rechnung machen → KI extrahiert Datum, Betrag, Händler → Beleg wird automatisch im richtigen Monatsordner abgelegt.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Google Drive</span><span class="tag sky">Shortcut</span></div><a class="card-link" href="https://www.icloud.com/shortcuts/b898bc910a6b41a1af511e9c98fadc29" target="_blank">Shortcut ↗</a><a class="card-link" href="https://drive.google.com/file/d/1bIiwah4_eJT74HzUMbA5h5PmxYLXGdLo/view?usp=drive_link" target="_blank" style="margin-left: 12px;">n8n Workflow ↗</a></div>
-        <div class="card" data-a="red" data-card="rechnungsscanner"><div class="card-emoji">🧾</div><div class="card-name">Rechnungs-Scanner</div><div class="card-sub">Mail → Erkennung → Ablage</div><div class="card-desc">Erkennt Rechnungen in E-Mails automatisch, extrahiert Datum und Betrag per KI und sortiert sie direkt in den richtigen Buchhaltungsordner.</div><div class="card-tags"><span class="tag red">OpenAI Vision</span><span class="tag sky">Google Drive</span><span class="tag marine">Outlook</span></div><a class="card-link" href="https://drive.google.com/file/d/1_tanFhclSwGdk7spk8V4AVM5gOFyy4qb/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="marine" data-card="teamswebhook"><div class="card-emoji">🔄</div><div class="card-name">Teams-Webhook Refresh</div><div class="card-sub">Alle 12 Stunden automatisch</div><div class="card-desc">Microsoft Teams Webhooks laufen nach einiger Zeit ab. Dieser Workflow erneuert die Verbindung automatisch alle 12 Stunden – ohne manuelles Eingreifen.</div><div class="card-tags"><span class="tag marine">Teams</span><span class="tag red">n8n</span><span class="tag marine">Scheduled</span></div><a class="card-link" href="https://drive.google.com/file/d/13zI8NAdOo_fPWw9MVWyMsEUABC16unJa/view?usp=drive_link" target="_blank">n8n Workflow ↗</a></div>
-        <div class="card" data-a="grad" data-card="kontaktesync"><div class="card-emoji">👥</div><div class="card-name">Kontakte-Sync</div><div class="card-sub">LinkedIn → Kontakte säubern</div><div class="card-desc">Kontakte automatisch mit LinkedIn abgleichen. Scrapt Profilbilder, aktuelle Titel und Unternehmen und aktualisiert die Kontaktdaten.</div><div class="card-tags"><span class="tag sky">LinkedIn</span><span class="tag red">Scraping</span><span class="tag marine">Kontakte</span></div></div>
-      </div>
-    </div>
-  </div>
+    <div id="sections"></div>
 
   <!-- DISCLAIMER -->
   <div class="disclaimer" style="margin-top: 24px; padding: 20px 24px; background: var(--silver-dark); border-radius: var(--radius-md); font-size: 13px; color: var(--grey); line-height: 160%;">
@@ -650,335 +703,457 @@
   </div>
 
 </div>
+
+<script src="/data.js"></script>
 <script>
-const translations = {
-  de: {
-    heroTitle: 'CH Digitale Assistenz',
-    heroDesc: 'Meine digitale Assistenz – alle Tools, Shortcuts, KI-Modelle, Workflows und Automationen auf einen Blick.',
-    heroDesc2: 'Hier findest du alle Bausteine meiner digitalen Assistenz Mina – von Tools über Shortcuts bis zu Automationen. Viele Workflows und Entwicklungen kannst du direkt herunterladen.',
-    // Why section
-    whyTitle: '🎯 Warum dieses Dashboard?',
-    whyGoalLabel: 'Das Ziel:',
-    whyGoal: 'Ich bin überzeugt, dass eine Assistenz heute mit digitalen Tools abbildbar ist. Dieses Dashboard bereitet meine Learnings so auf, dass jeder sie schnell übernehmen, anwenden und für sich weiterdenken kann.',
-    whyForLabel: 'Für wen:',
-    whyFor: 'Für alle, die Lust auf smarteres Arbeiten haben. Kein technisches Vorwissen nötig. Bei Rückfragen gerne jederzeit direkt bei mir melden – ich gebe die Workflows und Vorlagen gerne weiter.',
-    whyApproachLabel: 'Der Ansatz:',
-    whyApproach: 'Im Mittelpunkt steht das Verständnis für einen modernen Workplace – Arbeitsweise, Tools und möglichst viel Automatisierung. KI und Tools clever kombinieren statt einzeln nutzen.',
-    whyStartLabel: 'Auf geht\'s:',
-    whyStart: 'Einfach anfangen, experimentieren, iterieren. KI kann so viel, ist aber kein Ersatz fürs Denken, sondern hier u.a. eine Erweiterung der eigenen Produktivität.',
-    // Legend
-    leg: ['Workplace','MS 365','KI Tools','Coding','Shortcuts','Automation','E-Mail & Kalender','Research','News & Briefing','Privat · Digests','Weiteres'],
-    // Section titles
-    sec: {
-      workplace: 'Workplace Design',
-      workplaceSub: 'Apple-Ökosystem · Browser-First · Arbeitsumgebung',
-      ms365: 'MS 365',
-      ms365Sub: 'Outlook · Teams · Claude Add-in · Apple Tasks',
-      ki: 'KI Tools',
-      kiSub: 'Individualisiert & spezialisiert · Modell × Aufgabe × Kontext',
-      shortcuts: 'Shortcuts – Smart Automation',
-      shortcutsSub: 'MacBook · iPhone · iPad · Apple Watch',
-      shortcutsDesc: 'Läuft geräteübergreifend auf allen Apple-Geräten. Einmal einrichten, überall nutzen – richtig gut zum produktiven Arbeiten.',
-      automation: 'Automation Plattform',
-      automationSub: 'n8n · Agents · API-Integrationen',
-      automationDownload: 'Alle n8n Workflows herunterladen ↗',
-      coding: 'Coding & Apps',
-      codingSub: 'Claude Code · MCP · Terminal · GitHub · Railway',
-      email: 'E-Mail, Kalender & Meetings',
-      emailSub: 'Task Tracking · Meeting Protokolle · Mail-Management mit KI',
-      research: 'Research & Meeting-Vorbereitung',
-      researchSub: 'Automatische Recherche für das ganze Team',
-      newsBriefing: 'News & Briefing',
-      newsBriefingSub: 'Automatische Digest-Briefings per KI – wöchentlich per Mail',
-      privatDigest: 'Privat – Daily Digests (Gmail)',
-      privatDigestSub: 'Gmail → Claude Haiku → ein Digest pro Quelle · täglich 18:30',
-      weiteres: 'Weiteres',
-      weiteresSub: 'Rechnungs-Scanner · Kontakte-Sync · Buchhaltung · Wartung',
-    },
-    // Cards: [name, sub, desc]
-    cards: {
-      schreibtische: ['Mehrere Schreibtische','macOS Spaces','Virtuelle Desktops für Kommunikation, Fokus, Recherche, Meetings. Schnelles Wechseln ohne Fenstersuche.'],
-      apple: ['Apple Ökosystem','MacBook · iPhone · iPad · Watch','Handoff, geteilte Zwischenablage, geräteübergreifendes Diktieren. Nahtlos zwischen allen Geräten.'],
-      browser: ['Browser-First','MS 365 · ChatGPT · Claude','Outlook, Teams, ChatGPT im Browser – stabiler, mehr Features, ideal für Split-Screen mit KI.'],
-      webcam: ['Webcam & Hintergrund','Professionelles Video-Setup','Externe Webcam für bessere Bildqualität. Sauberer, aufgeräumter realer Hintergrund – kein virtuelles Bild, sondern bewusste Bürogestaltung.'],
-      hardware: ['Hardware-Setup','MacBook · iPad · Apple Watch','MacBook als Zentrale, iPad für Notizen & Präsentationen, Apple Watch für Schnellzugriffe, Kurzbefehle und Benachrichtigungen.'],
-      webapp: ['Web Apps statt Desktop','Outlook · Teams · OneDrive im Browser','Möglichst alle MS 365 Tools als Web-App nutzen – stabiler, schneller aktualisiert. Ausnahme: PowerPoint und Excel weiterhin als Desktop-App.'],
-      zeroinbox: ['Outlook Zero-Inbox','3-Label-System + Boomerang','Heute/kurzfristig, Offen/länger, Depriorisiert. Konsequentes Labeln, Boomerang für zeitversetztes Senden.'],
-      vorlagen: ['Mail-Vorlagen','Standardantworten & Textbausteine','Wiederkehrende Mails als Vorlagen hinterlegen – schnellere Antworten, konsistente Kommunikation.'],
-      kalender: ['Kalender & Bookings','Zeitblöcke · Terminlinks','Fokus- und Meeting-Blöcke. Microsoft Bookings mit Possehl-Domain. Automatische Labelzuweisung.'],
-      mailindi: ['Mail-Individualisierung','Claude im Split-Screen','Mails im Split-Screen mit Claude individualisieren – Tonalität, Struktur und Inhalt in Echtzeit optimieren lassen.'],
-      tasks: ['Tasks via Apple','Erinnerungen statt MS To Do','Bewusst Apple-Erinnerungen statt Microsoft To Do. Schneller, besser integriert mit Kurzbefehlen.'],
-      claude: ['Claude (Anthropic)','Opus 4.6 · Projekte · Skills','Mein berufliches Haupttool. Reasoning, lange Kontexte, natürliche Sprache. Viele eigene Skills & Individualisierungen – von Corporate Design bis zu Fachthemen. Fokus: Enterprise, Doku, Sparring.'],
-      openai: ['OpenAI / ChatGPT','Privates Setup · GPT-5 · Whisper','Nutze ich jetzt vor allem privat für mein persönliches Setup – beruflich ist Claude mein Haupttool. Stark als Allrounder und für Whisper. 3 eigene GPTs (Mail-Agent, CH/PD Sparring) mit individualisierten Instructions.'],
-      gemini: ['Gemini (Google)','Visuell · Coding · Gems','Starkes Modell für Bilder, Videos, Infografiken. Sehr gut für Code & Automation.'],
-      perplexity: ['Perplexity','Recherche · Quellen · Live-Meldungen','Suchmaschine + KI. Extrem schnell mit Quellen. Deep Search für Analysen. API-Anbindung in n8n.'],
-      copilot: ['Microsoft Copilot','MS 365 Integration','Selektiv: E-Mail-Optimierung, individualisierte Prompts, Notizbücher. Ergänzung, kein Kern-Tool.'],
-      lokal: ['Lokale LLMs','LM Studio · PocketPal','Offline, datensouverän. LM Studio auf Mac, PocketPal auf iPhone. Für sensible Inhalte & Experimente.'],
-      nachricht: ['Neue Nachricht / Mail','Spracheingabe → OpenAI API','Vorname → kurze Nachricht mit Emojis. Nachname → professionelle Mail. Direkt in Zwischenablage.'],
-      tiptalk: ['TipTalk & Glatt ziehen','Speech-to-Text + Optimierung','Diktieren statt Tippen. „Glatt ziehen" optimiert Grammatik und Struktur automatisch.'],
-      fastnote: ['Fast Note & Ideen Note','Apple Notizen Schnellerfassung','Fast Note für To-dos. Ideen Note für kreative Impulse. Öffnet direkt Apple Notes.'],
-      speechkal: ['Speech-to-Kalender','Shortcut → n8n → Outlook','Termin einsprechen → automatischer Kalendereintrag via n8n-Webhook im Hintergrund.'],
-      textersetz: ['Textersetzungen','Textbausteine + Back Tap','kk → Kalenderlink, VV → Vielen Dank. Control Center auf iPhone & Watch. 2x/3x Back Tap.'],
-      sprachnach: ['Sprachnachricht to Text','Audio → Transkription → Text','Sprachnachrichten automatisch transkribieren und als lesbaren Text aufbereiten – direkt per Kurzbefehl.'],
-      gptadv: ['GPTs im Advanced Mode','Auto-Gespräch mit individuellen GPTs','Eigene GPTs im Advanced Voice Mode nutzen – ideal für Sparring, Brainstorming und Diktat während der Autofahrt.'],
-      n8n: ['n8n Workflow-Engine','Automatisierungsplattform','Zentrales Automatisierungstool. Visuell, flexibel, API-stark. Klassische Workflows und Agent-Logiken.'],
-      research: ['Research Hub in Teams','n8n + Perplexity API · Team-Zugriff','Research-Bot direkt in Teams. Kurze Anfrage → Perplexity recherchiert → strukturierte Antwort mit Quellen. Für das gesamte Team nutzbar.'],
-      personen: ['Personen-Research','Meeting-Vorbereitung · Team-Zugriff','Person eingeben → LinkedIn, Unternehmen, digitaler Kontext werden automatisch recherchiert und aufbereitet. Für das gesamte Team nutzbar.'],
-      appleauto: ['Apple Automatisierungen','Prozessautomatisierung','Apple Shortcuts als leichtgewichtige Automatisierung – Aktionen verketten, Siri-Trigger, Hintergrund-Prozesse auf allen Apple-Geräten. API-Anbindung an OpenAI für individuelle Prompts.'],
-      n8nki: ['n8n × KI × Apple','Plattformübergreifende Verbindung','n8n als Brücke zwischen KI-APIs und Apple Shortcuts. Z. B. Voice-to-Kalender: Spracheingabe → Whisper → n8n → Outlook-Termin.'],
-      teamswebhook: ['Teams-Webhook Refresh','n8n → Teams API · Alle 12h','Automatischer Restart der n8n-zu-Teams-Verbindung alle 12 Stunden. Workflows deaktivieren, 5 Sek. warten, reaktivieren – mit Erfolgs-/Fehlerprüfung.'],
-      claudecode: ['Claude Code (Terminal)','KI-gestütztes Programmieren','Der „Alles-Könner". Apps, Skripte, Automationen bauen – ohne Coding-Erfahrung. Iterativ: Ziel beschreiben → Code entsteht.'],
-      cowork: ['Claude Cowork','Desktop-Automatisierung','Desktop-Tool für Nicht-Entwickler. Automatisiert Datei- und Aufgabenmanagement über den Browser hinaus.'],
-      github: ['GitHub + Railway','Code · Hosting · Datenbank','GitHub als Versionierung. Railway deployt, hostet und stellt Postgres-Datenbanken bereit.'],
-      vscode: ['Visual Studio Code','Code-Editor · Extensions · Git','Zentraler Code-Editor mit Git-Integration, Terminal und Extensions. Basis für Claude Code und lokale Entwicklung.'],
-      claudeppt: ['Claude in PowerPoint','Präsentationen mit KI erstellen','Folienentwürfe, Gliederungen und Textvorschläge mit Claude generieren. Screenshot der Folie an Claude senden → Verbesserungsvorschläge erhalten.'],
-      claudeexcel: ['Claude in Excel','Formeln & Analysen mit KI','Komplexe Excel-Formeln von Claude schreiben lassen. Daten analysieren, Pivot-Logik erklären, VBA-Makros generieren.'],
-      claudeoutlook: ['Claude in Outlook','Mails mit KI im Add-in','Claude direkt im Outlook-Add-in: Mail-Threads zusammenfassen, Antwortentwürfe erstellen, Tonalität anpassen – ohne Copy-Paste zwischen den Fenstern.'],
-      claudeword: ['Claude in Word','Dokumente mit KI schreiben','Texte entwerfen, umschreiben, kürzen und strukturieren – Claude direkt im Word-Dokument. Ideal für Konzepte, Vorlagen und lange Dokumente.'],
-      belegscan: ['Beleg-Scan','Foto → KI → Ablage','Quittung oder Rechnung fotografieren → KI extrahiert Datum, Betrag, Händler → automatisch im richtigen Ordner abgelegt.'],
-      voicekal: ['Voice to Kalender','Einsprechen → Termin','Termin per Sprache einsprechen → Whisper + GPT erkennen Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird automatisch erstellt.'],
-      whisper: ['OpenAI Whisper','Speech-to-Text API','Die Basis für richtig gute Voice-Interaktion. Whisper ermöglicht präzise Spracherkennung in vielen Workflows.'],
-      mcpauto: ['MCP (Model Context Protocol)','Claude mit Tools verbinden','Der Game-Changer: Claude direkt mit deinen Tools verbinden – Google Drive, Slack, GitHub, Datenbanken, n8n.'],
-      mailfilter: ['Intelligenter Mail-Filter','KI sortiert automatisch aus','KI analysiert jede eingehende Mail und verschiebt unwichtige automatisch in einen De-Prio-Ordner. Lernt aus deinen Korrekturen.'],
-      followup: ['Follow-Up Tracker','Keine Antwort vergessen','Trackt alle gesendeten Mails automatisch. Bei fehlender Antwort nach X Tagen erscheint die Mail in der täglichen Follow-Up-Liste.'],
-      dailyfollowup: ['Tägliche Follow-Up Übersicht','Jeden Morgen um 6:30','Erhalte jeden Morgen eine kompakte Liste aller Mails, auf die du noch eine Antwort erwartest.'],
-      sprachtermin: ['Sprachtermin-Assistent','Einsprechen → Kalendereintrag','Termin per Sprache einsprechen → KI erkennt Datum, Uhrzeit, Teilnehmer → Outlook-Termin wird erstellt und Einladungen verschickt.'],
-      plaud: ['Plaud – KI-Recorder','Aufnehmen → KI-Protokoll · mein Standard','KI-Notiz-Recorder (Hardware + App): nimmt Meetings, Calls und Gespräche auf, transkribiert automatisch und erstellt strukturierte Protokolle, Zusammenfassungen und Mindmaps – mit eigenen Vorlagen pro Meeting-Typ. Ersetzt bei mir den früheren Eigenbau-Workflow aus Shortcut, Whisper und n8n.'],
-      plaudtool: ['Plaud','KI-Recorder · Protokolle & Notizen','Mein Tool für Meeting-Protokolle: aufnehmen, automatisch transkribieren, strukturierte Zusammenfassung mit Aufgaben und Entscheidungen. Deutlich schneller als jeder Eigenbau – Details in der Meeting-Sektion.'],
-      whisperskill: ['OpenAI Whisper – Speech to Text','Sprache → Text → Zwischenablage','Whisper API direkt per Shortcut nutzen – Sprache aufnehmen, transkribieren lassen und als Text in die Zwischenablage kopieren. Basis für viele weitere Workflows.'],
-      perplexityresearch: ['Research per Shortcut','Frage → Perplexity → Antwort','Frage per Sprache oder Text eingeben → Perplexity API recherchiert im Web → strukturierte Antwort mit Quellen direkt auf dem iPhone oder Mac.'],
-      kiresearch: ['KI-Recherche in Teams','Frage stellen → Antwort mit Quellen','Schreibe eine Frage in den Teams-Kanal → Perplexity recherchiert im Web → strukturierte Antwort mit Quellen erscheint automatisch.'],
-      firmen: ['Firmen-Recherche','Unternehmen schnell verstehen','Firmenname eingeben → Geschäftsmodell, Digitalisierungsgrad, Ansprechpartner und LinkedIn-Aktivitäten werden automatisch zusammengestellt.'],
-      kontaktmail: ['Kontakt-Mail als Entwurf','Direkt anschreiben','Nach der Recherche wird automatisch ein E-Mail-Entwurf mit personalisiertem Anschreiben erstellt.'],
-      techbriefing: ['Tech, Innovation & KI','Wöchentlich · Mittwochs','Automatisches KI-Briefing: Deep Dives, Use Cases und News zu KI, Software, Cloud und IT-Sicherheit. Quellen: Perplexity, Newsletter (Heise, KI Weekly, HB), GPT-4.1.'],
-      marktbriefing: ['Wettbewerb & Markt','Wöchentlich · Dienstags','Markt-Briefing: Industrieller Mittelstand, Industrial-Tech-Investoren, Portfolio-Beteiligungen und deren Wettbewerber. 3 Perplexity-Recherchen, aufbereitet mit GPT-4.1.'],
-      eventbriefing: ['Events & Community','Wöchentlich · Donnerstags','Partner-News (Maschinenraum, FoundersFoundation, VDMA u.a.), Event-Updates und neue Event-Empfehlungen. Quellen: Perplexity, Outlook-Mails, GPT-4.1.'],
-      digestprinzip: ['Digest-Prinzip','Ein Muster, beliebig viele Quellen','Gmail nach Absender und Label filtern → Mails des Tages bündeln → Claude Haiku fasst nach festen Kategorien zusammen → fertige HTML-Mail ins eigene Postfach. Neue Quelle = nur Absender und Kategorien anpassen. Kommen keine Mails, gibt es trotzdem eine kurze Info.'],
-      digestapple: ['Daily Digest – Apple','Käufe, Abos & Sicherheit','Alle Apple-Mails des Tages gebündelt: Käufe und Abos mit Beträgen und nächster Abrechnung, Sicherheitsmeldungen deutlich hervorgehoben, iCloud- und Gerätestatus – am Ende die Einschätzung, ob Handlungsbedarf besteht.'],
-      digestpaypal: ['Daily Digest – PayPal','Zahlungen, Abbuchungen & Erstattungen','Gesendete und erhaltene Zahlungen, Abbuchungen, Erstattungen und Account-Meldungen in einer Übersicht – inklusive Tagessaldo und Hinweis auf auffällige Aktivitäten.'],
-      digestlinkedin: ['Daily Digest – LinkedIn','Nachrichten, Kontakte & Jobs','Nachrichten, Kontaktanfragen, Profilaufrufe, Job-Hinweise und Reaktionen auf Posts gebündelt – mit klarer Liste, was heute wirklich eine Antwort braucht.'],
-      digestonvista: ['Daily Digest – Onvista','Kursalarme, Orders & Depot','Kursalarme, Orderbestätigungen, Depot-Performance, Marktberichte und Newsletter in einem Digest – inklusive Einschätzung, ob im Depot etwas zu tun ist.'],
-      belegscanner: ['Beleg-Scanner','Foto → KI → Google Drive','Foto von Quittung oder Rechnung machen → KI extrahiert Datum, Betrag, Händler → Beleg wird automatisch im richtigen Monatsordner abgelegt.'],
-      rechnungsscanner: ['Rechnungs-Scanner','Mail → Erkennung → Ablage','Erkennt Rechnungen in E-Mails automatisch, extrahiert Datum und Betrag per KI und sortiert sie direkt in den richtigen Buchhaltungsordner.'],
-      kontaktesync: ['Kontakte-Sync','LinkedIn → Kontakte säubern','Kontakte automatisch mit LinkedIn abgleichen. Scrapt Profilbilder, aktuelle Titel und Unternehmen.'],
-    },
-    resources: '📖 Mehr erfahren',
-    links: {
-      claude: 'Get Claude ↗',
-      openai: 'Get ChatGPT ↗',
-      gemini: 'Get Gemini ↗',
-      perplexity: 'Get Perplexity ↗',
-      copilot: 'Get Copilot ↗',
-      lokal: 'Get LM Studio ↗',
-      claudecode: 'Get Claude Code ↗',
-      cowork: 'Get Cowork ↗',
-      github: 'Get GitHub ↗',
-      vscode: 'Get VS Code ↗',
-    },
-    governanceTitle: 'Governance immer einhalten',
-    governanceText: 'Bei allen Tools, KI-Modellen und Workflows gilt: geltende Governance-, Compliance- und Datenschutzvorgaben immer einhalten. Besonders bei unternehmens- und personenbezogenen Daten – nur freigegebene Tools nutzen, sensible Inhalte bewusst behandeln.',
-    paceTitle: 'Alles entwickelt sich extrem schnell – sprecht mich direkt an',
-    paceText: 'Diese Übersicht ist eine Momentaufnahme: Tools, Modelle und Workflows ändern sich hier fast wöchentlich – manches ist schon nach kurzer Zeit überholt oder längst besser gelöst. Deshalb bei Interesse oder Rückfragen am besten direkt bei mir melden. Dann gebe ich den aktuellen Stand, die passenden Workflows, Prompts und Vorlagen direkt raus – schneller und aktueller, als diese Seite es abbilden kann.',
-    downloadTitle: 'Downloads – Tools & Vorlagen',
-    downloadDesc: 'Direkter Download der wichtigsten beschriebenen Tools, Vorlagen und Konfigurationen aus dieser Übersicht.',
-    downloadLink: 'Zum Download-Ordner →',
-    handbuchTitle: 'Handbuch: Workplace Productivity mit AI',
-    handbuchDesc: 'Ausführliche Dokumentation aller Tools, Workflows, Prompts und Best Practices. Wird laufend aktualisiert – inkl. Download-Links zu allen verwendeten Tools.',
-    handbuchLink: 'Handbuch öffnen →',
-    disclaimerTitle: 'DISCLAIMER – Persönliche Arbeitsumgebung',
-    disclaimerText: 'Dies ist mein persönliches digitales Arbeitssetup. Die Entwicklung im Bereich Künstliche Intelligenz ist extrem dynamisch – Tools, Funktionen und Best Practices ändern sich teils wöchentlich, einzelne Inhalte hier sind daher schnell überholt. Für den aktuellen Stand am besten direkt bei mir melden. Teile dieser Übersicht wurden mit Unterstützung von KI erstellt. Sie spiegelt meine individuellen Erfahrungen und Präferenzen wider und erhebt keinen Anspruch auf Allgemeingültigkeit.',
-    footer: 'Christoph Haß · Possehl Digital · Stand: August 2026',
-  },
-  en: {
-    heroTitle: 'CH Digital Assistant',
-    heroDesc: 'My digital assistant setup – all tools, shortcuts, AI models, workflows and automations at a glance.',
-    heroDesc2: 'Here you\'ll find all the building blocks of my digital assistant Mina – from tools to shortcuts to automations. Many workflows and developments are available for direct download.',
-    // Why section
-    whyTitle: '🎯 Why This Dashboard?',
-    whyGoalLabel: 'The Goal:',
-    whyGoal: 'I\'m convinced that an assistant can be built with digital tools today. This dashboard presents my learnings in a way that anyone can quickly adopt, apply, and build upon.',
-    whyForLabel: 'For Whom:',
-    whyFor: 'For anyone who wants to work smarter. No technical knowledge required. Feel free to reach out to me directly with any questions – I\'m happy to share the workflows and templates.',
-    whyApproachLabel: 'The Approach:',
-    whyApproach: 'The focus is on understanding a modern workplace – work methods, tools, and as much automation as possible. Combining AI and tools cleverly instead of using them separately.',
-    whyStartLabel: 'Let\'s Go:',
-    whyStart: 'Just start, experiment, iterate. AI can do so much, but it\'s not a replacement for thinking – it\'s an extension of your own productivity.',
-    // Legend
-    leg: ['Workplace','MS 365','AI Tools','Coding','Shortcuts','Automation','Email & Calendar','Research','News & Briefing','Private · Digests','Misc'],
-    sec: {
-      workplace: 'Workplace Design',
-      workplaceSub: 'Apple Ecosystem · Browser-First · Work Environment',
-      ms365: 'MS 365',
-      ms365Sub: 'Outlook · Teams · Claude Add-in · Apple Tasks',
-      ki: 'AI Tools',
-      kiSub: 'Personalized & specialized · Model × Task × Context',
-      shortcuts: 'Shortcuts – Smart Automation',
-      shortcutsSub: 'MacBook · iPhone · iPad · Apple Watch',
-      shortcutsDesc: 'Works across all Apple devices. Set up once, use everywhere – great for productive work.',
-      automation: 'Automation Platform',
-      automationSub: 'n8n · Agents · API Integrations',
-      automationDownload: 'Download all n8n Workflows ↗',
-      coding: 'Coding & Apps',
-      codingSub: 'Claude Code · MCP · Terminal · GitHub · Railway',
-      email: 'Email, Calendar & Meetings',
-      emailSub: 'Task Tracking · Meeting Minutes · AI Mail Management',
-      research: 'Research & Meeting Prep',
-      researchSub: 'Automatic research for the entire team',
-      newsBriefing: 'News & Briefing',
-      newsBriefingSub: 'Automated AI digest briefings – delivered weekly by email',
-      privatDigest: 'Private – Daily Digests (Gmail)',
-      privatDigestSub: 'Gmail → Claude Haiku → one digest per source · daily at 18:30',
-      weiteres: 'Miscellaneous',
-      weiteresSub: 'Invoice Scanner · Contact Sync · Accounting · Maintenance',
-    },
-    cards: {
-      schreibtische: ['Multiple Desktops','macOS Spaces','Virtual desktops for communication, focus, research, meetings. Quick switching without searching for windows.'],
-      apple: ['Apple Ecosystem','MacBook · iPhone · iPad · Watch','Handoff, shared clipboard, cross-device dictation. Seamless across all devices.'],
-      browser: ['Browser-First','MS 365 · ChatGPT · Claude','Outlook, Teams, ChatGPT in the browser – more stable, more features, ideal for split-screen with AI.'],
-      webcam: ['Webcam & Background','Professional Video Setup','External webcam for better image quality. Clean, tidy real background – no virtual image, but intentional office design.'],
-      hardware: ['Hardware Setup','MacBook · iPad · Apple Watch','MacBook as the hub, iPad for notes & presentations, Apple Watch for quick access, shortcuts and notifications.'],
-      webapp: ['Web Apps over Desktop','Outlook · Teams · OneDrive in Browser','Use most MS 365 tools as web apps – more stable, faster updates. Exception: PowerPoint and Excel still as desktop apps.'],
-      zeroinbox: ['Outlook Zero-Inbox','3-Label System + Boomerang','Today/short-term, Open/longer, Deprioritized. Consistent labeling, Boomerang for scheduled sending.'],
-      vorlagen: ['Email Templates','Standard Replies & Text Snippets','Store recurring emails as templates – faster replies, consistent communication.'],
-      kalender: ['Calendar & Bookings','Time Blocks · Booking Links','Focus and meeting blocks. Microsoft Bookings with Possehl domain. Automatic label assignment.'],
-      mailindi: ['Email Personalization','Claude in Split-Screen','Personalize emails in split-screen with Claude – optimize tone, structure and content in real time.'],
-      tasks: ['Tasks via Apple','Reminders instead of MS To Do','Deliberately using Apple Reminders instead of Microsoft To Do. Faster, better integrated with shortcuts.'],
-      claude: ['Claude (Anthropic)','Opus 4.6 · Projects · Skills','My main professional tool. Reasoning, long contexts, natural language. Lots of custom skills & personalizations – from corporate design to domain topics. Focus: enterprise, documentation, sparring.'],
-      openai: ['OpenAI / ChatGPT','Private Setup · GPT-5 · Whisper','Now mainly for my private personal setup – Claude is my main tool at work. Strong all-rounder and for Whisper. 3 custom GPTs (Mail Agent, CH/PD Sparring) with personalized instructions.'],
-      gemini: ['Gemini (Google)','Visual · Coding · Gems','Strong model for images, videos, infographics. Very good for code & automation.'],
-      perplexity: ['Perplexity','Research · Sources · Live Updates','Search engine + AI. Extremely fast with sources. Deep Search for analysis. API integration in n8n.'],
-      copilot: ['Microsoft Copilot','MS 365 Integration','Selective: email optimization, customized prompts, notebooks. Supplement, not a core tool.'],
-      lokal: ['Local LLMs','LM Studio · PocketPal','Offline, data sovereign. LM Studio on Mac, PocketPal on iPhone. For sensitive content & experiments.'],
-      nachricht: ['New Message / Mail','Voice Input → OpenAI API','First name → short message with emojis. Last name → professional email. Directly to clipboard.'],
-      tiptalk: ['TipTalk & Polish','Speech-to-Text + Optimization','Dictate instead of typing. "Polish" automatically optimizes grammar and structure.'],
-      fastnote: ['Fast Note & Ideas Note','Apple Notes Quick Capture','Fast Note for to-dos. Ideas Note for creative impulses. Opens Apple Notes directly.'],
-      speechkal: ['Speech-to-Calendar','Shortcut → n8n → Outlook','Speak a meeting → automatic calendar entry via n8n webhook in the background.'],
-      textersetz: ['Text Replacements','Text Snippets + Back Tap','kk → calendar link, VV → Thank you. Control Center on iPhone & Watch. 2x/3x Back Tap.'],
-      sprachnach: ['Voice Message to Text','Audio → Transcription → Text','Automatically transcribe voice messages and format as readable text – directly via shortcut.'],
-      gptadv: ['GPTs in Advanced Mode','In-car Conversation with Custom GPTs','Use custom GPTs in Advanced Voice Mode – ideal for sparring, brainstorming and dictation while driving.'],
-      n8n: ['n8n Workflow Engine','Automation Platform','Central automation tool. Visual, flexible, API-powerful. Classic workflows and agent logic.'],
-      research: ['Research Hub in Teams','n8n + Perplexity API · Team Access','Research bot directly in Teams. Short query → Perplexity researches → structured answer with sources. Available for the entire team.'],
-      personen: ['People Research','Meeting Preparation · Team Access','Enter a person → LinkedIn, company, digital context are automatically researched and prepared. Available for the entire team.'],
-      appleauto: ['Apple Automations','Process Automation','Apple Shortcuts as lightweight automation – chain actions, Siri triggers, background processes on all Apple devices. API connection to OpenAI for custom prompts.'],
-      n8nki: ['n8n × AI × Apple','Cross-platform Connection','n8n as a bridge between AI APIs and Apple Shortcuts. E.g. Voice-to-Calendar: speech → Whisper → n8n → Outlook event.'],
-      teamswebhook: ['Teams-Webhook Refresh','n8n → Teams API · Every 12h','Automatic restart of the n8n-to-Teams connection every 12 hours. Deactivate workflows, wait 5 sec, reactivate – with success/error checking.'],
-      claudecode: ['Claude Code (Terminal)','AI-powered Programming','The "all-rounder". Build apps, scripts, automations – without coding experience. Iterative: describe goal → code emerges.'],
-      cowork: ['Claude Cowork','Desktop Automation','Desktop tool for non-developers. Automates file and task management beyond the browser.'],
-      github: ['GitHub + Railway','Code · Hosting · Database','GitHub for version control. Railway deploys, hosts and provides Postgres databases.'],
-      vscode: ['Visual Studio Code','Code Editor · Extensions · Git','Central code editor with Git integration, terminal and extensions. Foundation for Claude Code and local development.'],
-      claudeppt: ['Claude in PowerPoint','Create Presentations with AI','Generate slide drafts, outlines and text suggestions with Claude. Send screenshot of slide to Claude → get improvement suggestions.'],
-      claudeexcel: ['Claude in Excel','Formulas & Analysis with AI','Have Claude write complex Excel formulas. Analyze data, explain pivot logic, generate VBA macros.'],
-      claudeoutlook: ['Claude in Outlook','Mail with AI in the add-in','Claude right inside the Outlook add-in: summarize mail threads, draft replies, adjust tone – no copy-paste between windows.'],
-      claudeword: ['Claude in Word','Write documents with AI','Draft, rewrite, shorten and structure text – Claude directly in the Word document. Ideal for concepts, templates and long documents.'],
-      belegscan: ['Receipt Scan','Photo → AI → Storage','Take a photo of receipt or invoice → AI extracts date, amount, vendor → automatically stored in the correct folder.'],
-      voicekal: ['Voice to Calendar','Speak → Appointment','Speak an appointment → Whisper + GPT recognize date, time, participants → Outlook appointment is automatically created.'],
-      whisper: ['OpenAI Whisper','Speech-to-Text API','The foundation for great voice interaction. Whisper enables precise speech recognition in many workflows.'],
-      mcpauto: ['MCP (Model Context Protocol)','Connect Claude with Tools','Game-changer: Connect Claude directly with your tools – Google Drive, Slack, GitHub, databases, n8n.'],
-      mailfilter: ['Smart Mail Filter','AI Auto-Sorts','AI analyzes every incoming email and automatically moves unimportant ones to a de-prio folder. Learns from your corrections.'],
-      followup: ['Follow-Up Tracker','Never Miss a Reply','Automatically tracks all sent emails. If no reply after X days, the email appears in the daily follow-up list.'],
-      dailyfollowup: ['Daily Follow-Up Overview','Every Morning at 6:30','Receive a compact list every morning of all emails you\'re still waiting for a reply on.'],
-      sprachtermin: ['Voice Appointment Assistant','Speak → Calendar Entry','Speak an appointment → AI recognizes date, time, participants → Outlook appointment is created and invitations sent.'],
-      plaud: ['Plaud – AI Recorder','Record → AI minutes · my default','AI note-taking recorder (hardware + app): records meetings, calls and conversations, transcribes automatically and creates structured minutes, summaries and mind maps – with custom templates per meeting type. Replaces my earlier DIY workflow of Shortcut, Whisper and n8n.'],
-      plaudtool: ['Plaud','AI Recorder · Minutes & Notes','My tool for meeting minutes: record, transcribe automatically, get a structured summary with tasks and decisions. Far faster than any DIY setup – details in the meetings section.'],
-      whisperskill: ['OpenAI Whisper – Speech to Text','Speech → Text → Clipboard','Use Whisper API directly via Shortcut – record speech, transcribe and copy as text to clipboard. Foundation for many other workflows.'],
-      perplexityresearch: ['Research via Shortcut','Question → Perplexity → Answer','Enter a question via voice or text → Perplexity API searches the web → structured answer with sources directly on iPhone or Mac.'],
-      kiresearch: ['AI Research in Teams','Ask → Answer with Sources','Post a question in the Teams channel → Perplexity searches the web → structured answer with sources appears automatically.'],
-      firmen: ['Company Research','Quickly Understand Companies','Enter company name → Business model, digitalization level, contacts and LinkedIn activities are automatically compiled.'],
-      kontaktmail: ['Contact Email as Draft','Direct Outreach','After research, an email draft with personalized message is automatically created.'],
-      techbriefing: ['Tech, Innovation & AI','Weekly · Wednesdays','Automated AI briefing: deep dives, use cases and news on AI, software, cloud and IT security. Sources: Perplexity, newsletters (Heise, KI Weekly, HB), GPT-4.1.'],
-      marktbriefing: ['Competition & Market','Weekly · Tuesdays','Market briefing: industrial mid-market, industrial tech investors, portfolio companies and their competitors. 3 Perplexity research runs, compiled with GPT-4.1.'],
-      eventbriefing: ['Events & Community','Weekly · Thursdays','Partner news (Maschinenraum, FoundersFoundation, VDMA etc.), event updates and new event recommendations. Sources: Perplexity, Outlook emails, GPT-4.1.'],
-      digestprinzip: ['Digest Principle','One pattern, any number of sources','Filter Gmail by sender and label → bundle the day\'s mails → Claude Haiku summarizes them into fixed categories → finished HTML mail to my own inbox. A new source only needs a new sender and category list. If no mails arrive, it still sends a short note.'],
-      digestapple: ['Daily Digest – Apple','Purchases, Subscriptions & Security','All Apple mails of the day bundled: purchases and subscriptions with amounts and next billing date, security alerts clearly highlighted, iCloud and device status – plus a verdict on whether anything needs action.'],
-      digestpaypal: ['Daily Digest – PayPal','Payments, Debits & Refunds','Payments sent and received, direct debits, refunds and account alerts in one overview – including the daily balance and a note on suspicious activity.'],
-      digestlinkedin: ['Daily Digest – LinkedIn','Messages, Contacts & Jobs','Messages, connection requests, profile views, job alerts and reactions to posts bundled together – with a clear list of what actually needs a reply today.'],
-      digestonvista: ['Daily Digest – Onvista','Price Alerts, Orders & Portfolio','Price alerts, order confirmations, portfolio performance, market reports and newsletters in one digest – including a verdict on whether the portfolio needs attention.'],
-      belegscanner: ['Receipt Scanner','Photo → AI → Google Drive','Take a photo of receipt or invoice → AI extracts date, amount, vendor → Receipt is automatically stored in the correct monthly folder.'],
-      rechnungsscanner: ['Invoice Scanner','Email → Recognition → Storage','Automatically recognizes invoices in emails, extracts date and amount via AI and sorts them directly into the correct accounting folder.'],
-      kontaktesync: ['Contacts Sync','LinkedIn → Clean Contacts','Automatically sync contacts with LinkedIn. Scrapes profile pictures, current titles and companies.'],
-    },
-    resources: '📖 Learn More',
-    links: {
-      claude: 'Get Claude ↗',
-      openai: 'Get ChatGPT ↗',
-      gemini: 'Get Gemini ↗',
-      perplexity: 'Get Perplexity ↗',
-      copilot: 'Get Copilot ↗',
-      lokal: 'Get LM Studio ↗',
-      claudecode: 'Get Claude Code ↗',
-      cowork: 'Get Cowork ↗',
-      github: 'Get GitHub ↗',
-      vscode: 'Get VS Code ↗',
-    },
-    governanceTitle: 'Always follow governance',
-    governanceText: 'For all tools, AI models and workflows: always comply with applicable governance, compliance and data protection rules. Especially with company and personal data – only use approved tools and handle sensitive content deliberately.',
-    paceTitle: 'Things move extremely fast – just reach out to me directly',
-    paceText: 'This overview is a snapshot: tools, models and workflows change almost weekly here – some of it is outdated or already solved better after a short time. So if you\'re interested or have questions, best to contact me directly. I\'ll share the current state, the matching workflows, prompts and templates right away – faster and more up to date than this page can be.',
-    downloadTitle: 'Downloads – Tools & Templates',
-    downloadDesc: 'Direct download of the key tools, templates and configurations described in this overview.',
-    downloadLink: 'Open Download Folder →',
-    handbuchTitle: 'Handbook: Workplace Productivity with AI',
-    handbuchDesc: 'Comprehensive documentation of all tools, workflows, prompts and best practices. Continuously updated – incl. download links for all tools used.',
-    handbuchLink: 'Open Handbook →',
-    disclaimerTitle: 'DISCLAIMER – Personal Work Environment',
-    disclaimerText: 'This is my personal digital work setup. The field of artificial intelligence is evolving extremely fast – tools, features and best practices sometimes change weekly, so individual items here become outdated quickly. For the current state, best to contact me directly. Parts of this overview were created with AI support. It reflects my individual experiences and preferences and does not claim universal validity.',
-    footer: 'Christoph Haß · Possehl Digital · As of August 2026',
-  }
-};
+'use strict';
 
-function setLang(lang) {
-  const t = translations[lang];
-  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+var DOT = { marine: 'var(--marine-blue)', sky: 'var(--sky-blue)', red: 'var(--digital-red)', grad: 'var(--digital-red)' };
+var TOOLS = ['claude', 'openai', 'n8n', 'apple', 'ms365'];
 
-  // All elements with data-i18n attribute
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    // Check in main translations
-    if (t[key]) {
-      el.textContent = t[key];
-      return;
-    }
-    // Check in sec (sections)
-    if (t.sec && t.sec[key]) {
-      el.textContent = t.sec[key];
-      return;
-    }
+var lang = 'de';
+var filters = { q: '', tools: [], category: '' };
+
+function el(tag, cls, text) {
+  var n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+function t(field) {
+  if (field == null) return '';
+  return typeof field === 'string' ? field : (field[lang] != null ? field[lang] : field.de);
+}
+function ui(key) { return SITE.ui[lang][key] != null ? SITE.ui[lang][key] : key; }
+function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+function cardById(id) { return SITE.cards.filter(function (c) { return c.id === id; })[0]; }
+function sectionById(id) { return SITE.sections.filter(function (s) { return s.id === id; })[0]; }
+
+/* ---------------- legend ---------------- */
+function renderLegend() {
+  var box = document.getElementById('legend');
+  box.textContent = '';
+  SITE.sections.filter(function (s) { return !s.legendHide; }).forEach(function (s) {
+    var item = el('span', 'legend-item');
+    var dot = el('span', 'legend-dot');
+    dot.style.background = DOT[s.accent] || DOT.marine;
+    item.appendChild(dot);
+    item.appendChild(document.createTextNode(' ' + t(s.legend || s.title)));
+    box.appendChild(item);
   });
-
-  // Legend items (special handling due to nested structure)
-  const legItems = document.querySelectorAll('.legend-item');
-  legItems.forEach((el, i) => { if (t.leg && t.leg[i]) el.lastChild.textContent = ' ' + t.leg[i]; });
-
-  // Card links
-  if (t.links) {
-    document.querySelectorAll('.card-link[data-link]').forEach(el => {
-      const key = el.getAttribute('data-link');
-      if (t.links[key]) el.textContent = t.links[key];
-    });
-  }
-
-  // Card translations
-  if (t.cards) {
-    document.querySelectorAll('.card[data-card]').forEach(card => {
-      const key = card.getAttribute('data-card');
-      if (t.cards[key]) {
-        const [name, sub, desc] = t.cards[key];
-        const nameEl = card.querySelector('.card-name');
-        const subEl = card.querySelector('.card-sub');
-        const descEl = card.querySelector('.card-desc');
-        if (nameEl && name) nameEl.textContent = name;
-        if (subEl && sub) subEl.textContent = sub;
-        if (descEl && desc) descEl.textContent = desc;
-      }
-    });
-  }
 }
 
-// Initialize with German on page load
-document.addEventListener('DOMContentLoaded', function() {
+/* ---------------- toolbar ---------------- */
+function renderToolbar() {
+  var searchEl = document.getElementById('search');
+  searchEl.placeholder = ui('searchPlaceholder');
+  searchEl.title = ui('searchHint');
+  searchEl.value = filters.q;
+
+  // Vorschlagsliste: alle vorhandenen Schlagwoerter der aktuellen Sprache
+  var seen = {}, tagNames = [];
+  SITE.cards.forEach(function (c) {
+    (c.tags || []).forEach(function (tg) {
+      var label = t(tg.label);
+      if (label && !seen[label.toLowerCase()]) { seen[label.toLowerCase()] = 1; tagNames.push(label); }
+    });
+  });
+  tagNames.sort(function (a, b) { return a.localeCompare(b, lang); });
+  var dl = document.getElementById('tag-list');
+  dl.textContent = '';
+  tagNames.forEach(function (n) { var o = el('option'); o.value = n; dl.appendChild(o); });
+
+  var toolBox = document.getElementById('filter-tool');
+  toolBox.textContent = '';
+  toolBox.appendChild(el('span', 'filter-label', ui('filterTool')));
+  TOOLS.forEach(function (tl) {
+    var b = el('button', 'chip' + (filters.tools.indexOf(tl) >= 0 ? ' active' : ''), ui('tool' + cap(tl)));
+    b.addEventListener('click', function () { toggle(filters.tools, tl); renderToolbar(); applyFilters(); });
+    toolBox.appendChild(b);
+  });
+
+  var sel = document.getElementById('filter-category');
+  sel.textContent = '';
+  var all = el('option', null, ui('allCategories'));
+  all.value = '';
+  sel.appendChild(all);
+  SITE.sections.filter(function (s) { return !s.legendHide && s.type !== 'table'; }).forEach(function (s) {
+    var o = el('option', null, (s.level === 2 ? '   – ' : '') + t(s.legend || s.title));
+    o.value = s.id;
+    sel.appendChild(o);
+  });
+  sel.value = filters.category;
+
+  var reset = document.getElementById('filter-reset');
+  reset.textContent = ui('reset');
+  reset.hidden = !isFiltering();
+
+  var count = filters.tools.length + (filters.category ? 1 : 0);
+  var toggle = document.getElementById('filter-toggle');
+  toggle.textContent = ui('filterToggle') + (count ? ' (' + count + ')' : '');
+  toggle.classList.toggle('active', count > 0);
+}
+function toggle(arr, v) {
+  var i = arr.indexOf(v);
+  if (i >= 0) arr.splice(i, 1); else arr.push(v);
+}
+function isFiltering() {
+  return !!(filters.q || filters.tools.length || filters.category);
+}
+
+/* ---------------- card ---------------- */
+function renderRefCard(c) {
+  var target = cardById(c.ref);
+  var card = el('div', 'card card-ref');
+  card.id = 'card-' + c.id;
+  card.setAttribute('data-card', c.id);
+  card.setAttribute('data-ref', '1');
+  if (!target) return card;
+  var sec = sectionById(target.section);
+  if (target.icon) card.appendChild(el('div', 'card-emoji', target.icon));
+  card.appendChild(el('div', 'ref-label', ui('refPrefix') + ' ' + (sec ? t(sec.legend || sec.title) : '')));
+  card.appendChild(el('div', 'ref-title', t(target.title)));
+  var a = el('a', 'card-link', ui('refJump'));
+  a.href = '#card-' + target.id;
+  card.appendChild(a);
+  return card;
+}
+
+function renderCard(c) {
+  if (c.ref) return renderRefCard(c);
+
+  var card = el('div', 'card');
+  card.setAttribute('data-a', c.accent || 'marine');
+  card.setAttribute('data-card', c.id);
+  card.id = 'card-' + c.id;
+  if (c.cardStyle) card.setAttribute('style', c.cardStyle);
+
+  if (c.icon) card.appendChild(el('div', 'card-emoji', c.icon));
+  card.appendChild(el('div', 'card-name', t(c.title)));
+  if (c.subtitle) card.appendChild(el('div', 'card-sub', t(c.subtitle)));
+  if (c.description) card.appendChild(el('div', 'card-desc', t(c.description)));
+
+  if (c.tags && c.tags.length) {
+    var tagBox = el('div', 'card-tags');
+    c.tags.forEach(function (tg) { tagBox.appendChild(el('span', 'tag ' + (tg.accent || 'marine'), t(tg.label))); });
+    card.appendChild(tagBox);
+  }
+
+  (c.links || []).forEach(function (l, i) {
+    var a = el('a', 'card-link', t(l.label));
+    a.href = l.href;
+    if (l.href.charAt(0) !== '#') { a.target = '_blank'; a.rel = 'noopener'; }
+    if (i > 0) a.style.marginLeft = '12px';
+    card.appendChild(a);
+  });
+
+  if (c.more) card.appendChild(el('span', 'card-more', ui('moreLabel')));
+
+  // Meta: Setup-Zeit · Schwierigkeit · Zeitersparnis (alle optional)
+  var meta = el('div', 'card-meta');
+  if (c.setupTime) meta.appendChild(el('span', null, '⏱ ' + t(c.setupTime)));
+  if (c.difficulty) {
+    var d = el('span');
+    d.appendChild(document.createTextNode('📊 '));
+    var dots = el('span', 'dots');
+    for (var i = 1; i <= 3; i++) dots.appendChild(el('i', i <= c.difficulty ? 'on' : null));
+    d.appendChild(dots);
+    d.title = ui('metaDifficulty') + ' ' + c.difficulty + '/3';
+    meta.appendChild(d);
+  }
+  if (c.timeSaved) meta.appendChild(el('span', null, '💡 ' + ui('metaSaved') + ' ' + t(c.timeSaved)));
+  if (meta.childNodes.length) card.appendChild(meta);
+
+  // Fuss: Stand + Copy-Link
+  var foot = el('div', 'card-foot');
+  foot.appendChild(el('span', 'card-updated', c.updated ? ui('updatedPrefix') + ': ' + c.updated : ''));
+  var copy = el('button', 'card-copy', '🔗');
+  copy.title = ui('copyLink');
+  copy.setAttribute('aria-label', ui('copyLink'));
+  copy.addEventListener('click', function () { copyLink(c.id); });
+  foot.appendChild(copy);
+  card.appendChild(foot);
+
+  return card;
+}
+
+/* ---------------- sections ---------------- */
+function cardsOf(id) { return SITE.cards.filter(function (c) { return c.section === id; }); }
+
+function renderHeader(s) {
+  var sub = s.level === 2;
+  var header = el('div', 'row-header');
+  if (sub) header.style.marginBottom = '12px';
+  else if (s.wrap) header.style.flexWrap = 'wrap';
+
+  var icon = el('div', 'row-icon ' + s.accent, s.icon);
+  if (sub) { icon.style.width = '32px'; icon.style.height = '32px'; icon.style.fontSize = '16px'; }
+  header.appendChild(icon);
+
+  var title = el('span', 'row-title', t(s.title));
+  if (sub) title.style.fontSize = '20px';
+  header.appendChild(title);
+
+  if (s.subtitle) header.appendChild(el('span', 'row-subtitle', t(s.subtitle)));
+
+  if (s.note) {
+    var note = el('div', null, t(s.note));
+    note.setAttribute('style', 'width: 100%; margin-left: 52px; margin-top: 4px; font-size: 13px; color: var(--grey); line-height: 150%;');
+    header.appendChild(note);
+  }
+  if (s.action) {
+    var a = el('a', 'row-download-link');
+    a.href = s.action.href; a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('style', 'display: inline-flex; align-items: center; gap: 6px; width: 100%; margin-left: 52px; margin-top: -4px; font-size: 13px; font-weight: 700; color: var(--digital-red); text-decoration: none; transition: opacity 0.2s ease;');
+    a.appendChild(document.createTextNode((s.action.icon || '') + ' '));
+    a.appendChild(el('span', null, t(s.action.label)));
+    a.addEventListener('mouseover', function () { a.style.opacity = '0.7'; });
+    a.addEventListener('mouseout', function () { a.style.opacity = '1'; });
+    header.appendChild(a);
+  }
+  return header;
+}
+
+function renderTable(s) {
+  var box = el('div');
+  var wrap = el('div', 'cost-wrap');
+  var table = el('table', 'cost-table');
+  var thead = el('thead'), trh = el('tr');
+  s.table.columns.forEach(function (col) { trh.appendChild(el('th', null, t(col))); });
+  thead.appendChild(trh);
+  table.appendChild(thead);
+  var tbody = el('tbody');
+  s.table.rows.forEach(function (r) {
+    var tr = el('tr');
+    tr.appendChild(el('td', 'cost-tool', r.tool));
+    tr.appendChild(el('td', null, t(r.plan)));
+    var cost = el('td');
+    cost.appendChild(el('span', 'cost-tbd', r.cost === 'TBD' ? ui('costTbd') : r.cost));
+    tr.appendChild(cost);
+    var need = el('td');
+    need.appendChild(el('span', 'cost-need ' + r.need, r.need === 'required' ? ui('costRequired') : ui('costOptional')));
+    tr.appendChild(need);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  wrap.appendChild(table);
+  box.appendChild(wrap);
+
+  var sums = el('div', 'cost-sums');
+  (s.table.sums || []).forEach(function (sum) {
+    var c = el('div', 'cost-sum');
+    c.appendChild(el('div', 'cost-sum-label', t(sum.label)));
+    c.appendChild(el('div', 'cost-sum-value', sum.value === 'TBD' ? ui('costTbd') : sum.value));
+    if (sum.note) c.appendChild(el('div', 'cost-sum-note', t(sum.note)));
+    sums.appendChild(c);
+  });
+  box.appendChild(sums);
+  return box;
+}
+
+function renderScroll(id) {
+  var row = el('div', 'row-scroll');
+  var list = cardsOf(id);
+  // Verweis-Karten immer nach rechts, damit die Reihe nicht optisch aufbricht
+  var content = list.filter(function (c) { return !c.ref; });
+  var refs = list.filter(function (c) { return c.ref; });
+  content.concat(refs).forEach(function (c) { row.appendChild(renderCard(c)); });
+  return row;
+}
+
+function renderSections() {
+  var host = document.getElementById('sections');
+  host.textContent = '';
+  SITE.sections.filter(function (s) { return s.level === 1; }).forEach(function (top) {
+    var section = el('div', 'row-section' + (top.muted ? ' muted' : ''));
+    section.id = 'sec-' + top.id;
+    section.setAttribute('data-section', top.id);
+    section.appendChild(renderHeader(top));
+    if (top.lead) section.appendChild(el('div', 'row-lead', t(top.lead)));
+
+    if (top.type === 'table') {
+      section.appendChild(renderTable(top));
+    } else {
+      section.appendChild(renderScroll(top.id));
+    }
+
+    SITE.sections.filter(function (s) { return s.parent === top.id; }).forEach(function (child) {
+      var wrap = el('div');
+      wrap.style.marginTop = (child.marginTop || 24) + 'px';
+      wrap.id = 'sec-' + child.id;
+      wrap.setAttribute('data-subsection', child.id);
+      wrap.appendChild(renderHeader(child));
+      if (child.lead) wrap.appendChild(el('div', 'row-lead', t(child.lead)));
+      wrap.appendChild(renderScroll(child.id));
+      section.appendChild(wrap);
+    });
+
+    host.appendChild(section);
+  });
+}
+
+/* ---------------- filtering ---------------- */
+function matches(c) {
+  if (c.ref) return !isFiltering();            // Verweis-Karten sind Navigation, kein Inhalt
+  if (filters.category && c.section !== filters.category) return false;
+  if (filters.tools.length) {
+    var hit = (c.tools || []).some(function (x) { return filters.tools.indexOf(x) >= 0; });
+    if (!hit) return false;
+  }
+  if (filters.q) {
+    // bewusst nur Schlagwoerter und Titel, keine Volltextsuche ueber die Beschreibung
+    var hay = [t(c.title)]
+      .concat((c.tags || []).map(function (tg) { return t(tg.label); })).join(' ').toLowerCase();
+    if (hay.indexOf(filters.q.toLowerCase()) < 0) return false;
+  }
+  return true;
+}
+
+function applyFilters() {
+  var filtering = isFiltering();
+  var visible = 0;
+
+  SITE.cards.forEach(function (c) {
+    var node = document.getElementById('card-' + c.id);
+    if (!node) return;
+    var show = matches(c);
+    node.style.display = show ? '' : 'none';
+    if (show && !c.ref) visible++;
+  });
+
+  // leere Rows und Sektionen ausblenden
+  document.querySelectorAll('#sections .row-scroll').forEach(function (row) {
+    var any = [].slice.call(row.children).some(function (ch) { return ch.style.display !== 'none'; });
+    row.style.display = any ? '' : 'none';
+    var holder = row.parentElement;
+    if (holder.hasAttribute('data-subsection')) holder.style.display = any ? '' : 'none';
+  });
+  document.querySelectorAll('#sections .row-section').forEach(function (sec) {
+    var id = sec.getAttribute('data-section');
+    var s = sectionById(id);
+    if (s && s.type === 'table') { sec.style.display = filtering ? 'none' : ''; return; }
+    var any = [].slice.call(sec.querySelectorAll('.row-scroll')).some(function (r) { return r.style.display !== 'none'; });
+    sec.style.display = any ? '' : 'none';
+  });
+
+  var info = document.getElementById('result-info');
+  info.textContent = filtering ? visible + ' ' + (visible === 1 ? ui('resultsOne') : ui('resultsMany')) : '';
+
+  var host = document.getElementById('sections');
+  var empty = document.getElementById('no-results');
+  if (filtering && visible === 0) {
+    if (!empty) {
+      empty = el('div', 'no-results', ui('resultsNone'));
+      empty.id = 'no-results';
+      host.appendChild(empty);
+    } else { empty.textContent = ui('resultsNone'); empty.style.display = ''; }
+  } else if (empty) { empty.style.display = 'none'; }
+}
+
+function resetFilters() {
+  filters = { q: '', tools: [], category: '' };
+  renderToolbar();
+  applyFilters();
+}
+
+/* ---------------- deep links ---------------- */
+function copyLink(id) {
+  var url = location.origin + location.pathname + '#card-' + id;
+  var done = function () { showToast(ui('copied')); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done, function () { fallbackCopy(url, done); });
+  } else { fallbackCopy(url, done); }
+}
+function fallbackCopy(text, done) {
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.setAttribute('readonly', '');
+  ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) { /* ignore */ }
+  document.body.removeChild(ta);
+}
+var toastTimer = null;
+function showToast(msg) {
+  var el2 = document.getElementById('toast');
+  el2.textContent = msg;
+  el2.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { el2.classList.remove('show'); }, 1800);
+}
+
+function goToCard(id, push) {
+  var node = document.getElementById('card-' + id);
+  if (!node) return;
+  if (node.style.display === 'none') resetFilters();   // Ziel war ausgefiltert
+  node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  node.classList.remove('flash');
+  void node.offsetWidth;
+  node.classList.add('flash');
+  if (push && history.replaceState) history.replaceState(null, '', '#card-' + id);
+}
+
+document.addEventListener('click', function (ev) {
+  var a = ev.target.closest ? ev.target.closest('a[href^="#card-"]') : null;
+  if (!a) return;
+  ev.preventDefault();
+  goToCard(a.getAttribute('href').slice('#card-'.length), true);
+});
+
+/* ---------------- entry ---------------- */
+function setLang(l) {
+  lang = SITE.ui[l] ? l : 'de';
+  document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+
+  var u = SITE.ui[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function (node) {
+    var key = node.getAttribute('data-i18n');
+    if (u[key] != null) node.textContent = u[key];
+  });
+
+  renderLegend();
+  renderToolbar();
+  renderSections();
+  applyFilters();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
   setLang('de');
+
+  var search = document.getElementById('search');
+  var deb = null;
+  search.addEventListener('input', function () {
+    clearTimeout(deb);
+    deb = setTimeout(function () {
+      filters.q = search.value.trim();
+      document.getElementById('filter-reset').hidden = !isFiltering();
+      applyFilters();
+    }, 120);
+  });
+  document.getElementById('filter-category').addEventListener('change', function (e) {
+    filters.category = e.target.value;
+    renderToolbar();
+    applyFilters();
+  });
+  document.getElementById('filter-reset').addEventListener('click', resetFilters);
+
+  var toggle = document.getElementById('filter-toggle');
+  toggle.addEventListener('click', function () {
+    var open = document.getElementById('filters').classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  if (location.hash.indexOf('#card-') === 0) {
+    setTimeout(function () { goToCard(location.hash.slice('#card-'.length), false); }, 80);
+  }
+});
+
+// geteilter Link, waehrend die Seite schon offen ist (auch Zurueck/Vorwaerts)
+window.addEventListener('hashchange', function () {
+  if (location.hash.indexOf('#card-') === 0) goToCard(location.hash.slice('#card-'.length), false);
 });
 </script>
+<div class="toast" id="toast"></div>
 </body>
 </html>
