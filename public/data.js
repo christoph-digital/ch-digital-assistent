@@ -1871,6 +1871,11 @@ const SITE = {
       "ref": "belegscanner"
     },
     {
+      "id": "ref-backlog",
+      "section": "shortcuts",
+      "ref": "backlog"
+    },
+    {
       "id": "voicekal",
       "section": "shortcuts",
       "icon": "🗓️",
@@ -2314,6 +2319,53 @@ const SITE = {
       "timeSaved": null,
       "updated": "08/2026",
       "tools": [
+        "ms365"
+      ]
+    },
+    {
+      "id": "backlog",
+      "section": "email",
+      "icon": "💡",
+      "accent": "grad",
+      "title": {
+        "de": "Backlog-Ideen Liste",
+        "en": "Backlog Ideas List"
+      },
+      "subtitle": {
+        "de": "Weiterleiten oder einsprechen → Digest Di + Do",
+        "en": "Forward or Dictate → Digest Tue + Thu"
+      },
+      "description": {
+        "de": "Ideen, Lesestoff und Aufgaben für später: Mail an die Backlog-Adresse weiterleiten oder per iPhone-Shortcut einsprechen. Claude Haiku macht Titel, Kern und Kategorie, alles landet in einer Excel-Liste. Di + Do 06:30 kommt der Digest per Mail – Erledigt-Link räumt auf.",
+        "en": "Ideas, reading material and tasks for later: forward a mail to the backlog address or dictate via iPhone shortcut. Claude Haiku creates title, gist and category, everything lands in an Excel list. Tue + Thu 06:30 the digest arrives by mail – a done link clears it."
+      },
+      "tags": [
+        {
+          "accent": "red",
+          "label": "Claude Haiku"
+        },
+        {
+          "accent": "sky",
+          "label": "Shortcut"
+        },
+        {
+          "accent": "marine",
+          "label": "Excel"
+        },
+        {
+          "accent": "marine",
+          "label": "Outlook"
+        }
+      ],
+      "links": [],
+      "status": "live",
+      "effort": "mittel",
+      "difficulty": null,
+      "timeSaved": null,
+      "updated": "09/2026",
+      "tools": [
+        "claude",
+        "n8n",
         "ms365"
       ]
     },
