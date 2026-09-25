@@ -3197,6 +3197,172 @@ const SITE = {
       "tags": [
         {
           "accent": "red",
+          "label": "Skill"
+        },
+        {
+          "accent": "red",
+          "label": "Corporate Design"
+        },
+        {
+          "accent": "marine",
+          "label": "PowerPoint"
+        }
+      ],
+      "links": [],
+      "status": "live",
+      "effort": "gross",
+      "difficulty": null,
+      "timeSaved": null,
+      "updated": "09/2026",
+      "id": "skill-pd-deck",
+      "section": "individual",
+      "icon": "📊",
+      "accent": "red",
+      "title": {
+        "de": "Skill: PD PowerPoint",
+        "en": "Skill: PD PowerPoint"
+      },
+      "subtitle": {
+        "de": "Decks im Possehl Digital CI, deterministisch gebaut",
+        "en": "Decks in Possehl Digital CI, built deterministically"
+      },
+      "description": {
+        "de": "Auf Zuruf entsteht ein Foliensatz im offiziellen Possehl Digital Corporate Design – nicht freihändig zusammengebaut, sondern über einen Generator auf dem echten Folienmaster. Layouts, Farben und Typografie sitzen damit immer, ich liefere nur den Inhalt.",
+        "en": "On request, a deck appears in the official Possehl Digital corporate design – not hand-assembled, but produced by a generator running on the real slide master. Layouts, colours and typography are always right; I only supply the content."
+      },
+      "tools": [
+        "claude",
+        "ms365"
+      ]
+    },
+    {
+      "tags": [
+        {
+          "accent": "marine",
+          "label": "Skill"
+        },
+        {
+          "accent": "marine",
+          "label": "LinkedIn"
+        },
+        {
+          "accent": "sky",
+          "label": "Tonalität"
+        }
+      ],
+      "links": [],
+      "status": "live",
+      "effort": "mittel",
+      "difficulty": null,
+      "timeSaved": null,
+      "updated": "09/2026",
+      "id": "skill-social",
+      "section": "individual",
+      "icon": "📣",
+      "accent": "marine",
+      "title": {
+        "de": "Skill: Social Media",
+        "en": "Skill: Social media"
+      },
+      "subtitle": {
+        "de": "LinkedIn-Posts in meiner Stimme",
+        "en": "LinkedIn posts in my own voice"
+      },
+      "description": {
+        "de": "Aus Stichworten, einem Rohentwurf oder einem Link wird ein fertiger Post: direkt, konkret, ohne Floskeln und ohne KI-Sound. Deckt Events, Beteiligungs- und Exit-Ankündigungen, Recruiting und Thought Leadership ab – inklusive der Freigaberegeln für Außentexte.",
+        "en": "Keywords, a rough draft or a link turn into a finished post: direct, concrete, no filler and no AI sound. Covers events, investment and exit announcements, recruiting and thought leadership – including the rules for external communication."
+      },
+      "tools": [
+        "claude"
+      ]
+    },
+    {
+      "tags": [
+        {
+          "accent": "sky",
+          "label": "Skill"
+        },
+        {
+          "accent": "sky",
+          "label": "Meetings"
+        },
+        {
+          "accent": "marine",
+          "label": "Word"
+        }
+      ],
+      "links": [],
+      "status": "live",
+      "effort": "mittel",
+      "difficulty": null,
+      "timeSaved": null,
+      "updated": "09/2026",
+      "id": "skill-protokoll",
+      "section": "individual",
+      "icon": "📝",
+      "accent": "sky",
+      "title": {
+        "de": "Skill: Protokoll",
+        "en": "Skill: Meeting minutes"
+      },
+      "subtitle": {
+        "de": "Vom Transkript zum fertigen Protokoll",
+        "en": "From transcript to finished minutes"
+      },
+      "description": {
+        "de": "Aus Aufnahme, Transkript oder Notizen entsteht ein formelles Protokoll in festem Aufbau: Beschlüsse, Aufgaben mit Verantwortlichen und Terminen. Ergebnis kommt direkt im Chat und zusätzlich als Word-Datei im Possehl-CI.",
+        "en": "A recording, transcript or set of notes becomes formal minutes in a fixed structure: decisions, tasks with owners and due dates. The result arrives in the chat and additionally as a Word file in Possehl CI."
+      },
+      "tools": [
+        "claude",
+        "ms365"
+      ]
+    },
+    {
+      "tags": [
+        {
+          "accent": "red",
+          "label": "Skill"
+        },
+        {
+          "accent": "red",
+          "label": "Strategie"
+        },
+        {
+          "accent": "sky",
+          "label": "Wissensbasis"
+        }
+      ],
+      "links": [],
+      "status": "live",
+      "effort": "gross",
+      "difficulty": null,
+      "timeSaved": null,
+      "updated": "09/2026",
+      "id": "skill-pd-sparring",
+      "section": "individual",
+      "icon": "🧭",
+      "accent": "grad",
+      "title": {
+        "de": "Skill: PD Sparring",
+        "en": "Skill: PD sparring"
+      },
+      "subtitle": {
+        "de": "Possehl-Digital-Wissen als Gesprächspartner",
+        "en": "Possehl Digital knowledge as a sparring partner"
+      },
+      "description": {
+        "de": "Die zentrale Wissensbasis zu Possehl Digital: Purpose, Operating Model, Beteiligungen und Factories mit exakten Schreibweisen, Kennzahlen, Zielbild und M&A-Leitplanken. Greift automatisch, sobald es um Strategie, Portfolio oder Positionierung geht – und liefert Sparring statt nur Textproduktion.",
+        "en": "The central knowledge base on Possehl Digital: purpose, operating model, investments and factories with exact spellings, key figures, target picture and M&A guardrails. It kicks in automatically whenever strategy, portfolio or positioning come up – and provides sparring rather than just text output."
+      },
+      "tools": [
+        "claude"
+      ]
+    },
+    {
+      "tags": [
+        {
+          "accent": "red",
           "label": "Kontinuität"
         }
       ],
