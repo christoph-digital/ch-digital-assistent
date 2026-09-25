@@ -3362,6 +3362,48 @@ const SITE = {
     {
       "tags": [
         {
+          "accent": "marine",
+          "label": "Skill"
+        },
+        {
+          "accent": "marine",
+          "label": "Outlook & Teams"
+        },
+        {
+          "accent": "sky",
+          "label": "DE / EN"
+        }
+      ],
+      "links": [],
+      "status": "live",
+      "effort": "mittel",
+      "difficulty": null,
+      "timeSaved": null,
+      "updated": "09/2026",
+      "id": "skill-mail",
+      "section": "individual",
+      "icon": "📨",
+      "accent": "red",
+      "title": {
+        "de": "Skill: Mail & Nachrichten",
+        "en": "Skill: Email & messages"
+      },
+      "subtitle": {
+        "de": "Diktat oder Stichworte rein, fertige Mail raus",
+        "en": "Dictation or keywords in, finished email out"
+      },
+      "description": {
+        "de": "Mails und Kurznachrichten für Outlook, Teams und WhatsApp in meinem Sprachstil: direkt, herzlich, nordisch-klar, ohne Floskeln, mit klarem nächsten Schritt. Funktioniert auch aus einem hingesprochenen Diktat mit Tippfehlern – auf Deutsch, Englisch oder zweisprachig.",
+        "en": "Emails and short messages for Outlook, Teams and WhatsApp in my own voice: direct, warm, plain-spoken, no filler, with a clear next step. Works even from a rough dictation full of typos – in German, English or bilingual."
+      },
+      "tools": [
+        "claude",
+        "ms365"
+      ]
+    },
+    {
+      "tags": [
+        {
           "accent": "red",
           "label": "Kontinuität"
         }
